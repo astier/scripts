@@ -1,2 +1,2 @@
 # Scripts
-My scripts to automate some common tasks.
+My crisp scripts to automate some common tasks.
