@@ -4,17 +4,26 @@
 # Writes to WM_NAME of X11 to generate dwms' statusbar.
 ###
 
-BAT=$(cat /sys/class/power_supply/BAT0/capacity)
-SYMBOL=""
-if [ $(echo "$BAT < 15" | bc) == 1 ]; then
-	SYMBOL=""
-elif [ $(echo "$BAT < 35" | bc) == 1 ]; then
-	SYMBOL=""
-elif [ $(echo "$BAT < 65" | bc) == 1 ]; then
-	SYMBOL=""
-elif [ $(echo "$BAT < 85" | bc) == 1 ]; then
-	SYMBOL=""
-else
-	SYMBOL=""
-fi
-echo "$SYMBOL  $BAT"
+bat () {
+	BAT=$(cat /sys/class/power_supply/BAT0/capacity)
+	SYMBOL=""
+	if [ "$BAT" -lt 15 ]; then
+		SYMBOL=""
+	elif [ "$BAT" -lt 35 ]; then
+		SYMBOL=""
+	elif [ "$BAT" -lt 65 ]; then
+		SYMBOL=""
+	elif [ "$BAT" -lt 85 ]; then
+		SYMBOL=""
+	else
+		SYMBOL=""
+	fi
+	echo "$SYMBOL $BAT%"
+}
+
+dat () {
+	DATE=$(date +%H:%M)
+	echo " $DATE"
+}
+
+xsetroot -name " $(bat)  $(dat)"
