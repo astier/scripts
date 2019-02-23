@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SCR_DIR="$(pwd)"
-BIN_DIR=~/bin
+BIN_DIR=~/bin/
 mkdir $BIN_DIR
 
 install () {
@@ -10,5 +10,4 @@ install () {
     echo Installed: $TARGET
 }
 
-install err
 install scr
