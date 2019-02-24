@@ -11,3 +11,4 @@ install () {
 }
 
 install scr
+install statusbar
