@@ -1,8 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-###
 # Compiles and installs tensorflow with custom flags for improved CPU-performance.
-###
 
 VERSION=$1
 

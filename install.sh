@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 SCR_DIR="$(pwd)"
 BIN_DIR=~/bin/

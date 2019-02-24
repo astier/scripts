@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 ###
 # Detect and store system-errors and -warnings which occured at the last bootup.

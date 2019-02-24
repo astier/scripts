@@ -1,8 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-##############################################################
-# Updates dwms' satusbar by writing to the WN_NAME variable. #
-##############################################################
+# Updates dwms' satusbar by writing to the WN_NAME variable.
 
 dat () {
 	echo " $(date +%H:%M)"
