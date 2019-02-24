@@ -9,7 +9,9 @@ dat () {
 }
 
 bat () {
-	BAT=$(cat /sys/class/power_supply/BAT0/capacity)
+	BAT_DIR=/sys/class/power_supply/BAT0
+	[[ ! -d "$BAT_DIR" ]] && return
+	BAT=$(cat $BAT_DIR/capacity)
 	if [ "$BAT" -lt 15 ]; then
 		SYMBOL=""
 	elif [ "$BAT" -lt 40 ]; then
