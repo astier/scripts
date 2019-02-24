@@ -10,8 +10,13 @@ if [ -f "$SCRIPT" ]; then
     exit 1
 fi
 
+if [ "$SCRIPT_NAME" == "" ]; then
+    echo "Please specify a sctipt-name."
+    exit 1
+fi
+
 echo "#!/usr/bin/env bash" > "$SCRIPT"
 echo -e "\n#" >> "$SCRIPT"
 chmod u+x "$SCRIPT"
-ln -s "$SCRIPT" ~/bin/"$SCRIPT_NAME"
+ln -sf "$SCRIPT" ~/bin/"$SCRIPT_NAME"
 $EDITOR "$SCRIPT"
