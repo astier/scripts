@@ -11,17 +11,17 @@ bat () {
 	[[ ! -d "$BAT_DIR" ]] && return
 	BAT=$(cat $BAT_DIR/capacity)
 	if [ "$BAT" -lt 15 ]; then
-		SYMBOL=""
+		ICON=""
 	elif [ "$BAT" -lt 40 ]; then
-		SYMBOL=""
+		ICON=""
 	elif [ "$BAT" -lt 60 ]; then
-		SYMBOL=""
+		ICON=""
 	elif [ "$BAT" -lt 85 ]; then
-		SYMBOL=""
+		ICON=""
 	else
-		SYMBOL=""
+		ICON=""
 	fi
-	echo "$SYMBOL $BAT%"
+	echo "$ICON $BAT%"
 }
 
 xsetroot -name "$(bat)  $(dat)"
