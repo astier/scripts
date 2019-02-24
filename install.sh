@@ -6,8 +6,8 @@ mkdir $BIN_DIR
 
 install () {
     TARGET=$1
-    ln -fs $SCR_DIR/scripts/$TARGET.sh $BIN_DIR/$TARGET &&
-    echo Installed: $TARGET
+    ln -fs "$SCR_DIR"/scripts/"$TARGET".sh $BIN_DIR/"$TARGET" &&
+    echo Installed: "$TARGET"
 }
 
 install scr
