@@ -2,7 +2,7 @@
 
 SCR_DIR="$(pwd)"
 BIN_DIR=~/bin/
-mkdir $BIN_DIR
+[[ ! -d "$BIN_DIR" ]] && mkdir $BIN_DIR
 
 install () {
     TARGET=$1
@@ -11,4 +11,4 @@ install () {
 }
 
 install scr
-install statusbar
+install dstatus
