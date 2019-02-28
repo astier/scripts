@@ -10,5 +10,8 @@ install () {
     echo Installed: "$TARGET"
 }
 
-install scr
 install dstatus
+install scr
+install wpd
+install wpr
+install wps
