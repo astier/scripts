@@ -24,4 +24,7 @@ bat () {
 	echo "$ICON $BAT%"
 }
 
-xsetroot -name "$(bat)  $(dat)"
+while true; do
+	xsetroot -name "$(bat)  $(dat)"
+	sleep 60
+done
