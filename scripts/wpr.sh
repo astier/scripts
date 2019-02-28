@@ -6,5 +6,5 @@ WALLPAPERS=~/Pictures/luke_smith/Landscapes
 while true; do
 	WALLPAPER=$(ls "$WALLPAPERS" | shuf -n1)
 	wps "$WALLPAPERS/$WALLPAPER"
-	sleep 60
+	sleep 600
 done
