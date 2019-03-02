@@ -22,5 +22,8 @@ case "$suffix" in
 	"pdf") zathura "$1" && exit
 esac
 
-[[ -d "$1" ]] && nautilus "$1" && exit
-nvim "$1" && exit
+if [[ -d "$1" ]]; then
+	nautilus "$1"
+else
+	nvim "$1"
+fi
