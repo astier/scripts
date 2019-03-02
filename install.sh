@@ -13,6 +13,7 @@ install () {
 install dstatus
 install open
 install scr
+install sxrap
 install wpd
 install wpr
 install wps
