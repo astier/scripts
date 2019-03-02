@@ -2,7 +2,7 @@
 
 # Opens files with different programs based on theit mime-types
 
-[[ "$1" == "" ]] && sxiv -bt . && exit
+[[ "$1" == "" ]] && sxrap . && exit
 mime=$(file -bL --mime-type "$1")
 
 prefix=$(echo "$mime" | cut -d"/" -f1)
@@ -14,7 +14,7 @@ case "$prefix" in
 			[[ "$url" ]] && echo "$url" | cut -d"=" -f2 | xargs "$BROWSER" && exit
 		fi
 		nvim "$1" && exit ;;
-	"image") sxiv -b "$1" && exit ;;
+	"image") sxrap "$1" && exit ;;
 esac
 
 suffix=$(echo "$mime" | cut -d"/" -f2)
