@@ -18,5 +18,5 @@ fi
 echo "#!/usr/bin/env bash" > "$SCRIPT"
 echo -e "\n#" >> "$SCRIPT"
 chmod u+x "$SCRIPT"
-ln -sf "$SCRIPT" ~/bin/"$SCRIPT_NAME"
+ln -sf "$SCRIPT" ~/.local/bin/"$SCRIPT_NAME"
 $EDITOR "$SCRIPT"
