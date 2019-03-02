@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 SCR_DIR="$(pwd)"
-BIN_DIR=~/bin/
+BIN_DIR=~/.local/bin/
 [[ ! -d "$BIN_DIR" ]] && mkdir $BIN_DIR
 
 install () {
