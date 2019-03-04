@@ -13,5 +13,6 @@ conda clean -a
 
 echo -e "\nClean Home-Folder manually!"
 
+# TODO /var & other log-files
 # TODO check rmlint (broken symlinks, duplicates, empty files/dirs, etc.)
 # TODO disk-analyzer
