@@ -7,21 +7,21 @@ dat () {
 }
 
 bat () {
-	BAT_DIR=/sys/class/power_supply/BAT0
-	[[ ! -d "$BAT_DIR" ]] && return
-	BAT=$(cat $BAT_DIR/capacity)
-	if [ "$BAT" -lt 15 ]; then
-		ICON=""
-	elif [ "$BAT" -lt 40 ]; then
-		ICON=""
-	elif [ "$BAT" -lt 60 ]; then
-		ICON=""
-	elif [ "$BAT" -lt 85 ]; then
-		ICON=""
+	bat_dir=/sys/class/power_supply/BAT0
+	[[ ! -d "$bat_dir" ]] && return
+	bat_cap=$(cat $bat_dir/capacity)
+	if [ "$bat_cap" -lt 15 ]; then
+		icon=""
+	elif [ "$bat_cap" -lt 40 ]; then
+		icon=""
+	elif [ "$bat_cap" -lt 60 ]; then
+		icon=""
+	elif [ "$bat_cap" -lt 85 ]; then
+		icon=""
 	else
-		ICON=""
+		icon=""
 	fi
-	echo "$ICON $BAT%"
+	echo "$icon $bat_cap%"
 }
 
 while true; do
