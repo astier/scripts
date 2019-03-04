@@ -5,10 +5,10 @@
 VERSION=$1
 
 # Get source-code for the desired tensorflow-version
-cd ~/Downloads
+cd ~/Downloads || exit
 git clone https://github.com/tensorflow/tensorflow.git
-cd tensorflow
-git checkout v$VERSION
+cd tensorflow || exit
+git checkout "v$VERSION"
 
 # Configure and build package and wheel
 ./configure

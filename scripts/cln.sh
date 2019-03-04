@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
-###
 # Clean the system.
-###
 
 echo "Remove Orphans..."
 sudo pacman -Rns "$(pacman -Qdtq)"

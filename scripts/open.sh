@@ -22,7 +22,7 @@ case "$suffix" in
 	"pdf") zathura "$1" && exit
 esac
 
-if [[ -d "$1" ]]; then
+if [ -d "$1" ]; then
 	nautilus "$1"
 else
 	nvim "$1"
