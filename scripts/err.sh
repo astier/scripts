@@ -9,4 +9,4 @@ mkdir $DIR
 # Detect and store errors
 journalctl -p3 -xb > $DIR/journalctl  # Kernel
 systemctl --all --failed > $DIR/systemctl  # Services
-cat ~/.local/share/xorg/Xorg.0.log | grep -e '(EE)' -e '(WW)' > $DIR/xorg  # Xorg
+grep -e '(EE)' -e '(WW)' ~/.local/share/xorg/Xorg.0.lo g > $DIR/xorg  # Xorg

@@ -2,21 +2,17 @@
 
 # Script to generate scripts.
 
-SCRIPT_NAME=$1
-SCRIPT=~/Projects/scripts/scripts/$SCRIPT_NAME.sh
+script_name=$1
+script_path=~/Projects/scripts/scripts/$script_name.sh
 
-if [ -f "$SCRIPT" ]; then
-    echo "ERROR: Script $SCRIPT already exists."
-    exit 1
+if [ -f "$script_path" ]; then
+	echo "ERROR: Script $script_path already exists."
+elif [ "$script_name" == "" ]; then
+	echo "Please specify a sctipt-name."
+else
+	echo "#!/usr/bin/env bash" > "$script_path"
+	echo -e "\n#" >> "$script_path"
+	chmod u+x "$script_path"
+	ln -sf "$script_path" ~/.local/bin/"$script_name"
+	$EDITOR "$script_path"
 fi
-
-if [ "$SCRIPT_NAME" == "" ]; then
-    echo "Please specify a sctipt-name."
-    exit 1
-fi
-
-echo "#!/usr/bin/env bash" > "$SCRIPT"
-echo -e "\n#" >> "$SCRIPT"
-chmod u+x "$SCRIPT"
-ln -sf "$SCRIPT" ~/.local/bin/"$SCRIPT_NAME"
-$EDITOR "$SCRIPT"

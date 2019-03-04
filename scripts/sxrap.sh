@@ -13,6 +13,6 @@ else
 	img_path=$(realpath "$1")
 	img_dir=$(dirname "$img_path")
 	img_name=$(basename "$1")
-	img_no=$(ls "$img_dir" | grep -nw "$img_name" | cut -d":" -f1)
+	img_no=$(ls "$img_dir" | grep -nw "$img_name" | cut -d: -f1)
 	sxiv -bn "$img_no" "$img_dir"
 fi
