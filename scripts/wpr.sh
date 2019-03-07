@@ -4,6 +4,6 @@
 # Stores the path to the current wallpaper in ~/.wallpaper
 while true; do
 	WALLPAPER=$(ls "$1" | shuf -n1)
-	wps "$WALLPAPERS/$WALLPAPER"
+	wps "$1/$WALLPAPER"
 	sleep 600
 done
