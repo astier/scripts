@@ -7,6 +7,11 @@ if [ "$1" == "" ]; then
 	exit
 fi
 
+if [ ! -f "$1" ]; then
+	nvim "$1"
+	exit
+fi
+
 mime=$(file -bL --mime-type "$1")
 prefix=$(echo "$mime" | cut -d/ -f1)
 case "$prefix" in
