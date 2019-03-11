@@ -30,7 +30,7 @@ esac
 
 suffix=$(echo "$mime" | cut -d/ -f2)
 if [ "$suffix" == "pdf" ]; then
-	firefox "$1"
+	zathura "$1"
 elif [ -d "$1" ]; then
 	nautilus "$1"
 else
