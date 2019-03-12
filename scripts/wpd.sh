@@ -2,7 +2,7 @@
 
 # Move current wallpaper to trash and set new random wallpaper
 
-WALLPAPER_OLD=$(cat ~/.local/share/wallpaper) || exit
+WALLPAPER_OLD=$(cat ~/.local/share/wallpaper)
 WALLPAPER_DIR=$(dirname "$WALLPAPER_OLD")
 WALLPAPER_NEW=$(ls "$WALLPAPER_DIR" | shuf -n1)
 wps "$WALLPAPER_DIR/$WALLPAPER_NEW"
