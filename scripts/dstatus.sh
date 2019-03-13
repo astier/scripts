@@ -8,7 +8,7 @@ dat () {
 
 bat () {
 	bat_dir=/sys/class/power_supply/BAT0
-	[[ ! -d "$bat_dir" ]] && return
+	[[ ! -d "$bat_dir" ]] && exit
 	bat_cap=$(cat $bat_dir/capacity)
 	if [ "$bat_cap" -lt 15 ]; then
 		icon=""
