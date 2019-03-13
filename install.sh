@@ -10,9 +10,7 @@ install () {
     echo Installed: "$TARGET"
 }
 
-install cln
 install dstatus
-install open
 install scr
 install sxrap
 install wpd
