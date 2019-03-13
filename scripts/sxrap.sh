@@ -4,7 +4,7 @@
 # and beeing able to navigate to other images in the same CWD
 
 if [ "$1" == "" ]; then
-	sxiv
+	sxiv -bt .
 elif [ -d "$1" ]; then
 	sxiv -bt "$1"
 elif [ ! -f "$1" ]; then
