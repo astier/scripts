@@ -7,7 +7,7 @@ if [ "$1" == "" ]; then
 elif [ ! -f "$1" ];then
 	echo "File does not exist."
 else
-	hsetroot -fill "$1"
+	feh --bg-fill "$1"
 	FILE_PATH=$(readlink -f "$1")
 	echo "$FILE_PATH" > ~/.local/share/wallpaper
 fi
