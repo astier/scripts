@@ -11,6 +11,7 @@ install () {
 }
 
 install dstatus
+install open
 install scr
 install wpd
 install wpr
