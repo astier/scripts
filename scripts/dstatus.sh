@@ -2,9 +2,7 @@
 
 # Updates dwms' satusbar by writing to the WN_NAME variable.
 
-dat () {
-	echo " $(date +%H:%M)"
-}
+dat () { echo " $(date +%H:%M)"; }
 
 bat () {
 	bat_dir=/sys/class/power_supply/BAT0
