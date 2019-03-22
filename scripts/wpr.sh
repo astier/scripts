@@ -5,5 +5,5 @@
 while true; do
 	wallpaper=$(ls "$1" | shuf -n1)
 	wps "$1/$wallpaper"
-	sleep 600
+	sleep 900
 done
