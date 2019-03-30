@@ -2,8 +2,10 @@
 
 if [ "$1" == "" ]; then
 	feh
+elif [ -f "$1" ]; then
+	nvim "$@"
 elif [ ! -f "$1" ] && [ ! -d "$1" ]; then
-	nvim "$1"
+	nvim "$@"
 else
-	xdg-open "$1"
+	xdg-open "$@"
 fi
