@@ -2,8 +2,6 @@
 
 if [ "$1" == "" ]; then
 	feh
-elif [ -f "$1" ]; then
-	nvim "$@"
 elif [ ! -f "$1" ] && [ ! -d "$1" ]; then
 	nvim "$@"
 else
