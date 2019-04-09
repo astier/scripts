@@ -13,6 +13,4 @@ install () {
 install dstatus
 install open
 install scr
-install wpd
-install wpr
-install wps
+install bgm

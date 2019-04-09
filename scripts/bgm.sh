@@ -41,6 +41,6 @@ elif [ -d "$1" ]; then
 elif file -b --mime-type "$1" | grep -q image; then
 	set_wp "$1"
 else
-	echo "Non-valid argument."
+	echo "Argument is not valid."
 	exit 1
 fi
