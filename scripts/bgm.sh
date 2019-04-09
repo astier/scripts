@@ -31,15 +31,15 @@ delete_wp() {
 }
 
 if [ "$#" == 0 ]; then
-	echo "No arguments provided."
-	exit 1
-elif [ "$1" == "-d" ]; then
-	delete_wp
+	WP=$(get_random_wp .) &&
+	set_wp "$WP"
 elif [ -d "$1" ]; then
 	WP=$(get_random_wp "$1") &&
 	set_wp "$WP"
 elif file -b --mime-type "$1" | grep -q image; then
 	set_wp "$1"
+elif [ "$1" == "-d" ]; then
+	delete_wp
 else
 	echo "Argument is not valid."
 	exit 1
