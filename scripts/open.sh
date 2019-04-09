@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-if [ "$1" == "" ]; then
+if [ "$#" == 0 ]; then
 	feh
-elif [ ! -f "$1" ] && [ ! -d "$1" ]; then
-	nvim "$@"
-else
+elif [ "$#" == 1 ] && [ -f "$1" -o -d "$1" ]; then
 	xdg-open "$@"
+else
+	nvim "$@"
 fi
