@@ -9,7 +9,7 @@ install () {
 }
 
 rm "$BIN_DIR"/*
-install dstatus
-install open
-install scr
 install b
+install dstatus
+install o
+install scr
