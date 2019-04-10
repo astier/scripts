@@ -58,7 +58,7 @@ elif [[ "$1" = -* ]]; then
 	elif [ "$1" == "-d" ]; then
 		delete_wp
 	else
-		echo Bad arguments. >&2
+		echo Invalid arguments. >&2
 		exit 1
 	fi
 elif [ -d "$1" ]; then
@@ -66,6 +66,6 @@ elif [ -d "$1" ]; then
 elif file -b --mime-type "$1" | grep -q image; then
 	set_wp "$1"
 else
-	echo Bad arguments. >&2
+	echo Invalid arguments. >&2
 	exit 1
 fi
