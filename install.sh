@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 BIN_DIR=~/.local/bin
-[[ ! -d "$BIN_DIR" ]] && mkdir $BIN_DIR
+[[ ! -d "$BIN_DIR" ]] && mkdir "$BIN_DIR"
 
 install () {
-    ln -rs scripts/"$1".sh $BIN_DIR/"$TARGET" &&
+    ln -frs scripts/"$1".sh "$BIN_DIR"/"$1" &&
     echo Installed: "$1"
 }
 
