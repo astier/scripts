@@ -1,16 +1,15 @@
 #!/usr/bin/env bash
 
-SCR_DIR="$(pwd)"
-BIN_DIR=~/.local/bin/
+BIN_DIR=~/.local/bin
 [[ ! -d "$BIN_DIR" ]] && mkdir $BIN_DIR
 
 install () {
-    TARGET=$1
-    ln -fs "$SCR_DIR"/scripts/"$TARGET".sh $BIN_DIR/"$TARGET" &&
-    echo Installed: "$TARGET"
+    ln -rs scripts/"$1".sh $BIN_DIR/"$TARGET" &&
+    echo Installed: "$1"
 }
 
+rm "$BIN_DIR"/*
 install dstatus
 install open
 install scr
-install bgm
+install b
