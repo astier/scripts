@@ -9,7 +9,8 @@ add_files() {
 		if grep -qx "$p" "$BUFFER"; then
 			echo Already in buffer: "$p"
 		elif [ -f "$p" ] || [ -d "$p" ]; then
-			echo "$p" >> "$BUFFER"
+			echo "$p" >> "$BUFFER" &&
+			echo Added: "$p"
 		else
 			echo Does\'t exist: "$p"
 		fi
@@ -19,7 +20,7 @@ add_files() {
 paste_files() {
 	while read -r LINE; do
 		if [ -f "$LINE" ] || [ -d "$LINE" ]; then
-			cp -r "$LINE" .
+			cp -r "$LINE" . &&
 			echo Pasted: "$LINE"
 		else
 			echo Doesn\'t exist: "$LINE"
@@ -30,7 +31,7 @@ paste_files() {
 move_files() {
 	while read -r LINE; do
 		if [ -f "$LINE" ] || [ -d "$LINE" ]; then
-			mv "$LINE" .
+			mv "$LINE" . &&
 			echo Moved: "$LINE"
 		else
 			echo Doesn\'t exist: "$LINE"
