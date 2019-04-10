@@ -8,7 +8,7 @@ set_wp() {
 }
 
 get_random_wp() {
-	WP=$(find "$1" -type f | grep -i -e .jpg -e .jpeg -e .png | shuf -n1 | sed "s/^.\///")
+	WP=$(find "$1" -type f | grep -i -e .jpg -e .jpeg -e .png | shuf -n1)
 	if [ -z "$WP" ]; then
 		echo "No images found in provided directory." >&2
 		exit 1
@@ -24,7 +24,7 @@ delete_wp() {
 		set_wp "$WP_NEW"
 		rm "$WP_OLD"
 	else
-		echo "Config-file is corrupt: $WP_OLD" >&2
+		echo "Config-File is corrupt: $WP_OLD" >&2
 		exit 1
 	fi
 }
