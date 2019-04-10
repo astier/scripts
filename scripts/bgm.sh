@@ -4,8 +4,7 @@ WP_CONF="$HOME/.local/share/wallpaper"
 
 set_wp() {
 	feh --bg-fill "$1"
-	FILE_PATH=$(readlink -f "$1")
-	echo "$FILE_PATH" > "$WP_CONF"
+	realpath "$1" > "$WP_CONF"
 }
 
 get_random_wp() {
