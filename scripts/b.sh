@@ -16,12 +16,18 @@ get_random_wp() {
 	realpath "$WP"
 }
 
+set_random_wp() {
+	if WP_NEW=$(get_random_wp "$1"); then
+		set_wp "$WP_NEW"
+	else
+		exit 1
+	fi
+}
+
 delete_wp() {
 	WP_OLD=$(cat "$WP_CONF")
 	if file -b --mime-type "$WP_OLD" | grep -q image; then
-		WP_DIR=$(dirname "$WP_OLD")
-		WP_NEW=$(get_random_wp "$WP_DIR") &&
-		set_wp "$WP_NEW"
+		set_random_wp "$(dirname "$WP_OLD")"
 		rm "$WP_OLD"
 	else
 		echo "Config-File is corrupt: $WP_OLD" >&2
@@ -30,21 +36,17 @@ delete_wp() {
 }
 
 loop() {
-	WP=$(get_random_wp "$1") &&
-	set_wp "$WP"
+	set_random_wp "$1"
 	sleep "$2"
 	while true; do
-		WP_DIR=$(dirname "$(cat "$WP_CONF")")
-		WP=$(get_random_wp "$WP_DIR") &&
-		set_wp "$WP"
+		set_random_wp "$(dirname "$(cat "$WP_CONF")")"
 		sleep "$2"
 	done
 }
 
 # Process arguments
 if [ "$#" == 0 ]; then
-	WP=$(get_random_wp .) &&
-	set_wp "$WP"
+	set_random_wp .
 elif [[ "$1" = -* ]]; then
 	if [ "$1" == "-l" ] && [ -d "$2" ] && [[ "$3" =~ ^[0-9]+$ ]]; then
 		if find "$2" -type f | grep -iq -e .jpg -e .jpeg -e .png; then
@@ -60,8 +62,7 @@ elif [[ "$1" = -* ]]; then
 		exit 1
 	fi
 elif [ -d "$1" ]; then
-	WP=$(get_random_wp "$1") &&
-	set_wp "$WP"
+	set_random_wp "$1"
 elif file -b --mime-type "$1" | grep -q image; then
 	set_wp "$1"
 else
