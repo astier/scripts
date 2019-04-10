@@ -48,7 +48,7 @@ loop() {
 if [ "$#" == 0 ]; then
 	set_random_wp .
 elif [[ "$1" = -* ]]; then
-	if [ "$1" == "-l" ] && [ -d "$2" ] && [[ "$3" =~ ^[0-9]+$ ]]; then
+	if [ "$1" == "-l" ] && [ -d "$2" ] && [[ "$3" =~ ^[1-9]{1}[0-9]*$ ]]; then
 		if find "$2" -type f | grep -iq -e .jpg -e .jpeg -e .png; then
 			loop "$2" "$3"
 		else
