@@ -20,7 +20,7 @@ delete_wp() {
 	WP_OLD=$(cat "$WP_CONF")
 	if file -b --mime-type "$WP_OLD" | grep -q image; then
 		WP_DIR=$(dirname "$WP_OLD")
-		WP_NEW=$(get_random_wp "$WP_DIR")
+		WP_NEW=$(get_random_wp "$WP_DIR") &&
 		set_wp "$WP_NEW"
 		rm "$WP_OLD"
 	else
@@ -41,7 +41,11 @@ loop() {
 	done
 }
 
-if [[ "$1" = -* ]]; then
+# Process arguments
+if [ "$#" == 0 ]; then
+	WP=$(get_random_wp .) &&
+	set_wp "$WP"
+elif [[ "$1" = -* ]]; then
 	if [ "$1" == "-l" ] && [ -d "$2" ] && [[ "$3" =~ ^[0-9]+$ ]]; then
 		if find "$2" -type f | grep -iq -e .jpg -e .jpeg -e .png; then
 			loop "$2" "$3"
