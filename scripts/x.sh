@@ -20,7 +20,7 @@ add_files() {
 paste_files() {
 	while read -r LINE; do
 		if [ -f "$LINE" ] || [ -d "$LINE" ]; then
-			cp -r "$LINE" . &&
+			cp -ir "$LINE" . &&
 			echo Pasted: "$LINE"
 		else
 			echo Doesn\'t exist: "$LINE"
@@ -31,7 +31,7 @@ paste_files() {
 move_files() {
 	while read -r LINE; do
 		if [ -f "$LINE" ] || [ -d "$LINE" ]; then
-			mv "$LINE" . &&
+			mv -i "$LINE" . &&
 			echo Moved: "$LINE"
 		else
 			echo Doesn\'t exist: "$LINE"
@@ -40,12 +40,12 @@ move_files() {
 	:> "$BUFFER"
 }
 
-if [[ "$1" = -* ]]; then
+if [ "$#" == 0 ]; then
+	cat "$BUFFER"
+elif [[ "$1" = -* ]]; then
 	if [ "$1" == "-c" ]; then
 		cat "$BUFFER"
 		:> "$BUFFER"
-	elif [ "$1" == "-s" ]; then
-		cat "$BUFFER"
 	elif [ "$1" == "-p" ]; then
 		paste_files
 	elif [ "$1" == "-m" ]; then
