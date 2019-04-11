@@ -44,7 +44,6 @@ loop() {
 	done
 }
 
-
 if [ "$#" == 0 ]; then
 	set_random_wp .
 elif [[ "$1" = -* ]]; then
