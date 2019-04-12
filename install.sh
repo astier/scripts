@@ -11,5 +11,5 @@ install () {
 rm "$BIN_DIR"/*
 install b
 install dstatus
-install scr
 install x
+install u
