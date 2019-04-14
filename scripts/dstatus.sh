@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-dat () { echo " $(date +%H:%M)"; }
+dat() { echo " $(date +%H:%M)"; }
 
-bat () {
+bat() {
 	bat_dir=/sys/class/power_supply/BAT0
-	[[ ! -d "$bat_dir" ]] && exit
+	[[ ! -d "$bat_dir" ]] && return
 	bat_cap=$(cat $bat_dir/capacity)
 	if [ "$bat_cap" -lt 15 ]; then
 		icon=""
