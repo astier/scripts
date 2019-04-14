@@ -9,8 +9,7 @@ add_files() {
 		if grep -qx "$p" "$BUFFER"; then
 			echo Already in buffer: "$p"
 		elif [ -f "$p" ] || [ -d "$p" ]; then
-			echo "$p" >> "$BUFFER" &&
-			echo Added: "$p"
+			echo "$p" >> "$BUFFER"
 		else
 			echo Does\'t exist: "$p"
 		fi
@@ -44,8 +43,8 @@ if [ "$#" == 0 ]; then
 	cat "$BUFFER"
 elif [[ "$1" = -* ]]; then
 	if [ "$1" == "-c" ]; then
-		cat "$BUFFER"
 		:> "$BUFFER"
+		cat "$BUFFER"
 	elif [ "$1" == "-p" ]; then
 		paste_files
 	elif [ "$1" == "-m" ]; then
