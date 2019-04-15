@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 BUFFER="$HOME/.local/share/wallpaper"
+SLEEP_TIME=900
 
 set_wp() {
 	feh --bg-fill "$1"
@@ -36,24 +37,17 @@ delete_wp() {
 }
 
 loop() {
-	set_random_wp "$1"
-	sleep "$2"
 	while true; do
 		set_random_wp "$(dirname "$(cat "$BUFFER")")"
-		sleep "$2"
+		sleep "$SLEEP_TIME"
 	done
 }
 
 if [ "$#" == 0 ]; then
 	set_random_wp .
 elif [[ "$1" = -* ]]; then
-	if [ "$1" == "-l" ] && [ -d "$2" ] && [[ "$3" =~ ^[1-9]{1}[0-9]*$ ]]; then
-		if find "$2" -type f | grep -iq -e .jpg -e .jpeg -e .png; then
-			loop "$2" "$3"
-		else
-			echo No images found in provided directory. >&2
-			exit 1
-		fi
+	if [ "$1" == "-l" ]; then
+		loop
 	elif [ "$1" == "-d" ]; then
 		delete_wp
 	else
