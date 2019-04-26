@@ -10,6 +10,5 @@ install () {
 
 rm "$BIN_DIR"/*
 install b
-install dstatus
 install x
 install u
