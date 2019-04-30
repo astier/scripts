@@ -9,7 +9,6 @@ install () {
 }
 
 rm "$BIN_DIR"/*
-install b
 install i
 install x
 install u
