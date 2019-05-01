@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# # Neovim-Python-IDE
+# conda create -n ide isort jedi pylint rope
+# conda activate ide
+# pip install black python-language-server
+# conda deactivate
+
 clean_system() {
 	echo "Remove Orphans..."
 	sudo pacman -Rns "$(pacman -Qdtq)"
