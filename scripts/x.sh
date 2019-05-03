@@ -25,6 +25,7 @@ paste_files() {
 			echo Doesn\'t exist: "$LINE"
 		fi
 	done < "$BUFFER"
+	:> "$BUFFER"
 }
 
 move_files() {
@@ -44,7 +45,6 @@ if [ "$#" == 0 ]; then
 elif [[ "$1" = -* ]]; then
 	if [ "$1" == "-c" ]; then
 		:> "$BUFFER"
-		cat "$BUFFER"
 	elif [ "$1" == "-p" ]; then
 		paste_files
 	elif [ "$1" == "-m" ]; then
