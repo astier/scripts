@@ -5,6 +5,7 @@ install () {
     echo Installed: "$1"
 }
 
+install b
 install i
 install x
 install u
