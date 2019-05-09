@@ -8,7 +8,7 @@
 
 clean_system() {
 	echo "Remove Orphans..."
-	sudo pacman -Rns $(pacman -Qttdq)
+	sudo pacman -Rns "$(pacman -Qttdq)"
 	echo -e "\nClean Pacman-Cache..."
 	sudo pacman -Sc
 	echo -e "\nClean Conda-Cache"
