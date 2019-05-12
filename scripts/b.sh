@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 BUFFER="$HOME/.local/share/wallpaper"
-SLEEP_TIME=1500
+SLEEP_TIME=1800
 
 set_wp() {
 	feh --bg-fill "$1"
