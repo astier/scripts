@@ -9,10 +9,12 @@
 clean_system() {
 	echo "Remove Orphans..."
 	sudo pacman -Rns "$(pacman -Qttdq)"
-	echo -e "\nClean Pacman-Cache..."
+	echo -e "\nClean Pacman-Cache"
 	sudo pacman -Sc
 	echo -e "\nClean Conda-Cache"
 	conda clean -a
+	echo -e "\nClean ~/.cache"
+	rm -r ~/.cache/*
 	echo -e "\nClean Home-Folder manually!"
 	# TODO /var & other log-files
 	# TODO check rmlint (broken symlinks, duplicates, empty files/dirs, etc.)
