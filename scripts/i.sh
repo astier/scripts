@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 battery=$(cat /sys/class/power_supply/BAT0/capacity)
 date_time=$(date "+%a %d.%m.%Y %R")
