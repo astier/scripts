@@ -1,11 +1,11 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 BUFFER=/tmp/x_buffer
-[[ ! -f "$BUFFER" ]] && touch "$BUFFER"
+[ ! -f "$BUFFER" ] && touch "$BUFFER"
 
 add_files() {
 	for p do
-		p=$(realpath "$p")
+		p=$(realpath -- "$p")
 		if grep -qx "$p" "$BUFFER"; then
 			echo Already in buffer: "$p"
 		elif [ -f "$p" ] || [ -d "$p" ]; then
@@ -40,19 +40,11 @@ move_files() {
 	:> "$BUFFER"
 }
 
-if [ "$#" == 0 ]; then
-	cat "$BUFFER"
-elif [[ "$1" = -* ]]; then
-	if [ "$1" == "-c" ]; then
-		:> "$BUFFER"
-	elif [ "$1" == "-p" ]; then
-		paste_files
-	elif [ "$1" == "-m" ]; then
-		move_files
-	else
-		echo Invalid arguments. >&2
-		exit 1
-	fi
-else
-	add_files "$@"
-fi
+case $@ in
+	"") cat "$BUFFER";;
+	-c) :> "$BUFFER" ;;
+	-p) paste_files ;;
+	-m) move_files ;;
+	-*) echo Invalid arguments. >&2 && exit 1 ;;
+	* ) add_files "$@" ;;
+esac

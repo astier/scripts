@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 # # Neovim-Python-IDE
 # conda create -n ide isort jedi pylint rope
@@ -9,13 +9,13 @@
 clean_system() {
 	echo "Remove Orphans..."
 	sudo pacman -Rns "$(pacman -Qttdq)"
-	echo -e "\nClean Pacman-Cache"
+	printf "\nClean Pacman-Cache"
 	sudo pacman -Sc
-	echo -e "\nClean Conda-Cache"
+	printf "\nClean Conda-Cache"
 	conda clean -a
-	echo -e "\nClean ~/.cache"
+	printf "\nClean ~/.cache"
 	rm -r ~/.cache/*
-	echo -e "\nClean Home-Folder manually!"
+	printf "\nClean Home-Folder manually!"
 	# TODO /var & other log-files
 	# TODO check rmlint (broken symlinks, duplicates, empty files/dirs, etc.)
 	# TODO disk-analyzer<Paste>
@@ -24,17 +24,14 @@ clean_system() {
 create_err_log() {
 	# Detect and store system-errors and -warnings which occured at the last bootup
 	LOG_DIR=~/ERROR_LOG
-	[[ ! -d "$LOG_DIR" ]] && mkdir $LOG_DIR
+	[ ! -d "$LOG_DIR" ] && mkdir $LOG_DIR
 	journalctl -p3 -xb > $LOG_DIR/journalctl  # Kernel
 	systemctl --all --failed > $LOG_DIR/systemctl  # Services
 	grep -e '(EE)' -e '(WW)' ~/.local/share/xorg/Xorg.0.log > $LOG_DIR/xorg  # Xorg
 }
 
-if [ "$1" == "-c" ]; then
-	clean_system
-elif [ "$1" == "-e" ]; then
-	create_err_log
-else
-	echo Invalid arguments >&2
-	exit 1
-fi
+case $@ in
+	-c) clean_system ;;
+	-e) create_err_log ;;
+	*) echo Invalid arguments. >&2 && exit 1 ;;
+esac
