@@ -25,9 +25,9 @@ create_err_log() {
 	# Detect and store system-errors and -warnings which occured at the last bootup
 	LOG_DIR=~/ERROR_LOG
 	[ ! -d "$LOG_DIR" ] && mkdir $LOG_DIR
-	journalctl -p3 -xb > $LOG_DIR/journalctl  # Kernel
-	systemctl --all --failed > $LOG_DIR/systemctl  # Services
-	grep -e '(EE)' -e '(WW)' ~/.local/share/xorg/Xorg.0.log > $LOG_DIR/xorg  # Xorg
+	journalctl -p3 -xb > $LOG_DIR/journalctl                                # Kernel
+	systemctl --all --failed > $LOG_DIR/systemctl                           # Services
+	grep -e '(EE)' -e '(WW)' ~/.local/share/xorg/Xorg.0.log > $LOG_DIR/xorg # Xorg
 }
 
 case $@ in
