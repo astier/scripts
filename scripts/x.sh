@@ -1,15 +1,15 @@
 #!/usr/bin/env sh
 
 BUFFER=/tmp/x_buffer
-[ ! -f "$BUFFER" ] && touch "$BUFFER"
+[ ! -f $BUFFER ] && touch $BUFFER
 
 add_files() {
 	for p; do
 		p=$(realpath -- "$p")
-		if grep -qx "$p" "$BUFFER"; then
+		if grep -qx "$p" $BUFFER; then
 			echo Already in buffer: "$p"
 		elif [ -f "$p" ] || [ -d "$p" ]; then
-			echo "$p" >> "$BUFFER"
+			echo "$p" >> $BUFFER
 		else
 			echo Does\'t exist: "$p"
 		fi
@@ -24,8 +24,8 @@ paste_files() {
 		else
 			echo Doesn\'t exist: "$LINE"
 		fi
-	done < "$BUFFER"
-	: > "$BUFFER"
+	done < $BUFFER
+	: > $BUFFER
 }
 
 move_files() {
@@ -36,13 +36,13 @@ move_files() {
 		else
 			echo Doesn\'t exist: "$LINE"
 		fi
-	done < "$BUFFER"
-	: > "$BUFFER"
+	done < $BUFFER
+	: > $BUFFER
 }
 
 case $@ in
-	"") cat "$BUFFER" ;;
-	-c) : > "$BUFFER" ;;
+	"") cat $BUFFER ;;
+	-c) : > $BUFFER ;;
 	-p) paste_files ;;
 	-m) move_files ;;
 	-*) echo Invalid arguments. >&2 && exit 1 ;;
