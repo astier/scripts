@@ -45,6 +45,9 @@ case $@ in
 	-c) : > $BUFFER ;;
 	-p) paste_files ;;
 	-m) move_files ;;
-	-*) echo Invalid arguments. >&2 && exit 1 ;;
+	-*)
+		echo Invalid arguments. >&2
+		exit 1
+		;;
 	*) add_files "$@" ;;
 esac

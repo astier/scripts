@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 BUFFER="$HOME/.local/share/wallpaper"
 SLEEP_TIME=1800
@@ -43,18 +43,17 @@ loop() {
 	done
 }
 
-if [ "$#" == 0 ]; then
-	set_random_wp .
-elif [[ "$1" = -* ]]; then
-	if [ "$1" == "-l" ]; then
-		loop
-	elif [ "$1" == "-d" ]; then
-		delete_wp
-	else
+case $@ in
+	"") set_random_wp && return ;;
+	-l) loop && return ;;
+	-d) delete_wp && return ;;
+	-*)
 		echo Invalid arguments. >&2
 		exit 1
-	fi
-elif [ -d "$1" ]; then
+		;;
+esac
+
+if [ -d "$1" ]; then
 	set_random_wp "$1"
 elif file -b --mime-type "$1" | grep -q image; then
 	set_wp "$1"

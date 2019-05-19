@@ -33,5 +33,8 @@ create_err_log() {
 case $@ in
 	-c) clean_system ;;
 	-e) create_err_log ;;
-	*) echo Invalid arguments. >&2 && exit 1 ;;
+	*)
+		echo Invalid arguments. >&2
+		exit 1
+		;;
 esac
