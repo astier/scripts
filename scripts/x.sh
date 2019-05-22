@@ -25,7 +25,6 @@ paste_files() {
 			echo Doesn\'t exist: "$LINE"
 		fi
 	done < $BUFFER
-	: > $BUFFER
 }
 
 move_files() {
