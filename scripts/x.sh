@@ -19,7 +19,7 @@ add_files() {
 paste_files() {
 	while read -r LINE; do
 		if [ -f "$LINE" ] || [ -d "$LINE" ]; then
-			cp -ir "$LINE" . &&
+			cp -fr "$LINE" . &&
 				echo Pasted: "$LINE"
 		else
 			echo Doesn\'t exist: "$LINE"
@@ -30,7 +30,7 @@ paste_files() {
 move_files() {
 	while read -r LINE; do
 		if [ -f "$LINE" ] || [ -d "$LINE" ]; then
-			mv -i "$LINE" . &&
+			mv -f "$LINE" . &&
 				echo Moved: "$LINE"
 		else
 			echo Doesn\'t exist: "$LINE"
