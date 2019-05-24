@@ -44,7 +44,7 @@ loop() {
 }
 
 case $@ in
-	"") set_random_wp && return ;;
+	"") set_random_wp . && return ;;
 	-l) loop && return ;;
 	-d) delete_wp && return ;;
 	-*)
