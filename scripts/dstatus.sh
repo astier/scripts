@@ -1,7 +1,5 @@
 #!/usr/bin/env sh
 
-dat() { echo " $(date +%H:%M)"; }
-
 bat() {
 	bat_dir=/sys/class/power_supply/BAT0
 	[ ! -d "$bat_dir" ] && return
@@ -20,7 +18,11 @@ bat() {
 	echo "$icon $bat_cap%"
 }
 
+dat() { echo " $(date +%H:%M)"; }
+
+drb() { pgrep dropbox > /dev/null && echo ; }
+
 while true; do
-	xsetroot -name "$(bat)  $(dat)"
+	xsetroot -name "$(drb)  $(bat)  $(dat)"
 	sleep 60
 done
