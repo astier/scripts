@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 install() {
 	sudo ln -frs scripts/"$1".sh /usr/local/bin/"$1" &&
@@ -6,6 +6,7 @@ install() {
 }
 
 install b
+install dstatus
 install i
 install x
 install u
