@@ -5,8 +5,6 @@ install() {
 		echo Installed: "$1"
 }
 
-install b
-install dstatus
 install i
 install x
 install u
