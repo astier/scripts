@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 battery=$(cat /sys/class/power_supply/BAT0/capacity)
-date_time=$(date "+%a %d.%m.%Y %R")
+date_time=$(date "+%R")
 brightness=$(light | cut -d. -f1)
 volume=$(pulsemixer --get-volume | cut -d" " -f1)
 mute=$(pulsemixer --get-mute)
