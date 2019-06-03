@@ -1,3 +1,5 @@
+#!/usr/bin/env sh
+
 sudo add-apt-repository ppa:daniruiz/flat-remix
 sudo add-apt-repository ppa:neovim-ppa/stable
 apt update
