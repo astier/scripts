@@ -14,7 +14,7 @@ clean_system() {
 	printf "\nClean Conda-Cache"
 	conda clean -a
 	printf "\nClean ~/.cache"
-	rm -r ~/.cache/*
+	rm -fr ~/.cache/*
 	printf "\nClean Home-Folder manually!"
 	# TODO /var & other log-files
 	# TODO check rmlint (broken symlinks, duplicates, empty files/dirs, etc.)
