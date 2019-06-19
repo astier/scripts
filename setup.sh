@@ -5,5 +5,6 @@ install() {
 		echo Installed: "$1"
 }
 
+install tstatus
 install utils
 install x
