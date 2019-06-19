@@ -25,9 +25,7 @@ bat() {
 
 dat() { echo " $(date +%H:%M)"; }
 
-drb() { pgrep dropbox > /dev/null && echo ; }
-
 while true; do
-	xsetroot -name "$(drb)  $(bat)  $(dat)"
+	xsetroot -name "$(bat)  $(dat)"
 	sleep 60
 done
