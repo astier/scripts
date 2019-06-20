@@ -1,0 +1,4 @@
+dstatus: detect AC event
+dstatus: use switch for bat
+dstatus: muted and volume
+dstatus: no while loop inside, but cron
