@@ -4,7 +4,7 @@ BUFFER="$HOME/.local/share/wallpaper"
 SLEEP_TIME=1800
 
 set_wp() {
-	hsetroot -fill "$1"
+	feh --bg-fill "$1"
 	realpath "$1" > "$BUFFER"
 }
 
