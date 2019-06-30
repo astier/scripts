@@ -6,5 +6,4 @@ install() {
 }
 
 install tstatus
-install utils
 install x
