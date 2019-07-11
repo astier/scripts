@@ -7,10 +7,13 @@ while true; do
 	bat_cap=$(cat $BAT_DIR/capacity)
 	if [ "$(cat /sys/class/power_supply/BAT0/status)" = "Charging" ]; then
 		[ "$bat_cap" -eq 80 ] && echo BAT 80% | dmenu -sf "#ff5050"
-	elif [ "$bat_cap" -eq 40 ]; then
+	elif [ "$bat_cap" -eq 20 ]; then
 		echo BAT 40% | dmenu -sf "#ff5050"
 	elif [ "$bat_cap" -lt 10 ]; then
 		echo BAT "$bat_cap"% | dmenu -sf "#ff5050"
+	elif [ "$bat_cap" -lt 5 ]; then
+		echo BAT "$bat_cap"% | dmenu -sf "#ff5050"
+		systemctl suspend
 	fi
 	sleep 120
 done &
