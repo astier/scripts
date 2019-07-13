@@ -18,7 +18,7 @@ clean_system() {
 	printf "\nClean Home-Folder manually!\n"
 	# TODO /var & other log-files
 	# TODO check rmlint (broken symlinks, duplicates, empty files/dirs, etc.)
-	# TODO disk-analyzer<Paste>
+	# TODO disk-analyzer
 }
 
 create_err_log() {
