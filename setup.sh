@@ -5,4 +5,5 @@ install() {
 		echo Installed: "$1"
 }
 
+install plumb
 install x
