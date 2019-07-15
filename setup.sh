@@ -5,7 +5,4 @@ install() {
 		echo Installed: "$1"
 }
 
-install bstatus
-install tstatus
-install utils
 install x
