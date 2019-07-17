@@ -6,6 +6,7 @@ install() {
 }
 
 install bstatus
+install efistub
 install plumb
 install tstatus
 install utils
