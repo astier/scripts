@@ -7,6 +7,8 @@ install() {
 
 install bstatus
 install efistub
+install i
+install r
 install tstatus
 install utils
 install x
