@@ -7,15 +7,12 @@
 # conda deactivate
 
 clean_system() {
-	echo "Remove Orphans..."
-	pacman -Qttdq | sudo pacman -Rns -
-	printf "\nClean Pacman-Cache"
+	sudo pacman -Rns $(pacman -Qttdq)
 	sudo pacman -Sc
-	printf "\nClean Conda-Cache"
-	conda clean -a
-	printf "\nClean ~/.cache"
+	# printf "\nClean Conda-Cache"
+	# conda clean -a
+	# printf "\nClean ~/.cache"
 	# rm -fr ~/.cache/*
-	printf "\nClean Home-Folder manually!\n"
 	# TODO /var & other log-files
 	# TODO check rmlint (broken symlinks, duplicates, empty files/dirs, etc.)
 	# TODO disk-analyzer
@@ -31,7 +28,7 @@ create_err_log() {
 }
 
 update_mirrorlist() {
-	sudo sh -c "curl -s 'https://www.archlinux.org/mirrorlist/?protocol=https&use_mirror_status=on' | sed -e s/^#Server/Server/ -e /^#/d > /etc/pacman.d/mirrorlist; cat /etc/pacman.d/mirrorlist"
+	sudo sh -c "curl -s 'https://www.archlinux.org/mirrorlist/?protocol=https&use_mirror_status=on' | sed -e s/^#Server/Server/ -e /^#/d > /etc/pacman.d/mirrorlist"
 }
 
 case $@ in
