@@ -28,7 +28,7 @@ create_err_log() {
 }
 
 update_mirrorlist() {
-	sudo sh -c "curl -s 'https://www.archlinux.org/mirrorlist/?protocol=https&use_mirror_status=on' | sed -e s/^#Server/Server/ -e /^#/d > /etc/pacman.d/mirrorlist"
+	sudo sh -c "curl -s 'https://www.archlinux.org/mirrorlist/?country=DE&protocol=https&use_mirror_status=on' | sed -e s/^#Server/Server/ -e /^#/d > /etc/pacman.d/mirrorlist"
 }
 
 case $@ in
