@@ -30,9 +30,14 @@ create_err_log() {
 	grep -e '(EE)' -e '(WW)' ~/.local/share/xorg/Xorg.0.log > $LOG_DIR/xorg # Xorg
 }
 
+update_mirrorlist() {
+	sudo sh -c "curl -s 'https://www.archlinux.org/mirrorlist/?protocol=https&use_mirror_status=on' | sed -e s/^#Server/Server/ -e /^#/d > /etc/pacman.d/mirrorlist; cat /etc/pacman.d/mirrorlist"
+}
+
 case $@ in
 	-c) clean_system ;;
 	-e) create_err_log ;;
+	-u) update_mirrorlist ;;
 	*)
 		echo Invalid arguments. >&2
 		exit 1
