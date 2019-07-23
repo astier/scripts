@@ -7,9 +7,13 @@ apt update
 apt install arc-theme dropbox flat-remix git neovim nodejs xsel tmux deborphan build-essential libx11-dev libxft-dev yarn
 
 # REMOVE
-apt purge --auto-remove thunderbird hexchat-common libreoffice-common gnome-calendar gnome-calculator onboard-common rhythmbox-data xplayer-common transmission-common pix-data pix-data simple-scan vim-common ed nano flatpak gucharmap gnome-disk-utility xreader-common redshift xviewer gnome-font-viewer seahorse xed-common tomboy baobab gnome-logs gnome-power-manager gimp-data mono-runtime-common gnome-orca gnome-terminal-data
+apt purge --auto-remove thunderbird hexchat-common libreoffice-common gnome-calendar gnome-calculator onboard-common rhythmbox-data xplayer-common transmission-common pix-data pix-data simple-scan vim-common ed nano flatpak gucharmap gnome-disk-utility xreader-common redshift xviewer gnome-font-viewer seahorse xed-common tomboy baobab gnome-logs gnome-power-manager gimp-data mono-runtime-common gnome-orca gnome-terminal-data timeshift
 apt purge --auto-remove "$(deborphan)"
 rm -fr Documents Music Pictures Public Templates Videos .themes .icons .bash_logout
+
+# UPDATE
+apt update
+apt upgrade
 
 # PROJECTS
 mkdir ~/projects && cd ~/projects || exit
