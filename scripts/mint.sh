@@ -9,10 +9,8 @@ apt install arc-theme build-essential deborphan dropbox flat-remix git libx11-de
 # PROJECTS
 mkdir ~/projects && cd ~/projects || exit
 git clone https://github.com/astier/dotfiles
-git clone https://github.com/astier/scripts
 git clone https://github.com/astier/st
 cd dotfiles && sh setup.sh
-cd ../scripts && sh setup.sh
 cd ../st && sudo make install clean
 
 # REMOVE, UPDATE, CLEAN
