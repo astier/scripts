@@ -4,7 +4,7 @@
 sudo add-apt-repository ppa:daniruiz/flat-remix
 sudo add-apt-repository ppa:neovim-ppa/stable
 apt update
-apt install arc-theme build-essential deborphan dropbox flat-remix git libx11-dev libxft-dev neovim nodejs tmux xsel yarn
+apt install arc-theme build-essential deborphan dropbox flat-remix fonts-hack-ttf git libx11-dev libxft-dev neovim nodejs tmux xsel yarn
 
 # PROJECTS
 mkdir ~/projects && cd ~/projects || exit
