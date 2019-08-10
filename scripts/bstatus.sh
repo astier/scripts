@@ -6,15 +6,15 @@ BAT_DIR=/sys/class/power_supply/BAT0
 notify() { (echo BAT "$1"% | dmenu -sf "#ff5050" > /dev/null 2>&1 &); }
 
 while true; do
-	bat_cap=$(cat $BAT_DIR/capacity)
-	if [ "$(cat /sys/class/power_supply/BAT0/status)" = "Charging" ]; then
-		[ "$bat_cap" -eq 80 ] && notify "$bat_cap"
-	elif [ "$bat_cap" -eq 20 ]; then
-		notify "$bat_cap"
-	elif [ "$bat_cap" -eq 10 ]; then
-		notify "$bat_cap"
-	elif [ "$bat_cap" -lt 5 ]; then
-		systemctl suspend
-	fi
-	sleep 120
+    bat_cap=$(cat $BAT_DIR/capacity)
+    if [ "$(cat /sys/class/power_supply/BAT0/status)" = "Charging" ]; then
+        [ "$bat_cap" -eq 80 ] && notify "$bat_cap"
+    elif [ "$bat_cap" -eq 20 ]; then
+        notify "$bat_cap"
+    elif [ "$bat_cap" -eq 10 ]; then
+        notify "$bat_cap"
+    elif [ "$bat_cap" -lt 5 ]; then
+        systemctl suspend
+    fi
+    sleep 120
 done &
