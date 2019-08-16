@@ -1,13 +1,18 @@
 #!/usr/bin/env sh
 
+# apt install git
+# mkdir ~/projects && cd ~/projects
+# git clone https://github.com/astier/scripts
+# sh scripts/scripts/mint.sh
+
 # INSTALL
 sudo add-apt-repository ppa:daniruiz/flat-remix
 sudo add-apt-repository ppa:neovim-ppa/stable
 apt update
-apt install arc-theme build-essential deborphan dropbox flat-remix fonts-hack-ttf git libx11-dev libxft-dev neovim nodejs tmux xsel yarn
+apt install arc-theme build-essential deborphan dropbox flat-remix fonts-hack-ttf libx11-dev libxft-dev neovim nodejs tmux xsel yarn
 
 # PROJECTS
-mkdir ~/projects && cd ~/projects || exit
+cd ~/projects || exit
 git clone https://github.com/astier/dotfiles
 git clone https://github.com/astier/st
 cd dotfiles && sh setup.sh
