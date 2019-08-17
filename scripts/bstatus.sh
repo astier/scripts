@@ -6,7 +6,6 @@ BAT_DIR=/sys/class/power_supply/BAT0
 notify() { (echo BAT "$1"% | rofi -dmenu > /dev/null 2>&1 &); }
 
 while true; do
-    [ $PPID -ne "$(pidof "$1")" ] && exit
     bat_cap=$(cat $BAT_DIR/capacity)
     if [ "$(cat /sys/class/power_supply/BAT0/status)" = "Charging" ]; then
         [ "$bat_cap" -eq 80 ] && notify "$bat_cap"

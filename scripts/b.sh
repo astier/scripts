@@ -38,7 +38,6 @@ delete_wp() {
 
 loop() {
     while true; do
-        [ $PPID -ne "$(pidof "$1")" ] && exit
         set_random_wp "$(dirname "$(cat "$BUFFER")")"
         sleep "$SLEEP_TIME"
     done
