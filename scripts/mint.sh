@@ -32,3 +32,4 @@ cd ~/.config && rm -fr goa-1.0 hexchat caja
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 nvim -c PlugInstall
 sudo bash -c "echo 'vm.swappiness = 0' >> /etc/sysctl.conf"
+sudo localectl set-x11-keymap us pc105 altgr-intl caps:swapescape
