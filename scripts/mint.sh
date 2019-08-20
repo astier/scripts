@@ -4,7 +4,6 @@
 # apt install git
 # mkdir ~/projects && cd ~/projects
 # git clone https://github.com/astier/scripts
-# git checkout mint
 # sh scripts/scripts/mint.sh
 
 # INSTALL
@@ -17,7 +16,7 @@ apt install arc-theme build-essential deborphan dropbox ffmpeg flat-remix fonts-
 cd ~/projects || exit
 git clone https://github.com/astier/dotfiles
 git clone https://github.com/astier/st
-cd dotfiles && git checkout mint && sh setup.sh
+cd dotfiles && sh setup.sh
 cd ../scripts && sh setup.sh
 cd ../st && sudo make install clean
 
