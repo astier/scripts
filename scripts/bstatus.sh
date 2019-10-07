@@ -3,7 +3,7 @@
 BAT_DIR=/sys/class/power_supply/BAT0
 [ ! -d "$BAT_DIR" ] && echo NO BATTERY FOUND. EXIT. && return
 
-notify() { (echo BAT "$1"% | rofi -dmenu > /dev/null 2>&1 &); }
+notify() { (echo BAT "$1"% | dmenu > /dev/null 2>&1 &); }
 
 while true; do
     bat_cap=$(cat $BAT_DIR/capacity)
