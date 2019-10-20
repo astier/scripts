@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-BUFFER="$HOME/.local/share/wallpaper"
+BUFFER="$HOME/.cache/b"
 SLEEP_TIME=1200
 
 set_wp() {
