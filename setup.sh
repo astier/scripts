@@ -10,4 +10,6 @@ install bstatus
 install efistub
 install i
 install r
+install s
+install sl
 install x
