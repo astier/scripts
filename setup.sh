@@ -5,11 +5,11 @@ install() {
         echo Installed: "$1"
 }
 
-install b
 install bstatus
 install efistub
 install i
 install r
 install s
 install sl
+install wa
 install x
