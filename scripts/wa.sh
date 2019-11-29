@@ -47,10 +47,7 @@ case $1 in
     "") set_random_wp . && return ;;
     -l) loop "$2" && return ;;
     -d) delete_wp && return ;;
-    -*)
-        echo Invalid arguments. >&2
-        exit 1
-        ;;
+    -*) echo INVALID ARGUMENTS && return;
 esac
 
 if [ -d "$1" ]; then
@@ -58,6 +55,6 @@ if [ -d "$1" ]; then
 elif file -b --mime-type "$1" | grep -q image; then
     set_wp "$1"
 else
-    echo Invalid arguments. >&2
+    echo INVALID ARGUMENTS >&2
     exit 1
 fi
