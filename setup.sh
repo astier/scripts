@@ -10,4 +10,4 @@ install ccp
 install efistub
 install pkg
 install sys
-install wa
+install wal
