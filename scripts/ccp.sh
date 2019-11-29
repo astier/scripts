@@ -1,7 +1,6 @@
 #!/usr/bin/env sh
 
 BUFFER=/tmp/cpp
-[ ! -f $BUFFER ] && touch $BUFFER
 
 copy() {
     for p; do
@@ -38,6 +37,8 @@ move() {
     done < $BUFFER
     : > $BUFFER
 }
+
+[ ! -f $BUFFER ] && touch $BUFFER
 
 case $@ in
     "") cat $BUFFER ;;
