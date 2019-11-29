@@ -7,7 +7,9 @@ DIR=/sys/class/power_supply/BAT0
 notify() { (echo "$1"% | dmenu -p "BATTERY " > /dev/null 2>&1 &); }
 
 loop() {
-    [ "$(pgrep -af bs | grep "bin/bs -l" | grep -cv grep)" -gt 2 ] && echo AN INSTANCE IS ALREADY RUNNING && return
+    if [ "$(pgrep -af bs | grep "bin/bs -l" | grep -cv grep)" -gt 2 ]; then
+        echo AN INSTANCE IS ALREADY RUNNING && return
+    fi
     while true; do
         capacity=$(cat $DIR/capacity)
         if [ "$(cat $DIR/status)" = "Charging" ]; then
