@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-BUFFER="$HOME/.cache/wal"
+BUFFER=~/.cache/wal
 SLEEP_TIME=1200
 
 set_wp() {
@@ -37,11 +37,16 @@ delete_wp() {
 }
 
 loop() {
+    if [ "$(pgrep -af wal | grep "bin/wal -l" | grep -cv grep)" -gt 2 ]; then
+        echo AN INSTANCE IS ALREADY RUNNING && return
+    fi
     while true; do
         set_random_wp "$(dirname "$(cat "$BUFFER")")"
         sleep "$SLEEP_TIME"
     done
 }
+
+[ ! -r $BUFFER ] && touch $BUFFER
 
 case $1 in
     "") set_random_wp . && return ;;
