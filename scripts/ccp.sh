@@ -1,9 +1,9 @@
 #!/usr/bin/env sh
 
-BUFFER=/tmp/x_buffer
+BUFFER=/tmp/cpp
 [ ! -f $BUFFER ] && touch $BUFFER
 
-add_files() {
+copy() {
     for p; do
         p=$(realpath -- "$p")
         if grep -qx "$p" $BUFFER; then
@@ -16,7 +16,7 @@ add_files() {
     done
 }
 
-paste_files() {
+paste() {
     while read -r LINE; do
         if [ -f "$LINE" ] || [ -d "$LINE" ]; then
             cp -fr "$LINE" . &&
@@ -27,7 +27,7 @@ paste_files() {
     done < $BUFFER
 }
 
-move_files() {
+move() {
     while read -r LINE; do
         if [ -f "$LINE" ] || [ -d "$LINE" ]; then
             mv -f "$LINE" . &&
@@ -41,19 +41,19 @@ move_files() {
 
 case $@ in
     "") cat $BUFFER ;;
-    -a\ *)
+    -c\ *)
         shift
-        add_files "$@"
+        copy "$@"
         ;;
-    -c) : > $BUFFER ;;
-    -p) paste_files ;;
-    -m) move_files ;;
+    -d) : > $BUFFER ;;
+    -p) paste ;;
+    -m) move ;;
     -*)
         echo Invalid arguments. >&2
         exit 1
         ;;
     *)
         : > $BUFFER
-        add_files "$@"
+        copy "$@"
         ;;
 esac

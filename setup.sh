@@ -6,9 +6,9 @@ install() {
 }
 
 install bs
+install ccp
 install efistub
 install pkg
 install s
 install sl
 install wa
-install x
