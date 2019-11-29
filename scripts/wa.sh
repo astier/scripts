@@ -47,7 +47,7 @@ case $1 in
     "") set_random_wp . && return ;;
     -l) loop "$2" && return ;;
     -d) delete_wp && return ;;
-    -*) echo INVALID ARGUMENTS && return;
+    -*) echo INVALID ARGUMENTS && return ;;
 esac
 
 if [ -d "$1" ]; then
