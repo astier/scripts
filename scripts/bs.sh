@@ -13,7 +13,7 @@ loop() {
     while true; do
         capacity=$(cat $DIR/capacity)
         if [ "$(cat $DIR/status)" = "Charging" ]; then
-            [ "$capacity" -eq 80 ] && notify "$capacity"
+            [ "$capacity" -eq 90 ] && notify "$capacity"
         elif [ "$capacity" -eq 10 ]; then
             notify "$capacity"
         elif [ "$capacity" -lt 5 ]; then
