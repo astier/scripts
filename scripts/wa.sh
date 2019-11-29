@@ -45,7 +45,7 @@ loop() {
 
 case $1 in
     "") set_random_wp . && return ;;
-    -l) loop $2 && return ;;
+    -l) loop "$2" && return ;;
     -d) delete_wp && return ;;
     -*)
         echo Invalid arguments. >&2
