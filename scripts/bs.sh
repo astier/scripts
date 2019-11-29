@@ -6,14 +6,22 @@ DIR=/sys/class/power_supply/BAT0
 
 notify() { (echo "$1"% | dmenu -p "BATTERY " > /dev/null 2>&1 &); }
 
-while true; do
-    bat_cap=$(cat $DIR/capacity)
-    if [ "$(cat $DIR/status)" = "Charging" ]; then
-        [ "$bat_cap" -eq 80 ] && notify "$bat_cap"
-    elif [ "$bat_cap" -eq 10 ]; then
-        notify "$bat_cap"
-    elif [ "$bat_cap" -lt 5 ]; then
-        systemctl suspend
-    fi
-    sleep 120
-done
+loop() {
+    while true; do
+        capacity=$(cat $DIR/capacity)
+        if [ "$(cat $DIR/status)" = "Charging" ]; then
+            [ "$capacity" -eq 80 ] && notify "$capacity"
+        elif [ "$capacity" -eq 10 ]; then
+            notify "$capacity"
+        elif [ "$capacity" -lt 5 ]; then
+            systemctl suspend
+        fi
+        sleep 120
+    done
+}
+
+case $1 in
+    "") cat $DIR/capacity ;;
+    -l) loop ;;
+    -*) echo Invalid arguments. ;;
+esac
