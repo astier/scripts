@@ -5,7 +5,7 @@ install() {
         echo Installed: "$1"
 }
 
-install bs
+install bst
 install ccp
 install efistub
 install pkg
