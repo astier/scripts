@@ -1,13 +1,14 @@
 #!/usr/bin/env sh
 
-BAT_DIR=/sys/class/power_supply/BAT0
-[ ! -d "$BAT_DIR" ] && echo NO BATTERY FOUND. EXIT. && return
+DIR=/sys/class/power_supply/BAT0
+
+[ ! -d "$DIR" ] && echo NO BATTERY FOUND && return
 
 notify() { (echo "$1"% | dmenu -p "BATTERY " > /dev/null 2>&1 &); }
 
 while true; do
-    bat_cap=$(cat $BAT_DIR/capacity)
-    if [ "$(cat /sys/class/power_supply/BAT0/status)" = "Charging" ]; then
+    bat_cap=$(cat $DIR/capacity)
+    if [ "$(cat $DIR/status)" = "Charging" ]; then
         [ "$bat_cap" -eq 80 ] && notify "$bat_cap"
     elif [ "$bat_cap" -eq 10 ]; then
         notify "$bat_cap"
