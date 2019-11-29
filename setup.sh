@@ -7,8 +7,7 @@ install() {
 
 install bs
 install efistub
-install i
-install r
+install pkg
 install s
 install sl
 install wa
