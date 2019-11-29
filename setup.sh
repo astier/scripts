@@ -5,7 +5,7 @@ install() {
         echo Installed: "$1"
 }
 
-install bstatus
+install bs
 install efistub
 install i
 install r
