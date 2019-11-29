@@ -7,7 +7,7 @@ install() {
 
 install bst
 install ccp
-install efistub
+install efs
 install pkg
 install sys
 install wal
