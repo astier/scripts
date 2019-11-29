@@ -41,7 +41,10 @@ move_files() {
 
 case $@ in
     "") cat $BUFFER ;;
-    -a\ *) shift; add_files "$@" ;;
+    -a\ *)
+        shift
+        add_files "$@"
+        ;;
     -c) : > $BUFFER ;;
     -p) paste_files ;;
     -m) move_files ;;
@@ -49,5 +52,8 @@ case $@ in
         echo Invalid arguments. >&2
         exit 1
         ;;
-    *) : > $BUFFER; add_files "$@" ;;
+    *)
+        : > $BUFFER
+        add_files "$@"
+        ;;
 esac
