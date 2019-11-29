@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-BUFFER="$HOME/.cache/b"
+BUFFER="$HOME/.cache/wal"
 SLEEP_TIME=1200
 
 set_wp() {
