@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-BUFFER=/tmp/cpp
+BUFFER=/tmp/cpm
 
 copy() {
     for p; do

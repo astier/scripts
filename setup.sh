@@ -6,7 +6,7 @@ install() {
 }
 
 install bst
-install ccp
+install cpm
 install efs
 install pkg
 install sys
