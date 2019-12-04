@@ -26,6 +26,8 @@ case $1 in
             $EDITOR README.md
         elif [ -r README ]; then
             $EDITOR README
+        else
+            echo README not found.
         fi
         ;;
 esac
