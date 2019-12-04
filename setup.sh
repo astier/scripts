@@ -9,6 +9,7 @@ install act
 install bst
 install cpm
 install efs
+install opn
 install pkg
 install sys
 install wal
