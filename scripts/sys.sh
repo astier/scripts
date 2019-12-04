@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-INPUT=$(printf "suspend\nreboot\npoweroff\nlock")
+INPUT=$(printf "suspend\nreboot\npoweroff\nlock\nlock-suspend")
 
 case $1 in
     -t) action=$(echo "$INPUT" | fzf) ;;
@@ -8,11 +8,12 @@ case $1 in
 esac
 
 case $action in
-    suspend)
-        (slock &)
-        systemctl suspend
-        ;;
+    suspend) systemctl suspend ;;
     reboot) reboot ;;
     poweroff) poweroff ;;
     lock) slock ;;
+    lock-suspend)
+        (slock &)
+        systemctl suspend
+        ;;
 esac
