@@ -9,16 +9,14 @@ case $1 in
         elif [ -r config.def.h ]; then
             $EDITOR config.def.h
         else
-            echo No file found.
+            echo No appropriate file found.
         fi
         ;;
-    -t)
-        if [ -r report/main.tex ]; then
-            $EDITOR report/main.tex
-        elif [ -r main.tex ]; then
-            $EDITOR main.tex
+    -i)
+        if [ -r .gitignore ]; then
+            $EDITOR .gitignore
         else
-            echo main.tex not found.
+            echo .gitignore not found.
         fi
         ;;
     -r)
@@ -28,6 +26,15 @@ case $1 in
             $EDITOR README
         else
             echo README not found.
+        fi
+        ;;
+    -t)
+        if [ -r report/main.tex ]; then
+            $EDITOR report/main.tex
+        elif [ -r main.tex ]; then
+            $EDITOR main.tex
+        else
+            echo main.tex not found.
         fi
         ;;
 esac
