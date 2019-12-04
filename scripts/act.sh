@@ -25,25 +25,35 @@ execute() {
 
 open() {
     shift
-    if [ $# -eq 0 ]; then
-        if [ -r main.py ]; then
-            $EDITOR main.py
-        elif [ -r setup.sh ]; then
-            $EDITOR setup.sh
-        elif [ -r config.def.h ]; then
-            $EDITOR config.def.h
-        else
-            echo No file found.
-        fi
-    elif [ "$1" = -t ]; then
-        if [ -r report/main.tex ]; then
-            $EDITOR report/main.tex
-        elif [ -r main.tex ]; then
-            $EDITOR main.tex
-        else
-            echo No main.tex found.
-        fi
-    fi
+    case $1 in
+        "")
+            if [ -r main.py ]; then
+                $EDITOR main.py
+            elif [ -r setup.sh ]; then
+                $EDITOR setup.sh
+            elif [ -r config.def.h ]; then
+                $EDITOR config.def.h
+            else
+                echo No file found.
+            fi
+            ;;
+        -t)
+            if [ -r report/main.tex ]; then
+                $EDITOR report/main.tex
+            elif [ -r main.tex ]; then
+                $EDITOR main.tex
+            else
+                echo main.tex not found.
+            fi
+            ;;
+        -r)
+            if [ -r README.md ]; then
+                $EDITOR README.md
+            elif [ -r README ]; then
+                $EDITOR README
+            fi
+            ;;
+    esac
 }
 
 case $1 in
