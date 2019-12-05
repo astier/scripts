@@ -5,8 +5,8 @@ if [ $# -eq 0 ]; then
         python main.py
     elif [ -f setup.sh ]; then
         sh setup.sh
-    elif [ -f config.def.h ]; then
-        [ -f config.h ] && rm config.h
+    elif [ -f Makefile ]; then
+        [ -f config.h ] && rm -f config.h
         sudo make install clean
     else
         echo No appropriate action can be applied.
