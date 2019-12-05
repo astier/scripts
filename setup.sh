@@ -5,10 +5,10 @@ install() {
         echo Installed: "$1"
 }
 
-install act
 install bst
 install cpm
 install efs
+install exe
 install opn
 install pkg
 install sys
