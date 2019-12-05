@@ -6,8 +6,8 @@ if [ $# -eq 0 ]; then
     elif [ -f setup.sh ]; then
         sh setup.sh
     elif [ -f config.def.h ]; then
+        [ -f config.h ] && rm config.h
         sudo make install clean
-        rm config.h
     else
         echo No appropriate action can be applied.
     fi
@@ -16,6 +16,8 @@ else
     case $last in
         *.py) python "$@" ;;
         *.sh) sh "$@" ;;
+        *.tar.gz) tar -xzf "$@" ;;
+        *.zip) unzip "$@" ;;
         *) echo Extension not recognized. ;;
     esac
 fi
