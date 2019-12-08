@@ -42,7 +42,7 @@ execute() {
 open() {
     shift
     if [ $# -eq 0 ]; then
-        fzf | xargs -r "$EDITOR"
+        fzf-tmux | xargs -r "$EDITOR"
     else
         mimetype=$(file -bL --mime-type "$1")
         mime=$(echo "$mimetype" | cut -d/ -f1)
