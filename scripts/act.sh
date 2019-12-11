@@ -1,20 +1,6 @@
 #!/usr/bin/env sh
 
-action() {
-    if [ -r main.py ]; then
-        $EDITOR main.py
-    elif [ -r main.tex ]; then
-        $EDITOR main.tex
-    elif [ -r setup.sh ]; then
-        $EDITOR setup.sh
-    elif [ -r config.def.h ]; then
-        $EDITOR config.def.h
-    else
-        echo No appropriate file found.
-    fi
-}
-
-execute() {
+act() {
     shift
     if [ $# -eq 0 ]; then
         if [ -f main.py ]; then
@@ -39,7 +25,7 @@ execute() {
     fi
 }
 
-open() {
+find() {
     shift
     if [ $# -eq 0 ]; then
         fzf-tmux | xargs -r "$EDITOR"
@@ -61,9 +47,23 @@ open() {
     fi
 }
 
+open() {
+    if [ -r main.py ]; then
+        $EDITOR main.py
+    elif [ -r main.tex ]; then
+        $EDITOR main.tex
+    elif [ -r setup.sh ]; then
+        $EDITOR setup.sh
+    elif [ -r config.def.h ]; then
+        $EDITOR config.def.h
+    else
+        echo No appropriate file found.
+    fi
+}
+
 case $1 in
-    "") action ;;
-    -e) execute "$@" ;;
-    -o) open "$@" ;;
+    -a) act "$@" ;;
+    -f) find "$@" ;;
+    -o) open ;;
     *) echo Invalid arguments. ;;
 esac
