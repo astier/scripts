@@ -52,6 +52,8 @@ open() {
         $EDITOR main.py
     elif [ -r main.tex ]; then
         $EDITOR main.tex
+    elif [ -r report/main.tex ]; then
+        $EDITOR report/main.tex
     elif [ -r setup.sh ]; then
         $EDITOR setup.sh
     elif [ -r config.def.h ]; then
