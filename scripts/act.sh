@@ -29,6 +29,8 @@ find() {
     shift
     if [ $# -eq 0 ]; then
         fzf-tmux | xargs -r "$EDITOR"
+    elif [ ! -f "$1" ]; then
+        $EDITOR "$1"
     else
         mimetype=$(file -bL --mime-type "$1")
         mime=$(echo "$mimetype" | cut -d/ -f1)
