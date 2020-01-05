@@ -14,8 +14,7 @@ act() {
             echo No appropriate action can be applied.
         fi
     else
-        for last; do true; done
-        case $last in
+        case $1 in
             *.py) python "$@" ;;
             *.sh) sh "$@" ;;
             *.tar.gz) tar -xzf "$@" ;;
