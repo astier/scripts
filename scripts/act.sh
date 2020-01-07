@@ -27,7 +27,7 @@ act() {
 find() {
     shift
     if [ $# -eq 0 ]; then
-        fzf-tmux | xargs -r "$EDITOR"
+        fzf | xargs -r "$EDITOR"
     elif [ ! -f "$1" ]; then
         $EDITOR "$1"
     else
