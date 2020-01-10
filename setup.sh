@@ -9,6 +9,7 @@ install act
 install bst
 install cpm
 install efs
+install format
 install lint
 install pkg
 install sys
