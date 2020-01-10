@@ -8,7 +8,7 @@ install() {
 install autopen
 install bst
 install cpm
-install efs
+install efistub
 install execute
 install format
 install lint
