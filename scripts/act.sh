@@ -18,6 +18,7 @@ act() {
             *.py) python "$@" ;;
             *.sh) sh "$@" ;;
             *.tar.gz) tar -xzf "$@" ;;
+            *.tex) latexmk -pdf -cd "$@" ;;
             *.zip) unzip "$@" ;;
             *) echo Extension not recognized. ;;
         esac
