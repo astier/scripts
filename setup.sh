@@ -5,13 +5,14 @@ install() {
         echo Installed: "$1"
 }
 
-install act
+install autopen
 install bst
 install cpm
 install efs
 install execute
 install format
 install lint
+install open
 install pkg
 install sys
 install wal
