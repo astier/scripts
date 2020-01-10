@@ -1,30 +1,5 @@
 #!/usr/bin/env sh
 
-act() {
-    shift
-    if [ $# -eq 0 ]; then
-        if [ -f main.py ]; then
-            python main.py
-        elif [ -f setup.sh ]; then
-            sh setup.sh
-        elif [ -f Makefile ]; then
-            [ -f config.h ] && rm -f config.h
-            sudo make install clean
-        else
-            echo No appropriate action can be applied.
-        fi
-    else
-        case $1 in
-            *.py) python "$@" ;;
-            *.sh) sh "$@" ;;
-            *.tar.gz) tar -xzf "$@" ;;
-            *.tex) latexmk -pdf -cd "$@" ;;
-            *.zip) unzip "$@" ;;
-            *) echo Extension not recognized. ;;
-        esac
-    fi
-}
-
 find() {
     shift
     if [ $# -eq 0 ]; then
@@ -66,7 +41,6 @@ open() {
 }
 
 case $1 in
-    -a) act "$@" ;;
     -f) find "$@" ;;
     -o) open ;;
     *) echo Invalid arguments. ;;
