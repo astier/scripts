@@ -6,7 +6,7 @@ install() {
 }
 
 install autopen
-install bst
+install bstatus
 install cpm
 install efistub
 install execute
