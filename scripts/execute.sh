@@ -1,12 +1,21 @@
 #!/usr/bin/env sh
 
+tex() {
+    if [ $(pidof zathura) ]; then
+        latexmk -pdf
+        wmctrl -xa zathura
+    else
+        latexmk -pdf -pv
+    fi
+}
+
 if [ $# = 0 ]; then
     if [ -f main.py ]; then
         python main.py
     elif [ -f setup.sh ]; then
         sh setup.sh
     elif [ -f main.tex ]; then
-        latexmk -pdf
+        tex
     elif [ -f Makefile ]; then
         [ -f config.h ] && rm -f config.h
         sudo make install clean
@@ -18,7 +27,7 @@ else
         *.py) python "$@" ;;
         *.sh) sh "$@" ;;
         *.tar.gz) tar -xzf "$@" ;;
-        *.tex) latexmk -pdf "$@" ;;
+        *.tex) tex ;;
         *.zip) unzip "$@" ;;
         *) echo Extension not recognized. ;;
     esac
