@@ -6,5 +6,6 @@ case $1 in
     *.py) pylint "$1" ;;
     *.sh) shellcheck "$1" ;;
     *.tex) chktex -q "$1" ;;
+    *.vim) vint -c --enable-neovim "$1" ;;
     *) echo Extension not recognized. ;;
 esac
