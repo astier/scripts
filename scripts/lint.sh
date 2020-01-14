@@ -2,6 +2,9 @@
 
 [ ! -f "$1" ] && echo File "$1" does not exist. && exit
 
+is_git_rep="$(git rev-parse --is-inside-work-tree 2> /dev/null)"
+[ "$is_git_rep" = "true" ] && git diff --check
+
 case $1 in
     *.py) pylint "$1" ;;
     *.sh) shellcheck "$1" ;;
