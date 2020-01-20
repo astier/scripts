@@ -3,7 +3,7 @@
 if [ $# -eq 0 ]; then
     fzf | xargs -r "$EDITOR"
 elif [ ! -f "$1" ]; then
-    $EDITOR "$1"
+    echo File \'"$1"\' doesn\'t exist.
 else
     mimetype=$(file -bL --mime-type "$1")
     mime=$(echo "$mimetype" | cut -d/ -f1)
