@@ -14,6 +14,7 @@ else
         "audio") $PLAYER "$@" && return ;;
     esac
     case $mimetype in
+        "application/csv") $EDITOR "$@" ;;
         "application/json") $EDITOR "$@" ;;
         "inode/x-empty") $EDITOR "$@" ;;
         "application/pdf") $BROWSER "$@" ;;
