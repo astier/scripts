@@ -14,10 +14,11 @@ else
         "audio") $PLAYER "$@" && return ;;
     esac
     case $mimetype in
+        "application/pdf") $BROWSER "$@" ;;
         "application/csv") $EDITOR "$@" ;;
         "application/json") $EDITOR "$@" ;;
+        "application/octet-stream") $EDITOR "$@" ;;
         "inode/x-empty") $EDITOR "$@" ;;
-        "application/pdf") $BROWSER "$@" ;;
         *) echo No association with mimetype: "$mimetype" >&2 ;;
     esac
 fi
