@@ -16,4 +16,5 @@ install launch.sh
 install lint.sh
 install open.sh
 install pkg.sh
+install spawn.py
 install wal.sh
