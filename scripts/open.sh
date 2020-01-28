@@ -9,7 +9,7 @@ else
     mime=$(echo "$mimetype" | cut -d/ -f1)
     case $mime in
         "text") $EDITOR "$@" && return ;;
-        "image") $BROWSER "$@" && return ;;
+        "image") feh "$@" && return ;;
         "video") $PLAYER "$@" && return ;;
         "audio") $PLAYER "$@" && return ;;
     esac
