@@ -11,6 +11,7 @@ install cpm
 install efistub
 install execute
 install format
+install launch
 install lint
 install open
 install pkg
