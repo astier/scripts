@@ -15,5 +15,4 @@ install launch
 install lint
 install open
 install pkg
-install sys
 install wal
