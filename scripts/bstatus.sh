@@ -4,7 +4,7 @@ DIR=/sys/class/power_supply/BAT0
 
 [ ! -d "$DIR" ] && echo NO BATTERY FOUND && return
 
-notify() { ($TERMINAL --class "notification" -d 32 8 -e sh -c "echo BATTERY $1; read _" &); }
+notify() { (st -n notification -g 32x8+800+400 sh -c "echo BATTERY $1; read _" &); }
 
 loop() {
     if [ "$(pgrep -af bs | grep "bin/bs -l" | grep -cv grep)" -gt 2 ]; then
