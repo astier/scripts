@@ -16,6 +16,9 @@ if [ $# = 0 ]; then
         sh setup.sh
     elif [ -f main.tex ]; then
         tex
+    elif [ -f Makefile ]; then
+        [ -f config.h ] && rm -f config.h
+        sudo make install clean
     else
         echo No appropriate action can be applied.
     fi
