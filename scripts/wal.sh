@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 BUFFER=~/.local/share/wal
-SLEEP_TIME=1200
+SLEEP_TIME=900
 
 set_wp() {
     feh --bg-fill "$1"
