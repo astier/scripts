@@ -8,7 +8,6 @@ install() {
 
 install autopen.sh
 install bstatus.sh
-install charm.sh
 install cpm.sh
 install efistub.sh
 install execute.sh
@@ -17,6 +16,7 @@ install launch.sh
 install lint.sh
 install open.sh
 install pkg.sh
+install pycharm.sh
 install spawn.py
 install sys.sh
 install toolbox.sh
