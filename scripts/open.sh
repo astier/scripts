@@ -8,10 +8,10 @@ else
     mimetype=$(file -bL --mime-type "$1")
     mime=$(echo "$mimetype" | cut -d/ -f1)
     case $mime in
-        "text") $EDITOR "$@" && return ;;
-        "image") feh "$@" && return ;;
-        "video") $PLAYER "$@" && return ;;
-        "audio") $PLAYER "$@" && return ;;
+        "text") $EDITOR "$@" ;;
+        "image") feh "$@" ;;
+        "video") $PLAYER "$@" ;;
+        "audio") $PLAYER "$@" ;;
     esac
     case $mimetype in
         "application/pdf") $BROWSER "$@" ;;
