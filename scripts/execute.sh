@@ -9,6 +9,11 @@ tex() {
     fi
 }
 
+suckless() {
+    [ -f config.h ] && rm -f config.h
+    sudo make install clean
+}
+
 if [ $# = 0 ]; then
     if [ -f main.py ]; then
         python main.py
@@ -17,8 +22,7 @@ if [ $# = 0 ]; then
     elif [ -f main.tex ]; then
         tex
     elif [ -f Makefile ]; then
-        [ -f config.h ] && rm -f config.h
-        sudo make install clean
+        suckless
     else
         echo No appropriate action can be applied.
     fi
@@ -29,6 +33,7 @@ else
         *.tar.gz) tar -xzf "$@" ;;
         *.tex) tex ;;
         *.zip) unzip "$@" ;;
+        config.def.h) suckless "$@" ;;
         *) echo Extension not recognized. ;;
     esac
 fi
