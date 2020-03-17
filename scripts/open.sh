@@ -9,16 +9,18 @@ else
     mime=$(echo "$mimetype" | cut -d/ -f1)
     case $mime in
         "text") $EDITOR "$@" ;;
-        "image") feh "$@" ;;
         "video") $PLAYER "$@" ;;
         "audio") $PLAYER "$@" ;;
-    esac
-    case $mimetype in
-        "application/pdf") $BROWSER "$@" ;;
-        "application/csv") $EDITOR "$@" ;;
-        "application/json") $EDITOR "$@" ;;
-        "application/octet-stream") $EDITOR "$@" ;;
-        "inode/x-empty") $EDITOR "$@" ;;
-        *) echo No association with mimetype: "$mimetype" >&2 ;;
+        "image") $BROWSER "$@" ;;
+        "*")
+            case $mimetype in
+                "application/pdf") $BROWSER "$@" ;;
+                "application/csv") $EDITOR "$@" ;;
+                "application/json") $EDITOR "$@" ;;
+                "application/octet-stream") $EDITOR "$@" ;;
+                "inode/x-empty") $EDITOR "$@" ;;
+                *) echo No association with mimetype: "$mimetype" >&2 ;;
+            esac
+            ;;
     esac
 fi
