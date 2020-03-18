@@ -4,7 +4,7 @@ BUFFER=~/.local/share/wal
 SLEEP_TIME=900
 
 set_wp() {
-    feh --bg-fill "$1"
+    hsetroot -fill "$1"
     realpath "$1" > "$BUFFER"
 }
 
