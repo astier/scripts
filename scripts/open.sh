@@ -14,7 +14,7 @@ else
         image) $BROWSER "$@" ;;
         *)
             case $mimetype in
-                application/pdf) $BROWSER "$@" ;;
+                application/pdf) $VIEWER "$@" ;;
                 application/csv) $EDITOR "$@" ;;
                 application/json) $EDITOR "$@" ;;
                 application/octet-stream) $EDITOR "$@" ;;
