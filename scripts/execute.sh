@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 tex() {
-    if [ $(pidof zathura) ]; then
+    if [ "$(pidof zathura)" ]; then
         latexmk -pdf
         wmctrl -xa zathura
     else
