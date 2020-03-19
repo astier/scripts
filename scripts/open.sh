@@ -8,17 +8,17 @@ else
     mimetype=$(file -bL --mime-type "$1")
     mime=$(echo "$mimetype" | cut -d/ -f1)
     case $mime in
-        "text") $EDITOR "$@" ;;
-        "video") $PLAYER "$@" ;;
-        "audio") $PLAYER "$@" ;;
-        "image") $BROWSER "$@" ;;
-        "*")
+        text) $EDITOR "$@" ;;
+        video) $PLAYER "$@" ;;
+        audio) $PLAYER "$@" ;;
+        image) $BROWSER "$@" ;;
+        *)
             case $mimetype in
-                "application/pdf") $BROWSER "$@" ;;
-                "application/csv") $EDITOR "$@" ;;
-                "application/json") $EDITOR "$@" ;;
-                "application/octet-stream") $EDITOR "$@" ;;
-                "inode/x-empty") $EDITOR "$@" ;;
+                application/pdf) $BROWSER "$@" ;;
+                application/csv) $EDITOR "$@" ;;
+                application/json) $EDITOR "$@" ;;
+                application/octet-stream) $EDITOR "$@" ;;
+                inode/x-empty) $EDITOR "$@" ;;
                 *) echo No association with mimetype: "$mimetype" >&2 ;;
             esac
             ;;
