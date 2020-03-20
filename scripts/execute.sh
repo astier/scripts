@@ -3,7 +3,7 @@
 tex() {
     if [ "$(pidof zathura)" ]; then
         latexmk -pdf
-        wmctrl -xa zathura
+        xdotool search --desktop 0 --class Zathura windowactivate
     else
         latexmk -pdf -pv
     fi
