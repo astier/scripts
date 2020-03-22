@@ -33,7 +33,7 @@ else
         *.tar.gz) tar -xzf "$@" ;;
         *.tex) tex ;;
         *.zip) unzip "$@" ;;
-        config.def.h) suckless "$@" ;;
+        *config.def.h) suckless "$@" ;;
         *) echo Extension not recognized. ;;
     esac
 fi
