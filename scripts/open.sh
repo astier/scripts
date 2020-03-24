@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 if [ $# -eq 0 ]; then
-    fzf | xargs -r "$EDITOR"
+    fzf | xargs -r open
 elif [ ! -f "$1" ]; then
     echo File \'"$1"\' doesn\'t exist.
 else
@@ -14,7 +14,7 @@ else
         image) $BROWSER "$@" ;;
         *)
             case $mimetype in
-                application/pdf) $VIEWER "$@" ;;
+                application/pdf) $VIEWER "$@" & ;;
                 application/csv) $EDITOR "$@" ;;
                 application/json) $EDITOR "$@" ;;
                 application/octet-stream) $EDITOR "$@" ;;
