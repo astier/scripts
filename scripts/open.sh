@@ -9,8 +9,8 @@ else
     mime=$(echo "$mimetype" | cut -d/ -f1)
     case $mime in
         text) $EDITOR "$@" ;;
-        video) $PLAYER "$@" ;;
-        audio) $PLAYER "$@" ;;
+        video) mpv "$@" ;;
+        audio) mpv "$@" ;;
         image) $BROWSER "$@" ;;
         *)
             case $mimetype in
