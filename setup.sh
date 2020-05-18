@@ -16,8 +16,6 @@ install launch.sh
 install lint.sh
 install open.sh
 install pkg.sh
-install pycharm.sh
 install spawn.py
 install sys.sh
-install toolbox.sh
 install wal.sh
