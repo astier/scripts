@@ -14,6 +14,7 @@ install execute.sh
 install format.sh
 install launch.sh
 install lint.sh
+install netwmicon.sh
 install open.sh
 install pkg.sh
 install spawn.py
