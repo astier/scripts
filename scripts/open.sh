@@ -11,7 +11,7 @@ else
         text) $EDITOR "$@" ;;
         video) mpv "$@" ;;
         audio) mpv "$@" ;;
-        image) $BROWSER "$@" ;;
+        image) eog "$@" ;;
         *)
             case $mimetype in
                 application/pdf) $BROWSER "$@" & ;;
