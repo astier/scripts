@@ -1,22 +1,22 @@
 #!/usr/bin/env sh
 
-install() {
+link() {
     install_name=$(echo "$1" | cut -d. -f1)
     sudo ln -frs scripts/"$1" /usr/local/bin/"$install_name" &&
         echo Installed: "$1"
 }
 
-install autopen.sh
-install bstatus.sh
-install cpm.sh
-install efistub.sh
-install execute.sh
-install format.sh
-install launch.sh
-install lint.sh
-install netwmicon.sh
-install open.sh
-install pkg.sh
-install spawn.py
-install sys.sh
-install wal.sh
+link autopen.sh
+link bstatus.sh
+link cpm.sh
+link efistub.sh
+link execute.sh
+link format.sh
+link launch.sh
+link lint.sh
+link netwmicon.sh
+link open.sh
+link pkg.sh
+link spawn.py
+link sys.sh
+link wal.sh
