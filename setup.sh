@@ -19,5 +19,4 @@ link open.sh
 link pkg.sh
 link sfzf.sh
 link spawn.py
-link sys.sh
 link wal.sh
