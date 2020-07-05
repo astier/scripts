@@ -2,7 +2,9 @@
 
 [ $# -eq 0 ] && return
 
-matches=$(cat)
+[ -t 0 ] && matches=$(find -type f $FIND_ARGS) || matches=$(cat)
+[ -z "$matches" ] && matches=$(find -type f $FIND_ARGS)
+
 for pattern in "$@"; do
     patterns="$patterns\|$pattern"
     matches=$(echo "$matches" | grep "$pattern")
