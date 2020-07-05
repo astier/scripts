@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+[ $# -eq 0 ] && return
+
 matches=$(cat)
 for pattern in "$@"; do
     patterns="$patterns\|$pattern"
