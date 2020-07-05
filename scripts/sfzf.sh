@@ -2,8 +2,8 @@
 
 [ $# -eq 0 ] && return
 
-[ -t 0 ] && matches=$(find -type f $FIND_ARGS) || matches=$(cat)
-[ -z "$matches" ] && matches=$(find -type f $FIND_ARGS)
+[ -t 0 ] && matches=$(find -type f $FIND_ARGS | cut -c3-) || matches=$(cat)
+[ -z "$matches" ] && matches=$(find -type f $FIND_ARGS | cut -c3-)
 
 for pattern in "$@"; do
     patterns="$patterns\|$pattern"
