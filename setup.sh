@@ -11,6 +11,7 @@ link bstatus.sh
 link cpm.sh
 link efistub.sh
 link execute.sh
+link ffind.sh
 link format.sh
 link launch.sh
 link lint.sh

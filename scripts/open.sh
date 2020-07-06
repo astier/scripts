@@ -3,7 +3,7 @@
 if [ $# -eq 0 ]; then
     fzf | xargs -r open
 elif [ ! -f "$1" ]; then
-    find . -type f $FIND_IGNORE | cut -c3- | sfzf "$@" | xargs -r open
+    ffind -type f | sfzf "$@" | xargs -r open
 else
     mimetype=$(file -bL --mime-type "$1")
     mime=$(echo "$mimetype" | cut -d/ -f1)
