@@ -1,9 +1,12 @@
 #!/usr/bin/env sh
 
+DIR=~/bin
+
+[ ! -d "$DIR" ] && mkdir "$DIR"
+
 link() {
-    install_name=$(echo "$1" | cut -d. -f1)
-    sudo ln -frs scripts/"$1" /usr/local/bin/"$install_name" &&
-        echo Installed: "$1"
+    script=$(echo "$1" | cut -d. -f1)
+    ln -frs scripts/"$1" "$DIR/$script" && echo Installed: "$script"
 }
 
 link autopen.sh
