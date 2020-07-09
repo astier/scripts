@@ -18,7 +18,7 @@ else
                 application/csv) $EDITOR "$@" ;;
                 application/json) $EDITOR "$@" ;;
                 application/octet-stream) $EDITOR "$@" ;;
-                *opendocument*) libreoffice "$@" 2>/dev/null & ;;
+                *document*) libreoffice "$@" 2>/dev/null & ;;
                 inode/x-empty) $EDITOR "$@" ;;
                 *) echo No association with mimetype: "$mimetype" >&2 ;;
             esac
