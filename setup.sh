@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-DIR=~/bin
+DIR=~/.local/bin
 mkdir -p "$DIR"
 
 link() {
