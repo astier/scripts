@@ -1,8 +1,7 @@
 #!/usr/bin/env sh
 
 DIR=~/bin
-
-[ ! -d "$DIR" ] && mkdir "$DIR"
+mkdir -p "$DIR"
 
 link() {
     script=$(echo "$1" | cut -d. -f1)
