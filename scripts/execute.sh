@@ -9,10 +9,7 @@ tex() {
     fi
 }
 
-suckless() {
-    [ -f config.h ] && rm -f config.h
-    sudo make install clean
-}
+suckless() { make install clean; }
 
 if [ $# = 0 ]; then
     if [ -f main.py ]; then
