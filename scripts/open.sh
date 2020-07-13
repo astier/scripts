@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 if [ $# -eq 0 ]; then
-    fzf | xargs -r open
+    ffind -type f
 elif [ ! -f "$1" ]; then
     ffind -type f | sfzf "$@" | xargs -r open
 else
