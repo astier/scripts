@@ -9,7 +9,7 @@ tex() {
     fi
 }
 
-suckless() { make install clean; }
+mic() { make install clean; }
 
 if [ $# = 0 ]; then
     if [ -f main.py ]; then
@@ -19,7 +19,7 @@ if [ $# = 0 ]; then
     elif [ -f main.tex ]; then
         tex
     elif [ -f Makefile ]; then
-        suckless
+        mic
     else
         echo No appropriate action can be applied.
     fi
@@ -30,7 +30,7 @@ else
         *.tar.gz) tar -xzf "$@" ;;
         *.tex) tex ;;
         *.zip) unzip "$@" ;;
-        *config.def.h) suckless "$@" ;;
+        *config.def.h) mic "$@" ;;
         *) echo Extension not recognized. ;;
     esac
 fi
