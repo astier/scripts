@@ -1,14 +1,18 @@
 #!/usr/bin/env sh
 
-[ ! -f "$1" ] && echo File "$1" does not exist. && exit
+target=$1
+if [ $# = 0 ]; then
+    target=$(ffind -type f | fzf)
+elif [ ! -f "$1" ]; then
+    target=$(ffind -type f | sfzf "$@")
+fi
 
-is_git_rep="$(git rev-parse --is-inside-work-tree 2> /dev/null)"
-[ "$is_git_rep" = "true" ] && git diff --check
-
-case $1 in
-    *.py) pylint "$1" ;;
-    *.sh) shellcheck "$1" ;;
-    *.tex) chktex -q "$1" ;;
-    *.vim) vint -c --enable-neovim "$1" ;;
+case $target in
+    *.py) pylint "$target" ;;
+    *.sh) shellcheck "$target" ;;
+    *.tex) chktex -q "$target" ;;
+    *.vim) vint -c --enable-neovim "$target" ;;
     *) echo Extension not recognized. ;;
 esac
+
+[ ! -f "$1" ] && echo "$target"
