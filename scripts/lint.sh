@@ -8,6 +8,7 @@ elif [ ! -f "$1" ]; then
 fi
 
 case $target in
+    *.md) markdownlint "$target" ;;
     *.py) pylint "$target" ;;
     *.sh) shellcheck "$target" ;;
     *.tex) chktex -q "$target" ;;
