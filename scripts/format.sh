@@ -11,6 +11,7 @@ sed -i 's/[ \t]*$//' "$1"
 sed -i -e :a -e '/^\n*$/{$d;N;ba' -e '}' "$1"
 
 case $1 in
+    *.md) markdownlint --fix "$1" ;;
     *.py)
         isort "$1"
         black "$1"
