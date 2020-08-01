@@ -4,7 +4,7 @@ target=$1
 if [ $# = 0 ]; then
     target=$(ffind -type f | fzf)
 elif [ ! -f "$1" ]; then
-    target=$(ffind -type f | sfzf "$@")
+    target=$(ffind -type f | fzf --filter="$*" | head -n1)
 fi
 
 case $target in
