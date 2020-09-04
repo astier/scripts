@@ -8,6 +8,8 @@ elif [ -r setup.sh ]; then
     $EDITOR setup.sh
 elif [ -r config.def.h ]; then
     $EDITOR config.def.h
+elif [ -r config.h ]; then
+    $EDITOR config.h
 else
     echo No appropriate file found.
 fi
