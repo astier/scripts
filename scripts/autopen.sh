@@ -10,6 +10,8 @@ elif [ -r config.def.h ]; then
     $EDITOR config.def.h
 elif [ -r config.h ]; then
     $EDITOR config.h
+elif [ -r Makefile ]; then
+    $EDITOR Makefile
 else
     echo No appropriate file found.
 fi
