@@ -20,4 +20,5 @@ link lint.sh
 link netwmicon.sh
 link open.sh
 link pkg.sh
+link preview.sh
 link wal.sh
