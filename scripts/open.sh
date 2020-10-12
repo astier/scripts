@@ -3,9 +3,9 @@
 mimetype=$(file -bL --mime-type "$1")
 case "$(echo "$mimetype" | cut -d/ -f1)" in
     text) $EDITOR "$@" ;;
-    video) mpv "$@" ;;
-    audio) mpv "$@" ;;
-    image) eog "$@" ;;
+    video) $VIEWER_VID "$@" & ;;
+    audio) $VIEWER_MP3 "$@" & ;;
+    image) $VIEWER_IMG "$@" 2>/dev/null & ;;
     *)
         case $mimetype in
             application/pdf) $BROWSER "$@" & ;;
