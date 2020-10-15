@@ -5,7 +5,7 @@ mkdir -p "$DIR"
 
 link() {
     script=$(echo "$1" | cut -d. -f1)
-    ln -frs scripts/"$1" "$DIR/$script" && echo Installed: "$script"
+    ln -frs "$1" "$DIR/$script" && echo Installed: "$script"
 }
 
 link autopen.sh
