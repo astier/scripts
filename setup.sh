@@ -15,6 +15,7 @@ link efistub.sh
 link execute.sh
 link ffind.sh
 link format.sh
+link fzfmenu.sh
 link launch.sh
 link lint.sh
 link netwmicon.sh
