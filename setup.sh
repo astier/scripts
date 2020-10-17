@@ -18,6 +18,7 @@ link format.sh
 link fzfmenu.sh
 link launch.sh
 link lint.sh
+link monitor.sh
 link netwmicon.sh
 link open.sh
 link pkg.sh
