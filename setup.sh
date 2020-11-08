@@ -15,7 +15,7 @@ link efistub.sh
 link execute.sh
 link ffind.sh
 link format.sh
-link fzfmenu.sh
+link fzfwindow.sh
 link launch.sh
 link lint.sh
 link monitor.sh
