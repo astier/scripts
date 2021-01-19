@@ -1,5 +1,11 @@
 #!/usr/bin/env sh
 
+if [ $# = 0 ]; then
+    fzf | xargs -r "$OPENER" && return
+elif [ ! -f "$1" ]; then
+    "$EDITOR" "$1" && return
+fi
+
 mimetype=$(file -bL --mime-type "$1")
 case "$(echo "$mimetype" | cut -d/ -f1)" in
     text) $EDITOR "$@" ;;
