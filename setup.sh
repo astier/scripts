@@ -18,6 +18,7 @@ link format.sh
 link launch.sh
 link lint.sh
 link menu.sh
+link mmrdf.sh
 link monitor.sh
 link open.sh
 link pkg.sh
