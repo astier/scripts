@@ -1,3 +1,26 @@
 #!/usr/bin/env sh
 
-find -L . "$@" ! -path '*/.git/*' ! -name .git ! -path '*/.idea/*' ! -path '*/__pycache__/*' ! -path '*/.vscode/*' ! -path '*/.ccls-cache/*' ! -iname '*.png' ! -name '*.toc' ! -name '*.fdb_latexmk' ! -name '*.out' ! -name '*.log' ! -name '*.fls' ! -name '*.gz' ! -name '*.tox' ! -name '*.nav' ! -name '*.snm' ! -name '*.aux' ! -name tags ! -name . | cut -c3-
+find -L . "$@" \
+    ! -name *.aux \
+    ! -name *.fdb_latexmk \
+    ! -name *.fls \
+    ! -name *.gz \
+    ! -name *.log \
+    ! -name *.nav \
+    ! -name *.out \
+    ! -name *.png \
+    ! -name *.snm \
+    ! -name *.toc \
+    ! -name *.tox \
+    ! -name . \
+    ! -name .ccls-cache \
+    ! -name .git \
+    ! -name .idea \
+    ! -name .vscode \
+    ! -name tags \
+    ! -path */.ccls-cache/* \
+    ! -path */.git/* \
+    ! -path */.idea/* \
+    ! -path */.vscode/* \
+    ! -path */__pycache__/* \
+| cut -c3-
