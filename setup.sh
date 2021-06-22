@@ -17,6 +17,7 @@ link ffind.sh
 link format.sh
 link launch.sh
 link lint.sh
+link memlog.sh
 link menu.sh
 link mmrdf.sh
 link monitor.sh
