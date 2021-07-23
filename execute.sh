@@ -25,6 +25,7 @@ if [ $# = 0 ]; then
     fi
 else
     case $1 in
+        *.js) node "$@" ;;
         *.py) python "$@" ;;
         *.sh) sh "$@" ;;
         *.tar.gz) tar -xzf "$@" ;;
