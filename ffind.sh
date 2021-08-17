@@ -23,4 +23,4 @@ find -L . "$@" \
     ! -path "*/.idea/*" \
     ! -path "*/.vscode/*" \
     ! -path "*/__pycache__/*" \
-| cut -c3-
+| cut -c3- | sort
