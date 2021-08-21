@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+! pidof Xorg >/dev/null && exit
+
 intern=eDP-1
 extern=HDMI-1
 
