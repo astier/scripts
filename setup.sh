@@ -9,6 +9,7 @@ link() {
 }
 
 link autopen.sh
+link bak.sh
 link bstatus.sh
 link cpm.sh
 link efistub.sh
