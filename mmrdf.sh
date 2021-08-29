@@ -5,6 +5,8 @@
 [ $# = 0 ] && return
 
 if [ -e "$1" ]; then
+    for last; do true; done
+    [ ! -d "$last" ] && mkdir -pv "$last"
     mv -iv "$@"
 else
     for arg in "$@"; do
