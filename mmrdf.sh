@@ -9,10 +9,10 @@ if [ -e "$1" ]; then
 else
     for arg in "$@"; do
         case $arg in
-            */) mkdir -p "$arg" ;;
+            */) mkdir -pv "$arg" ;;
             *)
                 dir=$(dirname "$arg")
-                [ ! -d "$dir" ] && mkdir -p "$dir"
+                [ ! -d "$dir" ] && mkdir -pv "$dir"
                 touch "$arg"
                 ;;
         esac
