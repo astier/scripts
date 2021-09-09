@@ -7,7 +7,7 @@ DIR=/sys/class/power_supply/BAT0
 notify() { (st -n popup -ig 32x8+400+400 sh -c "echo BATTERY $1; read _" &); }
 
 loop() {
-    if [ "$(pgrep -af bstatus | grep "bin/bstatus -l" | grep -cv grep)" -gt 2 ]; then
+    if [ "$(pgrep -f "bstatus -l" | wc -l)" -gt 2 ]; then
         echo AN INSTANCE IS ALREADY RUNNING && return
     fi
     while true; do
