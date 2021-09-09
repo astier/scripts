@@ -26,5 +26,5 @@ loop() {
 case $1 in
     "") cat $DIR/capacity ;;
     -l) loop ;;
-    -*) echo Invalid arguments. ;;
+    -*) echo INVALID ARGUMENTS ;;
 esac
