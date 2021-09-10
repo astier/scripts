@@ -37,7 +37,7 @@ delete_wp() {
 }
 
 loop() {
-    if [ "$(pgrep -af wal | grep "bin/wal -l" | grep -cv grep)" -gt 2 ]; then
+    if [ "$(pgrep -f "wal -l" | wc -l)" -gt 2 ]; then
         set_random_wp "$(dirname "$(cat "$BUFFER")")"
         echo AN INSTANCE IS ALREADY RUNNING && return
     fi
