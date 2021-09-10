@@ -9,8 +9,6 @@ tex() {
     fi
 }
 
-mic() { make install clean; }
-
 if [ $# = 0 ]; then
     if [ -f main.py ]; then
         python main.py
@@ -19,7 +17,7 @@ if [ $# = 0 ]; then
     elif [ -f main.tex ]; then
         tex
     elif [ -f Makefile ]; then
-        mic
+        make
     else
         echo No appropriate action can be applied.
     fi
@@ -31,7 +29,7 @@ else
         *.tar.gz) tar -xzf "$@" ;;
         *.tex) tex ;;
         *.zip) unzip "$@" ;;
-        *config.def.h) mic "$@" ;;
+        *config.def.h) make "$@" ;;
         *) echo Extension not recognized. ;;
     esac
 fi
