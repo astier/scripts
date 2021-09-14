@@ -6,6 +6,8 @@ elif [ -r main.tex ]; then
     "$EDITOR" main.tex
 elif [ -r setup.sh ]; then
     "$EDITOR" setup.sh
+elif [ -r main.c ]; then
+    "$EDITOR" main.c
 elif [ -r config.def.h ]; then
     "$EDITOR" config.def.h
 elif [ -r config.h ]; then
