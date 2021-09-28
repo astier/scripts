@@ -1,19 +1,19 @@
 #!/usr/bin/env sh
 
 if [ -r main.py ]; then
-    "$EDITOR" main.py
+    exec "$EDITOR" main.py
 elif [ -r main.tex ]; then
-    "$EDITOR" main.tex
+    exec "$EDITOR" main.tex
 elif [ -r setup.sh ]; then
-    "$EDITOR" setup.sh
+    exec "$EDITOR" setup.sh
 elif [ -r main.c ]; then
-    "$EDITOR" main.c
+    exec "$EDITOR" main.c
 elif [ -r config.def.h ]; then
-    "$EDITOR" config.def.h
+    exec "$EDITOR" config.def.h
 elif [ -r config.h ]; then
-    "$EDITOR" config.h
+    exec "$EDITOR" config.h
 elif [ -r Makefile ]; then
-    "$EDITOR" Makefile
+    exec "$EDITOR" Makefile
 else
     echo No appropriate file found.
 fi

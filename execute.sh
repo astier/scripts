@@ -2,34 +2,32 @@
 
 tex() {
     if [ "$(pidof zathura)" ]; then
-        latexmk -pdf
-        xdotool search --desktop 0 --class Zathura windowactivate
+        exec latexmk -pdf
     else
-        latexmk -pdf -pv
+        exec latexmk -pdf -pv
     fi
 }
 
 if [ $# = 0 ]; then
     if [ -f main.py ]; then
-        python main.py
+        exec python main.py
     elif [ -f setup.sh ]; then
-        sh setup.sh
+        exec sh setup.sh
     elif [ -f main.tex ]; then
-        tex
+        exec tex
     elif [ -f Makefile ]; then
-        make
+        exec make
     else
         echo No appropriate action can be applied.
     fi
 else
     case $1 in
-        *.js) node "$@" ;;
-        *.py) python "$@" ;;
-        *.sh) sh "$@" ;;
-        *.tar.gz) tar -xzf "$@" ;;
+        *.js) exec node "$@" ;;
+        *.py) exec python "$@" ;;
+        *.sh) exec sh "$@" ;;
+        *.tar.gz) exec tar -xzf "$@" ;;
         *.tex) tex ;;
-        *.zip) unzip "$@" ;;
-        *config.def.h) make "$@" ;;
+        *.zip) exec unzip "$@" ;;
         *) echo Extension not recognized. ;;
     esac
 fi
