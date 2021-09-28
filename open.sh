@@ -11,7 +11,7 @@ edit() {
 }
 
 if [ $# = 0 ]; then
-    fzf | xargs -r "$OPENER" && return
+    fzf | xargs -r "$LAUNCHER" && return
 elif [ ! -f "$1" ]; then
     edit "$@" && return
 fi
