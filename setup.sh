@@ -8,7 +8,6 @@ link() {
     ln -frs "$1" "$DIR/$script" && echo Installed: "$script"
 }
 
-link autopen.sh
 link bak.sh
 link bstatus.sh
 link cpm.sh
