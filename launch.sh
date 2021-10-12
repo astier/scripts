@@ -1,3 +1,4 @@
 #!/usr/bin/env sh
 
-exec "$(printf "%s" "$PATH" | xargs -d: -I{} find -L {} -maxdepth 1 -mindepth 1 -executable -type f -printf "%P\n" | sort -u | menu)"
+cmd="$(printf "%s" "$PATH" | xargs -d: -I{} find -L {} -maxdepth 1 -mindepth 1 -executable -type f -printf "%P\n" | sort -u | menu)"
+[ -n "$cmd" ] && nohup "$cmd" > /dev/null 2>&1 &
