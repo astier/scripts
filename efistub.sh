@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
-doas efibootmgr -Bqb0
-doas efibootmgr -cqd /dev/nvme0n1 -p1 -L arch -l /vmlinuz-linux -u "\
+sudo efibootmgr -Bqb0
+sudo efibootmgr -cqd /dev/nvme0n1 -p1 -L arch -l /vmlinuz-linux -u "\
     initrd=\\intel-ucode.img \
     initrd=\\initramfs-linux.img \
     cryptdevice=/dev/nvme0n1p2:root \

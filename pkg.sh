@@ -4,9 +4,9 @@ install() {
     shift
     if [ $# -eq 0 ]; then
         pacman -Slq | fzf -m --preview 'pacman -Si {1}' > /tmp/pkg
-        xargs -ra /tmp/pkg doas pacman -S
+        xargs -ra /tmp/pkg sudo pacman -S
     else
-        doas pacman -S "$@"
+        sudo pacman -S "$@"
     fi
 }
 
@@ -14,9 +14,9 @@ remove() {
     shift
     if [ $# -eq 0 ]; then
         pacman -Qettq | fzf -m --preview 'pacman -Qi {1}' > /tmp/pkg
-        xargs -ra /tmp/pkg doas pacman -Rns
+        xargs -ra /tmp/pkg sudo pacman -Rns
     else
-        doas pacman -Rns "$@"
+        sudo pacman -Rns "$@"
     fi
 }
 
