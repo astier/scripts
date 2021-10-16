@@ -2,7 +2,7 @@
 
 export LC_ALL="C"
 
-find -L . "$@" \
+find -L . \
     ! -name "*.aux" \
     ! -name "*.fdb_latexmk" \
     ! -name "*.fls" \
@@ -25,4 +25,5 @@ find -L . "$@" \
     ! -path "*/.idea/*" \
     ! -path "*/.vscode/*" \
     ! -path "*/__pycache__/*" \
+    "$@" \
 | cut -c3- | sort
