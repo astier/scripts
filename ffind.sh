@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+export LC_ALL="C"
+
 find -L . "$@" \
     ! -name "*.aux" \
     ! -name "*.fdb_latexmk" \
