@@ -12,12 +12,20 @@ edit() {
 
 open() {
     [ $# = 0 ] && return
+    [ "$1" = -n ] && TEST=$1 && shift
+    CMD="edit"
     case $1 in
-        *.jpg | *.JPG | *.png) gthumb "$@" ;;
-        *.ods) libreoffice "$@" 2> /dev/null ;;
-        *.pdf) $BROWSER "$@" ;;
-        *) edit "$@" ;;
+        *.jpg | *.JPG | *.png) CMD=gthumb ;;
+        *.ods) CMD=libreoffice ;;
+        *.pdf) CMD=$BROWSER ;;
     esac
+    if [ "$CMD" = edit ]; then
+        [ "$TEST" = -n ] && exit 1
+        "$CMD" "$@"
+    else
+        [ "$TEST" = -n ] && exit 0
+        nohup "$CMD" "$@" > /dev/null 2>&1 &
+    fi
 }
 
 if [ $# = 0 ]; then
