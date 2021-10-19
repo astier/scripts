@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 edit() {
     if [ -e "$1" ] && [ ! -w "$1" ]; then
@@ -28,8 +28,10 @@ open() {
     fi
 }
 
+files=( "${@}" )
 if [ $# = 0 ]; then
-    open $(fzf)
+    mapfile -t files < <(fzf)
+    open "${files[@]}"
 else
     open "$@"
 fi
