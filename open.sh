@@ -12,30 +12,16 @@ edit() {
 
 open() {
     [ $# = 0 ] && return
-    mimetype=$(file -bL --mime-type "$1")
-    case "$(echo "$mimetype" | cut -d/ -f1)" in
-        text) edit "$@" ;;
-        image) gthumb "$@" 2>/dev/null & ;;
-        video) $BROWSER "$@" & ;;
-        audio) $BROWSER "$@" & ;;
-        *)
-            case $mimetype in
-                application/pdf) $BROWSER "$@" & ;;
-                application/csv) edit "$@" ;;
-                application/json) edit "$@" ;;
-                application/octet-stream) edit "$@" ;;
-                *document*) libreoffice "$@" 2>/dev/null & ;;
-                inode/x-empty) edit "$@" ;;
-                *) echo No association with mimetype: "$mimetype" >&2 ;;
-            esac
-            ;;
+    case $1 in
+        *.jpg | *.JPG | *.png) gthumb "$@" ;;
+        *.ods) libreoffice "$@" 2> /dev/null ;;
+        *.pdf) $BROWSER "$@" ;;
+        *) edit "$@" ;;
     esac
 }
 
 if [ $# = 0 ]; then
     open $(fzf)
-elif [ ! -f "$1" ]; then
-    edit "$@"
 else
     open "$@"
 fi
