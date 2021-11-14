@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
-mkdir -p projects
-cd ~/projects
+mkdir -p repos
+cd ~/repos
 
 git clone https://github.com/astier/dotfiles
 git clone https://github.com/astier/scripts
