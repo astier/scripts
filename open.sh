@@ -15,7 +15,7 @@ open() {
     [ "$1" = -n ] && TEST=$1 && shift
     CMD="edit"
     case $1 in
-        *.jpg | *.JPG | *.png) CMD=gthumb ;;
+        *.jpg | *.jpeg | *.JPG | *.png) CMD=gthumb ;;
         *.ods) CMD=libreoffice ;;
         *.pdf) CMD=$BROWSER ;;
     esac
