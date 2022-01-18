@@ -17,7 +17,7 @@ open() {
     case $1 in
         *.jpg | *.jpeg | *.JPG | *.png) CMD=gthumb ;;
         *.ods) CMD=libreoffice ;;
-        *.pdf) CMD=$BROWSER ;;
+        *.pdf | *.webm) CMD=$BROWSER ;;
     esac
     if [ "$CMD" = edit ]; then
         [ "$TEST" = -n ] && exit 1
