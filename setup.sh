@@ -25,3 +25,5 @@ link open.sh
 link pkg.sh
 link preview.sh
 link wal.sh
+
+sudo cp lock.sh /usr/bin/lock && echo Installed: lock
