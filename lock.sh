@@ -2,35 +2,22 @@
 
 # sudo passwd -l root
 
-# doas.conf: permit persist keepenv :wheel
-# doas.conf: permit nopass  keepenv :wheel as root cmd lock
-
 [ "$(id -u)" != 0 ] && echo Needs to be run as root. && exit
 
-DIR=$XDG_CONFIG_HOME/lock/
-[ ! -d "$DIR" ] && mkdir "$DIR"
+DOAS=/etc/doas.conf
+DOAS_LOCKED="permit nopass keepenv :wheel as root cmd /usr/bin/lock"
+DOAS_UNLOCKED="permit nopass keepenv :wheel"
+RC=$XDG_CONFIG_HOME/lockrc
 
-DATE=$DIR/date
-[ ! -f "$DATE" ] && date "+%Y-%m-%d %H:%M:00" > "$DATE"
-
-PASS=$DIR/pass
-if [ ! -f "$PASS" ]; then
-    echo No password set. > "$PASS"
-    chmod 600 "$PASS"
-    chattr +i "$PASS"
-fi
+[ ! -f "$RC" ] && date "+%Y-%m-%d %H:%M:00" > "$RC"
 
 date "+%Y-%m-%d %H:%M:%S"
-cat "$DATE"
+cat "$RC"
 
-if [ ! "$(date -f "$DATE")" ] || [ "$(date -f "$DATE" +%s)" -le "$(date +%s)" ]; then
-    cat "$PASS"
-elif [ "$(date -r "$PASS" +%s)" -lt "$(date -r "$DATE" +%s)" ]; then
-    chattr -i "$PASS"
-    shuf -i 0000-9999 -n 1 > "$PASS"
-    chattr +i "$PASS"
-    echo "$(echo "$XDG_CONFIG_HOME" | cut -d/ -f3):$(cat "$PASS")" | chpasswd
-    echo New password set.
+if [ ! "$(date -f "$RC")" ] || [ "$(date -f "$RC" +%s)" -le "$(date +%s)" ]; then
+    sed -i "s|^$DOAS_LOCKED$|$DOAS_UNLOCKED|" "$DOAS"
+    echo Unlocked.
 else
-    echo Countdown running.
+    sed -i "s|^$DOAS_UNLOCKED$|$DOAS_LOCKED|" "$DOAS"
+    echo Locked.
 fi
