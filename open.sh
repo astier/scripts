@@ -16,7 +16,7 @@ open() {
     CMD="edit"
     case $1 in
         *.jpg | *.jpeg | *.JPG | *.png) CMD=gthumb ;;
-        *.ods) CMD=libreoffice ;;
+        *.ods | *.docx) CMD=libreoffice ;;
         *.pdf | *.webm) CMD=$BROWSER ;;
     esac
     if [ "$CMD" = edit ]; then
