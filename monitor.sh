@@ -10,7 +10,12 @@ xrandr > "$INFO"
 
 if grep -q "LVDS-1 connected" "$INFO"; then
     intern=LVDS-1
-    extern=VGA-1
+    if grep -q "DP-2 connected" "$INFO"; then
+        extern=DP-2
+        echo $extern
+    else
+        extern=VGA-1
+    fi
 elif grep -q "eDP-1 connected" "$INFO"; then
     intern=eDP-1
     extern=HDMI-1
