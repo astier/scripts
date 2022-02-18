@@ -5,18 +5,17 @@
 
 configure() { xrandr --output "$1" --auto --primary --output "$2" --off; }
 
-INFO=/tmp/xrandr_dump
-xrandr > "$INFO"
+MONITORS=$(xrandr)
 
-if grep -q "LVDS-1 connected" "$INFO"; then
+if echo "$MONITORS" | grep -q "LVDS-1 connected"; then
     intern=LVDS-1
-    if grep -q "DP-2 connected" "$INFO"; then
+    if echo "$MONITORS" | grep -q "DP-2 connected"; then
         extern=DP-2
         echo $extern
     else
         extern=VGA-1
     fi
-elif grep -q "eDP-1 connected" "$INFO"; then
+elif echo "$MONITORS" | grep -q "eDP-1 connected"; then
     intern=eDP-1
     extern=HDMI-1
 else
@@ -24,7 +23,7 @@ else
     exit
 fi
 
-if xrandr | grep -q "$extern connected"; then
+if echo "$MONITORS" | grep -q "$extern connected"; then
     configure "$extern" "$intern"
 else
     configure "$intern" "$extern"
