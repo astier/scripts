@@ -26,8 +26,6 @@ pacstrap /mnt \
     fzf \
     gcc \
     git \
-    gnome-control-center \
-    gnome-tweaks \
     grub \
     intel-ucode \
     iwd \
@@ -36,7 +34,6 @@ pacstrap /mnt \
     make \
     man-db \
     neovim \
-    networkmanager \
     noto-fonts-cjk \
     noto-fonts-emoji \
     opendoas \
@@ -112,13 +109,7 @@ cd config && . .profile && ./setup.sh
 cd ../scripts && ./setup.sh
 cd ../sswm && make install
 cd ../paru-bin && makepkg -is
-paru -S chrome-gnome-shell dashbinsh flat-remix lux nerd-fonts-hack
-
-# GNOME - CONFIG
-dconf write /org/gnome/mutter/draggable-border-width 0
-gsettings set org.gnome.mutter focus-change-on-pointer-rest false
-gsettings set org.gnome.SessionManager logout-prompt false
-systemctl enable NetworkManager.service
+paru -S dashbinsh flat-remix lux nerd-fonts-hack
 
 # CLEAN
 cd .. && rm -r paru-bin
