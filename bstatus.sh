@@ -4,7 +4,7 @@ DIR=/sys/class/power_supply/BAT0
 
 [ ! -d "$DIR" ] && echo NO BATTERY FOUND && return
 
-notify() { alacritty -e sh -c "echo BATTERY $1; read _" & }
+notify() { tmux -L tty clock-mode; sudo chvt 2; }
 
 loop() {
     if [ "$(pgrep -f "bstatus -l" | wc -l)" -gt 2 ]; then
