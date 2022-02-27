@@ -65,7 +65,7 @@ locale-gen
 
 # SILENT BOOT
 chattr +i /var/log/lastlog
-setterm -cursor on > /etc/issue
+setterm --blength --cursor on > /etc/issue
 
 # MKINITCPIO
 nvim /etc/mkinitcpio.conf
