@@ -33,7 +33,6 @@ pacstrap /mnt \
     make \
     man-db \
     neovim \
-    noto-fonts-cjk \
     opendoas \
     openssh \
     pulsemixer \
