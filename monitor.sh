@@ -20,7 +20,7 @@ elif echo "$MONITORS" | grep -q "eDP-1 connected"; then
     extern=HDMI-1
 else
     echo Internal monitor could not be detected.
-    exit
+    exit 1
 fi
 
 if echo "$MONITORS" | grep -q "$extern connected"; then
