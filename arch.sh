@@ -112,7 +112,12 @@ cd ../scripts && ./setup.sh
 cd ../sswm && make install
 cd ../st && make install
 cd ../paru-bin && makepkg -is
-paru -S dashbinsh flat-remix libxft-bgra lux nerd-fonts-hack
+paru -S \
+    dashbinsh \
+    flat-remix \
+    libxft-bgra \
+    lux \
+    nerd-fonts-hack \
 
 # CLEAN
 cd .. && rm -r paru-bin
