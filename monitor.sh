@@ -3,9 +3,9 @@
 # Exit if Xorg is not running
 ! pidof Xorg > /dev/null && exit
 
-MONITORS=$(xrandr)
+MONITORS=$(xrandr | grep " connected " | cut -d" " -f1)
 
-check() { echo "$MONITORS" | grep -q "$1 connected" && monitor="$1"; }
+check() { echo "$MONITORS" | grep -q "$1" && monitor="$1"; }
 
 if check HDMI-1; then
     brightness=0
