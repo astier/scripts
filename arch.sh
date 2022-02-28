@@ -34,11 +34,8 @@ pacstrap /mnt \
     man-db \
     neovim \
     noto-fonts-cjk \
-    noto-fonts-emoji \
     opendoas \
     openssh \
-    patch \
-    pkgconf \
     pulsemixer \
     sx \
     tmux \
@@ -103,21 +100,17 @@ mkdir repos && cd repos
 git clone git@github.com:astier/config.git
 git clone git@github.com:astier/scripts.git
 git clone git@github.com:astier/sswm.git
-git clone git@github.com:astier/st.git
 git clone https://aur.archlinux.org/paru-bin
 
 # REPOS - INSTALL
 cd config && . .profile && ./setup.sh
 cd ../scripts && ./setup.sh
 cd ../sswm && make install
-cd ../st && make install
 cd ../paru-bin && makepkg -is
 paru -S \
     dashbinsh \
     flat-remix \
-    libxft-bgra \
     lux \
-    nerd-fonts-hack \
 
 # CLEAN
 cd .. && rm -r paru-bin
