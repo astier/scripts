@@ -3,28 +3,24 @@
 # Exit if Xorg is not running
 ! pidof Xorg > /dev/null && exit
 
-configure() { xrandr --output "$1" --auto --primary --output "$2" --off; }
-
 MONITORS=$(xrandr)
 
-if echo "$MONITORS" | grep -q "LVDS-1 connected"; then
-    intern=LVDS-1
-    if echo "$MONITORS" | grep -q "DP-2 connected"; then
-        extern=DP-2
-        echo $extern
-    else
-        extern=VGA-1
-    fi
-elif echo "$MONITORS" | grep -q "eDP-1 connected"; then
-    intern=eDP-1
-    extern=HDMI-1
+check() { echo "$MONITORS" | grep -q "$1 connected" && monitor="$1"; }
+
+if check HDMI-1; then
+    brightness=0
+elif check DP-2; then
+    brightness=0
+elif check VGA-1; then
+    brightness=0
+elif check eDP-1; then
+    brightness=100
+elif check LVDS-1; then
+    brightness=100
 else
-    echo Internal monitor could not be detected.
+    echo Monitor could not be detected.
     exit 1
 fi
 
-if echo "$MONITORS" | grep -q "$extern connected"; then
-    configure "$extern" "$intern"
-else
-    configure "$intern" "$extern"
-fi
+lux -S "$brightness%" > /dev/null
+xrandr --output "$monitor" --auto --primary
