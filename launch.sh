@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-spawn() { setsid -f "$@" > /dev/null 2>&1 ; }
+spawn() { nohup setsid -f "$@" > /dev/null 2>&1 ; }
 
 case $1 in
     -h)
@@ -15,7 +15,7 @@ case $1 in
         ;;
     fzf|*)
         cmd="$(printf "%s" "$PATH" | xargs -d: -I{} find -L {} -maxdepth 1 -mindepth 1 -executable -type f -printf "%P\n" | sort -u | fzf)"
-        [ -n "$cmd" ] && setsid -f "$cmd" > /dev/null 2>&1
+        [ -n "$cmd" ] && spawn "$cmd"
         ;;
 esac
 
