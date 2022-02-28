@@ -17,7 +17,6 @@ mount -L BOOT /mnt/boot
 
 # INSTALL
 pacstrap /mnt \
-    arc-gtk-theme \
     base \
     bash-completion \
     fakeroot \
@@ -106,10 +105,7 @@ cd config && . .profile && ./setup.sh
 cd ../scripts && ./setup.sh
 cd ../sswm && make install
 cd ../paru-bin && makepkg -is
-paru -S \
-    dashbinsh \
-    flat-remix \
-    lux \
+paru -S dashbinsh lux
 
 # CLEAN
 cd .. && rm -r paru-bin
