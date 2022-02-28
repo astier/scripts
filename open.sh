@@ -15,7 +15,13 @@ open() {
     [ "$1" = -n ] && TEST=$1 && shift
     CMD="edit"
     case $1 in
-        *.jpg | *.jpeg | *.JPG | *.png) CMD=gthumb ;;
+        *.jpg | *.jpeg | *.JPG | *.png)
+            if [ -x /usr/bin/gthumb ]; then
+                CMD=gthumb
+            else
+                CMD=$BROWSER
+            fi
+            ;;
         *.ods | *.docx) CMD=libreoffice ;;
         *.pdf | *.webm) CMD=$BROWSER ;;
     esac
