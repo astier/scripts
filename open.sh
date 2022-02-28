@@ -24,7 +24,7 @@ open() {
         "$CMD" "$@"
     else
         [ "$TEST" = -n ] && exit 0
-        setsid -f "$CMD" "$@" > /dev/null 2>&1
+        nohup setsid -f "$CMD" "$@" > /dev/null 2>&1
     fi
 }
 
