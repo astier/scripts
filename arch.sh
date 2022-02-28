@@ -38,7 +38,6 @@ pacstrap /mnt \
     sx \
     tmux \
     ttf-dejavu \
-    xorg-xrandr \
     xsel \
 
 # FSTAB
