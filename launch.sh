@@ -3,14 +3,17 @@
 spawn() { setsid -f "$@" > /dev/null 2>&1 ; }
 
 case $1 in
+    -h)
+        echo "launch [term|tty|fzf]"
+        ;;
     term)
-        spawn alacritty -e launch
+        spawn alacritty -e launch fzf
         ;;
     tty)
         sudo chvt 2
-        spawn tmux -L tty popup -E launch
+        spawn tmux -L tty popup -E launch fzf
         ;;
-    *)
+    fzf|*)
         cmd="$(printf "%s" "$PATH" | xargs -d: -I{} find -L {} -maxdepth 1 -mindepth 1 -executable -type f -printf "%P\n" | sort -u | fzf)"
         [ -n "$cmd" ] && setsid -f "$cmd" > /dev/null 2>&1
         ;;
