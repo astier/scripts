@@ -52,8 +52,8 @@ vim /mnt/etc/fstab # replace relatime with noatime (+ lazytime,commit=60 for ext
 
 # MISC
 arch-chroot /mnt
-ln -s /bin/doas /bin/sudo
 echo <hostname> > /etc/hostname
+ln -s /bin/doas /bin/sudo
 
 # TIME
 ln -fs /usr/share/zoneinfo/Europe/Berlin /etc/localtime
