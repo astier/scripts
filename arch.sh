@@ -17,6 +17,7 @@ mount -L BOOT /mnt/boot
 
 # INSTALL
 pacstrap /mnt \
+    alsa-utils \
     base \
     bash-completion \
     fakeroot \
@@ -34,7 +35,6 @@ pacstrap /mnt \
     neovim \
     opendoas \
     openssh \
-    pulsemixer \
     sx \
     tmux \
     ttf-dejavu \
