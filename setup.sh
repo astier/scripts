@@ -23,6 +23,7 @@ link monitor.sh
 link open.sh
 link pkg.sh
 link preview.sh
+link volume.sh
 link wal.sh
 
 sudo cp lock.sh /usr/bin/lock && echo Installed: lock
