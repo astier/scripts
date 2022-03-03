@@ -1,31 +1,37 @@
 #!/usr/bin/env sh
 
-DIR=~/.local/bin
-mkdir -p "$DIR"
-
-link() {
+DIR_HOME=~/.local/bin
+mkdir -p "$DIR_HOME"
+link_home() {
     script=$(echo "$1" | cut -d. -f1)
-    ln -frs "$1" "$DIR/$script" && echo Installed: "$script"
+    ln -frs "$1" "$DIR_HOME/$script" && echo Installed: "$script"
 }
 
-link bak.sh
-link brightness.sh
-link bstatus.sh
-link cpm.sh
-link efistub.sh
-link execute.sh
-link ffind.sh
-link format.sh
-link iwltm.sh
-link launch.sh
-link lint.sh
-link memlog.sh
-link mmrdf.sh
-link monitor.sh
-link open.sh
-link pkg.sh
-link preview.sh
-link volume.sh
-link wal.sh
+DIR_USR=/usr/local/bin
+mkdir -p "$DIR_USR"
+link_usr() {
+    script=$(echo "$1" | cut -d. -f1)
+    sudo ln -frs "$1" "$DIR_USR/$script" && echo Installed: "$script"
+}
 
-sudo cp lock.sh /usr/bin/lock && echo Installed: lock
+link_home bak.sh
+link_home bstatus.sh
+link_home cpm.sh
+link_home efistub.sh
+link_home execute.sh
+link_home ffind.sh
+link_home format.sh
+link_home iwltm.sh
+link_home launch.sh
+link_home lint.sh
+link_home memlog.sh
+link_home mmrdf.sh
+link_home open.sh
+link_home pkg.sh
+link_home preview.sh
+link_home volume.sh
+link_home wal.sh
+
+link_usr brightness.sh
+link_usr lock.sh
+link_usr monitor.sh
