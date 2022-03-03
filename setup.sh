@@ -9,6 +9,7 @@ link() {
 }
 
 link bak.sh
+link brightness.sh
 link bstatus.sh
 link cpm.sh
 link efistub.sh

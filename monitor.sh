@@ -22,5 +22,5 @@ else
     exit 1
 fi
 
-lux -S "$brightness%" > /dev/null
+brightness "$brightness%"
 xrandr --output "$monitor" --auto --primary
