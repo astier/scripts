@@ -15,6 +15,7 @@ link efistub.sh
 link execute.sh
 link ffind.sh
 link format.sh
+link iwltm.sh
 link launch.sh
 link lint.sh
 link memlog.sh
