@@ -42,6 +42,7 @@ pacstrap /mnt \
     patch \
     pkgconf \
     sx \
+    terminus-font \
     tmux \
     ttf-dejavu \
     xsel \
