@@ -3,24 +3,38 @@
 # Exit if Xorg is not running
 ! pidof Xorg > /dev/null && exit
 
+# Get all connected monitors
 MONITORS=$(xrandr | grep " connected " | cut -d" " -f1)
 
-check() { echo "$MONITORS" | grep -q "$1" && monitor="$1"; }
+# Check if a monitor is connected
+check() { echo "$MONITORS" | grep -q "$1" ; }
 
-if check HDMI-1; then
+# Find external monitor
+set -- HDMI-1 DP-2 VGA-1
+for m in "$@"; do check "$m" && external="$m" && break; done
+
+# Find internal monitor
+set -- eDP-1 LVDS-1
+for m in "$@"; do check "$m" && internal="$m" && break; done
+
+# Determine output-monitor and brightness of internal monitor
+if [ -n "$external" ]; then
+    monitor="$external"
+    brightness_xrandr=0
     brightness=0
-elif check DP-2; then
-    brightness=0
-elif check VGA-1; then
-    brightness=0
-elif check eDP-1; then
-    brightness=100
-elif check LVDS-1; then
+elif [ -n "$internal" ]; then
+    monitor="$internal"
+    brightness_xrandr=1
     brightness=100
 else
-    echo Monitor could not be detected.
+    echo Neither an external nor an internal monitor could be found.
     exit 1
 fi
 
-brightness "$brightness%"
+# Set output-monitor and brightness of internal monitor
 xrandr --output "$monitor" --auto --primary
+
+if [ -n "$internal" ]; then
+    xrandr --output "$internal" --brightness "$brightness_xrandr"
+    brightness "$brightness%"
+fi
