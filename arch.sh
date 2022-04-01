@@ -4,7 +4,7 @@ iwctl # connect to internet
 timedatectl set-ntp 1
 
 # PARTITION
-fdisk /dev/nvme0n1 # dos +1M, p1 +256M, p2
+fdisk /dev/nvme0n1 # p1 +256M, p2, p3 34-2047 BIOS boot
 cryptsetup luksFormat /dev/nvme0n1p2
 cryptsetup open /dev/nvme0n1p2 root
 mkfs.ext4 -L ROOT /dev/mapper/root
@@ -49,7 +49,7 @@ pacstrap /mnt \
 
 # FSTAB
 genfstab -L /mnt >> /mnt/etc/fstab
-vim /mnt/etc/fstab # replace relatime with noatime (+ lazytime,commit=60 for ext4)
+sed -i s/relatime/noatime/ /mnt/etc/fstab
 
 # MISC
 arch-chroot /mnt
@@ -57,7 +57,7 @@ echo <hostname> > /etc/hostname
 ln -s /bin/doas /bin/sudo
 
 # TIME
-ln -fs /usr/share/zoneinfo/Europe/Berlin /etc/localtime
+ln -s /usr/share/zoneinfo/Europe/Berlin /etc/localtime
 hwclock -w
 
 # LANGUAGE
@@ -69,29 +69,8 @@ locale-gen
 chattr +i /var/log/lastlog
 setterm --blength --cursor on > /etc/issue
 
-# MKINITCPIO
-nvim /etc/mkinitcpio.conf
-# HOOKS=(base udev autodetect modconf block keyboard consolefont encrypt filesystems fsck)
-mkinitcpio -P
-
-# BOOT
-grub-install /dev/nvme0n1
-cp /home/<user>/repos/config/grub /etc/default/grub
-nvim /etc/default/grub # adjust cryptdevice
-grub-mkconfig -o /boot/grub/grub.cfg
-
-# AUTOSTART
-ln -fs /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
-systemctl enable \
-    fstrim.timer \
-    iptables.service \
-    iwd.service \
-    systemd-resolved.service \
-    systemd-timesyncd.service \
-    tty-conf.service \
-
 # USER
-useradd -mG video wheel <user>
+useradd -mG video,wheel <user>
 passwd <user>
 passwd
 nvim /etc/passwd # change root-home-dir from /root to /home/<user>
@@ -108,6 +87,7 @@ git clone git@github.com:astier/st.git
 git clone https://aur.archlinux.org/paru-bin
 
 # REPOS - INSTALL
+touch /tmp/xorg_started
 cd config && . .profile && ./setup.sh
 cd ../scripts && ./setup.sh
 cd ../sswm && make install
@@ -124,6 +104,27 @@ paru -S \
 cd .. && rm -r paru-bin
 clean
 exit && rm .bash_*
+
+# AUTOSTART
+ln -fs /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
+systemctl enable \
+    fstrim.timer \
+    iptables.service \
+    iwd.service \
+    systemd-resolved.service \
+    systemd-timesyncd.service \
+    tty-conf.service \
+
+# MKINITCPIO
+nvim /etc/mkinitcpio.conf
+# HOOKS=(base udev autodetect modconf block keyboard consolefont encrypt filesystems fsck)
+mkinitcpio -P
+
+# BOOT
+grub-install /dev/nvme0n1
+cp /home/<user>/repos/config/grub /etc/default/grub
+nvim /etc/default/grub # adjust cryptdevice
+grub-mkconfig -o /boot/grub/grub.cfg
 
 # REBOOT
 exit
