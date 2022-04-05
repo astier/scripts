@@ -102,7 +102,7 @@ paru -S \
 
 # CLEAN
 cd .. && rm -r paru-bin
-clean
+. ~/.profile && clean
 exit && rm .bash_*
 
 # AUTOSTART
