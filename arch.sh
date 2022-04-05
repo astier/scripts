@@ -17,7 +17,6 @@ mount -L BOOT /mnt/boot
 
 # INSTALL
 pacstrap /mnt \
-    alsa-utils \
     arc-gtk-theme \
     base \
     bash-completion \
@@ -40,6 +39,7 @@ pacstrap /mnt \
     openssh \
     patch \
     pkgconf \
+    pulsemixer \
     sx \
     terminus-font \
     tmux \
