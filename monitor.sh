@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 # Exit if Xorg is not running
-! pidof Xorg > /dev/null && exit
+! pidof -q Xorg && exit
 
 # Get all connected monitors
 MONITORS=$(xrandr | grep " connected " | cut -d" " -f1)

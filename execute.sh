@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 tex() {
-    if [ "$(pidof zathura)" ]; then
+    if pidof -q zathura ; then
         exec latexmk -pdf
     else
         exec latexmk -pdf -pv
