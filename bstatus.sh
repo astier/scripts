@@ -8,7 +8,7 @@ notify() { nohup setsid -f "$TERMINAL" -e sh -c "echo BATTERY $1; read _" > /dev
 
 loop() {
     if [ "$(pgrep -f "bstatus -l" | wc -l)" -gt 2 ]; then
-        echo AN INSTANCE IS ALREADY RUNNING && return
+        echo An instance is already running. && return
     fi
     while true; do
         capacity=$(cat $DIR/capacity)
