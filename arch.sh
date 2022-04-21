@@ -44,7 +44,6 @@ pacstrap /mnt \
     terminus-font \
     tmux \
     ttf-dejavu \
-    xorg-xrandr
     xsel \
 
 # FSTAB
@@ -98,6 +97,7 @@ paru -S \
     flat-remix \
     libxft-bgra \
     lux \
+    mons \
     nerd-fonts-hack \
 
 # CLEAN
