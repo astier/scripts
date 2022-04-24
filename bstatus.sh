@@ -24,7 +24,7 @@ loop() {
 }
 
 case $1 in
-    "") cat $DIR/capacity ;;
+    "") echo "$(cat $DIR/capacity)%" ;;
     -l) loop ;;
     -*) echo INVALID ARGUMENTS ;;
 esac
