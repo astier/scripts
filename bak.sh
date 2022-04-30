@@ -6,7 +6,7 @@ backup() { sudo rsync -ahiu --delete --info=name --inplace --exclude .~* "$1" "$
 
 sudo mkdir -p "$DEST"
 sudo cryptsetup open "$DEVICE" "$DEVICE_NAME" -d "$KEY"
-sudo mount "$PARTITION" "$DEST"
+sudo mount "$PARTITION" "$DEST" || exit
 
 case $1 in
     -r) backup "$DEST" "$SRC" ;;
