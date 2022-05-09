@@ -18,6 +18,7 @@ mount -L BOOT /mnt/boot
 # INSTALL
 pacstrap /mnt \
     arc-gtk-theme \
+    autorandr \
     base \
     bash-completion \
     fakeroot \
@@ -40,7 +41,9 @@ pacstrap /mnt \
     patch \
     pkgconf \
     pulsemixer \
+    rsync \
     sx \
+    sxhkd \
     terminus-font \
     tmux \
     ttf-dejavu \
@@ -93,12 +96,13 @@ cd ../sswm && make install
 cd ../st && make install
 cd ../paru-bin && makepkg -is
 paru -S \
+    alttab-git \
     dashbinsh \
     flat-remix \
     libxft-bgra \
     lux \
-    mons \
     nerd-fonts-hack \
+    xbanish \
 
 # CLEAN
 cd .. && rm -r paru-bin
