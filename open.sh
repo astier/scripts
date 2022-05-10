@@ -14,8 +14,9 @@ open() {
     [ $# = 0 ] && return
     [ "$1" = -n ] && TEST=$1 && shift
     CMD="edit"
-    case $1 in
-        *.jpg | *.jpeg | *.JPG | *.png)
+    EXTENSION=$(echo "$1" | tr "[:upper:]" "[:lower:]")
+    case $EXTENSION in
+        *.jpg | *.jpeg | *.png)
             if [ -x /usr/bin/gthumb ]; then
                 CMD=gthumb
             else
