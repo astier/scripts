@@ -21,6 +21,7 @@ pacstrap /mnt \
     autorandr \
     base \
     bash-completion \
+    dunst \
     fakeroot \
     firefox \
     fzf \
