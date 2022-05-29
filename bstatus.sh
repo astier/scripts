@@ -14,9 +14,9 @@ loop() {
         capacity=$(cat $DIR/capacity)
         if [ "$(cat $DIR/status)" = "Charging" ]; then
             [ "$capacity" -eq 90 ] && notify "$capacity"
-        elif [ "$capacity" -eq 10 ]; then
+        elif [ "$capacity" -le 10 ]; then
             notify "$capacity"
-        elif [ "$capacity" -lt 5 ]; then
+        elif [ "$capacity" -le 5 ]; then
             systemctl suspend
         fi
         sleep 120
