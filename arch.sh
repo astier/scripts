@@ -85,6 +85,7 @@ echo permit nopass keepenv root >> /etc/doas.conf
 cd /home/<user> && su <user>
 mkdir repos && cd repos
 git clone git@github.com:astier/config.git
+git clone git@github.com:astier/dmenu.git
 git clone git@github.com:astier/scripts.git
 git clone git@github.com:astier/sswm.git
 git clone git@github.com:astier/st.git
@@ -93,6 +94,7 @@ git clone https://aur.archlinux.org/paru-bin
 # REPOS - INSTALL
 touch /tmp/xorg_started
 cd config && . .profile && ./setup.sh
+cd ../dmenu && make install
 cd ../scripts && ./setup.sh
 cd ../sswm && make install
 cd ../st && make install
