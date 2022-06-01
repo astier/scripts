@@ -18,7 +18,6 @@ mount -L BOOT /mnt/boot
 # INSTALL
 pacstrap /mnt \
     arc-gtk-theme \
-    autorandr \
     base \
     bash-completion \
     clipnotify \
@@ -106,6 +105,7 @@ paru -S \
     flat-remix \
     libxft-bgra \
     lux \
+    mons \
     nerd-fonts-hack \
     xbanish \
 
