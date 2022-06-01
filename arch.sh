@@ -21,6 +21,7 @@ pacstrap /mnt \
     autorandr \
     base \
     bash-completion \
+    clipnotify \
     dunst \
     fakeroot \
     firefox \
