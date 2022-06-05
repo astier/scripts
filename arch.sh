@@ -20,7 +20,6 @@ pacstrap /mnt \
     arc-gtk-theme \
     base \
     bash-completion \
-    clipnotify \
     dunst \
     fakeroot \
     firefox \
