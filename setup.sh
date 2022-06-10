@@ -31,6 +31,7 @@ link_home pkg.sh
 link_home preview.sh
 link_home volume.sh
 link_home wal.sh
+link_home xclientlist.sh
 
 link_usr brightness.sh
 link_usr lock.sh
