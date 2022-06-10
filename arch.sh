@@ -47,7 +47,7 @@ pacstrap /mnt \
     terminus-font \
     tmux \
     ttf-dejavu \
-    wmctrl \
+    xdo \
     xsel \
 
 # FSTAB
