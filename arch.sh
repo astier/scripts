@@ -36,7 +36,6 @@ pacstrap /mnt \
     neovim \
     noto-fonts-cjk \
     noto-fonts-emoji \
-    opendoas \
     openssh \
     patch \
     pkgconf \
@@ -57,7 +56,6 @@ sed -i s/relatime/noatime/ /mnt/etc/fstab
 # MISC
 arch-chroot /mnt
 echo <hostname> > /etc/hostname
-ln -s /bin/doas /bin/sudo
 
 # TIME
 ln -s /usr/share/zoneinfo/Europe/Berlin /etc/localtime
@@ -76,9 +74,9 @@ setterm --blength --cursor on > /etc/issue
 useradd -mG video,wheel <user>
 passwd <user>
 passwd
-nvim /etc/passwd # change root-home-dir from /root to /home/<user>
-echo permit nopass keepenv :wheel >> /etc/doas.conf
-echo permit nopass keepenv root >> /etc/doas.conf
+nvim /etc/passwd     # change root-home-dir from /root to /home/<user>
+nvim /etc/pam.d/su   # trust wheel-users, require user to be in wheel-group
+nvim /etc/pam.d/su-l # trust wheel-users, require user to be in wheel-group
 
 # REPOS - DOWNLOAD
 cd /home/<user> && su <user>
@@ -92,6 +90,7 @@ git clone https://aur.archlinux.org/paru-bin
 
 # REPOS - INSTALL
 touch /tmp/xorg_started
+su -c "ln -rs scripts/susu.sh /bin/sudo"
 cd config && . .profile && ./setup.sh
 cd ../dmenu && make install
 cd ../scripts && ./setup.sh
