@@ -36,12 +36,12 @@ pacstrap /mnt \
     neovim \
     noto-fonts-cjk \
     noto-fonts-emoji \
-    opendoas \
     openssh \
     patch \
     pkgconf \
     pulsemixer \
     rsync \
+    sudo \
     sx \
     sxhkd \
     terminus-font \
@@ -79,9 +79,10 @@ passwd
 nvim /etc/passwd # change root-home-dir from /root to /home/<user>
 echo permit nopass keepenv :wheel >> /etc/doas.conf
 echo permit nopass keepenv root >> /etc/doas.conf
+EDITOR=nvim visudo # Enable wheel-group
+cd /home/<user> && su <user>
 
 # REPOS - DOWNLOAD
-cd /home/<user> && su <user>
 mkdir repos && cd repos
 git clone git@github.com:astier/config.git
 git clone git@github.com:astier/dmenu.git
@@ -90,14 +91,8 @@ git clone git@github.com:astier/sswm.git
 git clone git@github.com:astier/st.git
 git clone https://aur.archlinux.org/paru-bin
 
-# REPOS - INSTALL
-touch /tmp/xorg_started
-cd config && . .profile && ./setup.sh
-cd ../dmenu && make install
-cd ../scripts && ./setup.sh
-cd ../sswm && make install
-cd ../st && make install
-cd ../paru-bin && makepkg -is
+# AUR
+cd paru-bin && makepkg -is
 paru -S \
     alttab-git \
     dashbinsh \
@@ -106,7 +101,16 @@ paru -S \
     lux \
     mons \
     nerd-fonts-hack \
+    opendoas-sudo \
     xbanish \
+
+# REPOS - INSTALL
+touch /tmp/xorg_started
+cd ../config && . .profile && ./setup.sh
+cd ../dmenu && make install
+cd ../scripts && ./setup.sh
+cd ../sswm && make install
+cd ../st && make install
 
 # CLEAN
 cd .. && rm -r paru-bin
