@@ -1,4 +1,3 @@
 #!/usr/bin/env sh
 
-exec su -c "$*"
-
+[ -n "$1" ] && exec su -c "$(printf ' "%s"' "$@")"
