@@ -41,7 +41,6 @@ pacstrap /mnt \
     pkgconf \
     pulsemixer \
     rsync \
-    sudo \
     sx \
     sxhkd \
     terminus-font \
@@ -57,7 +56,6 @@ sed -i s/relatime/noatime/ /mnt/etc/fstab
 # MISC
 arch-chroot /mnt
 echo <hostname> > /etc/hostname
-ln -s /bin/doas /bin/sudo
 
 # TIME
 ln -s /usr/share/zoneinfo/Europe/Berlin /etc/localtime
@@ -77,9 +75,8 @@ useradd -mG video,wheel <user>
 passwd <user>
 passwd
 nvim /etc/passwd # change root-home-dir from /root to /home/<user>
-echo permit nopass keepenv :wheel >> /etc/doas.conf
-echo permit nopass keepenv root >> /etc/doas.conf
-EDITOR=nvim visudo # Enable wheel-group
+nvim /etc/pam.d/su   # trust wheel-group and require user to be in wheel-group
+nvim /etc/pam.d/su-l # trust wheel-group and require user to be in wheel-group
 cd /home/<user> && su <user>
 
 # REPOS - DOWNLOAD
@@ -91,8 +88,17 @@ git clone git@github.com:astier/sswm.git
 git clone git@github.com:astier/st.git
 git clone https://aur.archlinux.org/paru-bin
 
+# REPOS - INSTALL
+su -c "ln -rs scripts/susu.sh /bin/sudo"
+touch /tmp/xorg_started
+cd config && . .profile && ./setup.sh
+cd ../dmenu && make install
+cd ../scripts && ./setup.sh
+cd ../sswm && make install
+cd ../st && make install
+
 # AUR
-cd paru-bin && makepkg -is
+cd ../paru-bin && makepkg -is
 paru -S \
     alttab-git \
     dashbinsh \
@@ -101,16 +107,7 @@ paru -S \
     lux \
     mons \
     nerd-fonts-hack \
-    opendoas-sudo \
     xbanish \
-
-# REPOS - INSTALL
-touch /tmp/xorg_started
-cd ../config && . .profile && ./setup.sh
-cd ../dmenu && make install
-cd ../scripts && ./setup.sh
-cd ../sswm && make install
-cd ../st && make install
 
 # CLEAN
 cd .. && rm -r paru-bin
