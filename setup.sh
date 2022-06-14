@@ -29,6 +29,7 @@ link_home mmrdf.sh
 link_home open.sh
 link_home pkg.sh
 link_home preview.sh
+link_home sfzf.sh
 link_home susu.sh
 link_home volume.sh
 link_home wal.sh
