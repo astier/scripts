@@ -14,7 +14,8 @@ case $1 in
         spawn tmux -L tty popup -E launch fzf
         ;;
     fzf|*)
-       spawn "$(printf "%s" "$PATH" | xargs -d: -I{} find -L {} -maxdepth 1 -mindepth 1 -executable -type f -printf "%P\n" | sort -u | fzf)"
-       ;;
+        spawn "$(printf "%s" "$PATH" | xargs -d: -I{} find -L {} -maxdepth 1 \
+            -mindepth 1 -executable -type f -printf "%P\n" | sort -u | fzf)"
+        ;;
 esac
 
