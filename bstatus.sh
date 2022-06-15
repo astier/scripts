@@ -2,13 +2,13 @@
 
 BATTERY=/sys/class/power_supply/BAT0
 
-[ ! -d "$BATTERY" ] && echo NO BATTERY FOUND && return
+[ ! -d "$BATTERY" ] && echo NO BATTERY FOUND && exit 1
 
 notify() { dunstify -h string:x-dunst-stack-tag:battery -u critical "Battery: $1" ; }
 
 loop() {
     if [ "$(pgrep -f "bstatus -l" | wc -l)" -gt 2 ]; then
-        echo An instance is already running. && return
+        echo An instance is already running. && exit 1
     fi
     while true; do
         capacity=$(cat $BATTERY/capacity)
