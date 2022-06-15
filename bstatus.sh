@@ -12,12 +12,12 @@ loop() {
     fi
     while true; do
         capacity=$(cat $BATTERY/capacity)
-        if [ "$(cat $BATTERY/status)" = "Charging" ]; then
-            [ "$capacity" -eq 90 ] && notify "$capacity"
-        elif [ "$capacity" -le 10 ]; then
-            notify "$capacity"
-        elif [ "$capacity" -le 5 ]; then
-            systemctl suspend
+        if [ "$(cat $BATTERY/status)" = "Discharging" ]; then
+            if [ "$capacity" -le 10 ]; then
+                notify "$capacity"
+            elif [ "$capacity" -le 5 ]; then
+                systemctl suspend
+            fi
         fi
         sleep 120
     done
