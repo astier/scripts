@@ -1,8 +1,8 @@
 #!/usr/bin/env sh
 
-DIR=/sys/class/power_supply/BAT0
+BATTERY=/sys/class/power_supply/BAT0
 
-[ ! -d "$DIR" ] && echo NO BATTERY FOUND && return
+[ ! -d "$BATTERY" ] && echo NO BATTERY FOUND && return
 
 notify() { dunstify -h string:x-dunst-stack-tag:battery -u critical "Battery: $1" ; }
 
@@ -11,8 +11,8 @@ loop() {
         echo An instance is already running. && return
     fi
     while true; do
-        capacity=$(cat $DIR/capacity)
-        if [ "$(cat $DIR/status)" = "Charging" ]; then
+        capacity=$(cat $BATTERY/capacity)
+        if [ "$(cat $BATTERY/status)" = "Charging" ]; then
             [ "$capacity" -eq 90 ] && notify "$capacity"
         elif [ "$capacity" -le 10 ]; then
             notify "$capacity"
@@ -24,7 +24,7 @@ loop() {
 }
 
 case $1 in
-    "") echo "$(cat $DIR/capacity)%" ;;
+    "") echo "$(cat $BATTERY/capacity)%" ;;
     -l) loop ;;
     -*) echo INVALID ARGUMENTS ;;
 esac
