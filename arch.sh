@@ -25,6 +25,7 @@ pacstrap /mnt \
     firefox \
     fzf \
     gcc \
+    gd \
     git \
     grub \
     intel-ucode \
