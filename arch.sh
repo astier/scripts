@@ -139,7 +139,7 @@ mkinitcpio -P
 
 # BOOT
 grub-install /dev/nvme0n1
-cp /home/<user>/repos/config/grub /etc/default/grub
+cp /home/<user>/repos/config/grub /etc/default/
 nvim /etc/default/grub # adjust cryptdevice
 grub-mkconfig -o /boot/grub/grub.cfg
 
