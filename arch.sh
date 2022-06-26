@@ -1,12 +1,19 @@
 #!/usr/bin/env sh
 
-iwctl # connect to internet
+iwctl # Connect to internet
 timedatectl set-ntp 1
 
-# PARTITION
-fdisk /dev/nvme0n1 # p1 +256M, p2, p3 34-2047 BIOS boot
+# PARTITIONS
+gdisk /dev/nvme0n1
+# p1 +256M
+# p2 rest of drive
+# p3 34-2047, partition-type: BIOS boot partition (ef02)
+
+# ENCRYPTION
 cryptsetup luksFormat /dev/nvme0n1p2
 cryptsetup open /dev/nvme0n1p2 root
+
+# FILESYSTEMS
 mkfs.ext4 -L ROOT /dev/mapper/root
 mkfs.fat -n BOOT /dev/nvme0n1p1
 
