@@ -7,7 +7,7 @@ case $1 in
         echo "launch [term|tty|fzf]"
         ;;
     term)
-        spawn "$TERMINAL" -e launch fzf
+        spawn "$TERMINAL" -n launcher -g 32x8 -e launch fzf
         ;;
     tty)
         sudo chvt 2
