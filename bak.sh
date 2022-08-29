@@ -2,7 +2,7 @@
 
 . "$XDG_CONFIG_HOME/bakrc"
 
-backup() { sudo rsync -ahiu --delete --info=name --inplace --exclude .~* "$1" "$2" ; }
+backup() { sudo rsync -ahiuc --delete --info=name --inplace --exclude .~* "$1" "$2" ; }
 
 sudo mkdir -p "$DEST"
 sudo cryptsetup open "$DEVICE" "$DEVICE_NAME" -d "$KEY"
