@@ -23,7 +23,7 @@ open() {
                 CMD=$BROWSER
             fi
             ;;
-        *.ods | *.docx | *.csv) CMD=libreoffice ;;
+        *.ods | *.docx | *.csv | *.xlsx) CMD=libreoffice ;;
         *.pdf | *.webm) CMD=$BROWSER ;;
     esac
     if [ "$CMD" = edit ]; then
