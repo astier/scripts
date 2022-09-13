@@ -116,6 +116,7 @@ paru -S \
     lux \
     mons \
     nerd-fonts-hack \
+    ttf-amiri \
     xbanish \
 
 # CLEAN
