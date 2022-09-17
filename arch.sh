@@ -48,7 +48,7 @@ pacstrap /mnt \
     patch \
     pkgconf \
     pulsemixer \
-    rsync \
+    rclone \
     sx \
     sxhkd \
     terminus-font \
