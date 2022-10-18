@@ -45,7 +45,6 @@ pacstrap /mnt \
     noto-fonts-cjk \
     noto-fonts-emoji \
     openssh \
-    patch \
     pkgconf \
     pulsemixer \
     rclone \
@@ -112,7 +111,6 @@ paru -S \
     alttab-git \
     dashbinsh \
     flat-remix \
-    libxft-bgra \
     lux \
     mons \
     nerd-fonts-hack \
