@@ -53,8 +53,6 @@ pacstrap /mnt \
     terminus-font \
     tmux \
     ttf-dejavu \
-    xdo \
-    xorg-xprop \
     xsel \
 
 # FSTAB
