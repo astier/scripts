@@ -53,6 +53,7 @@ pacstrap /mnt \
     terminus-font \
     tmux \
     ttf-dejavu \
+    ttf-hack-nerd \
     xsel \
 
 # FSTAB
@@ -111,7 +112,6 @@ paru -S \
     flat-remix \
     lux \
     mons \
-    nerd-fonts-hack \
     ttf-amiri \
     xbanish \
 
