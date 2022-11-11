@@ -15,7 +15,7 @@ cryptsetup open /dev/nvme0n1p2 root
 
 # FILESYSTEMS
 mkfs.ext4 -L ROOT /dev/mapper/root
-mkfs.fat -n BOOT /dev/nvme0n1p1
+mkfs.fat  -n BOOT /dev/nvme0n1p1
 
 # MOUNT
 mount -L ROOT /mnt
