@@ -22,7 +22,7 @@ mount -L ROOT /mnt
 mkdir /mnt/boot
 mount -L BOOT /mnt/boot
 
-# INSTALL
+# PROGRAMS
 pacstrap /mnt \
     arc-gtk-theme \
     base \
