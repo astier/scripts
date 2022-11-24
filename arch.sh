@@ -132,7 +132,8 @@ systemctl enable \
 
 # MKINITCPIO
 nvim /etc/mkinitcpio.conf
-# HOOKS=(base udev autodetect modconf block keyboard consolefont encrypt filesystems fsck)
+# HOOKS=(base udev autodetect modconf kms keyboard keymap consolefont block encrypt filesystems fsck)
+# MODULES_DECOMPRESS="yes"
 mkinitcpio -P
 
 # BOOT
