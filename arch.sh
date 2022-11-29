@@ -5,7 +5,7 @@ timedatectl set-ntp 1
 
 # PARTITIONS
 gdisk /dev/nvme0n1
-# p1 +256M
+# p1 +2G
 # p2 rest of drive
 # p3 34-2047, partition-type: BIOS boot partition (ef02)
 
@@ -133,6 +133,7 @@ systemctl enable \
 # MKINITCPIO
 nvim /etc/mkinitcpio.conf
 # HOOKS=(base udev autodetect modconf kms keyboard keymap consolefont block encrypt filesystems fsck)
+# COMPRESSION="cat"
 # MODULES_DECOMPRESS="yes"
 mkinitcpio -P
 
