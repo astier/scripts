@@ -81,6 +81,7 @@ setterm --blength --cursor on > /etc/issue
 useradd -mG video,wheel <user>
 passwd <user>
 passwd
+# FIX: Copy /root/.gnupg?
 nvim /etc/passwd # change root-home-dir from /root to /home/<user>
 nvim /etc/pam.d/su   # trust wheel-group and require user to be in wheel-group
 nvim /etc/pam.d/su-l # trust wheel-group and require user to be in wheel-group
