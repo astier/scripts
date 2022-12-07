@@ -123,6 +123,7 @@ exit && rm .bash_*
 
 # AUTOSTART
 ln -fs /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
+# TODO: try setting timedatectl-ntp otherwise check if timedatectl-ntp is set after reboot
 systemctl enable \
     fstrim.timer \
     iptables.service \
