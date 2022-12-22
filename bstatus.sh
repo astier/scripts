@@ -18,7 +18,8 @@ loop() {
     fi
     while true; do
         capacity=$(cat $BATTERY/capacity)
-        if [ "$(cat $BATTERY/status)" = "Discharging" ]; then
+        status=$(cat $BATTERY/status)
+        if [ "$status" = "Discharging" ]; then
             if [ "$capacity" -le 10 ]; then
                 notify "$capacity"
             elif [ "$capacity" -le 5 ]; then
