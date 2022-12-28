@@ -68,9 +68,8 @@ echo <hostname> > /etc/hostname
 ln -s /usr/share/zoneinfo/Europe/Berlin /etc/localtime
 hwclock -w
 
-# LANGUAGE
-echo LANG=en_US.UTF-8 > /etc/locale.conf
-nvim /etc/locale.gen # uncomment en_US.UTF-8 UTF-8
+# LOCALE
+nvim /etc/locale.gen # uncomment de_DE.UTF-8 UTF-8 and en_US.UTF-8 UTF-8
 locale-gen
 
 # SILENT BOOT
