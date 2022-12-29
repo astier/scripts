@@ -4,12 +4,10 @@ BATTERY=/sys/class/power_supply/BAT0
 
 [ ! -d "$BATTERY" ] && echo NO BATTERY FOUND && exit 1
 
-notify() {
-    if pidof -q dunst; then
-        dunstify -h string:x-dunst-stack-tag:battery -u critical "Battery: $1"
-    else
-        nohup setsid -f "$TERMINAL" -n battery_status -g 32x8 -e sh -c "echo BATTERY $1; read _" > /dev/null 2>&1
-    fi
+blink() {
+    old_brightness=$(brightness ?)
+    brightness 1% && sleep 1
+    brightness "$old_brightness" && sleep 1
 }
 
 loop() {
@@ -21,12 +19,12 @@ loop() {
         status=$(cat $BATTERY/status)
         if [ "$status" = "Discharging" ]; then
             if [ "$capacity" -le 10 ]; then
-                notify "$capacity"
+                blink && blink
             elif [ "$capacity" -le 5 ]; then
                 systemctl suspend
             fi
         fi
-        sleep 120
+        sleep 1m
     done
 }
 

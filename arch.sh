@@ -27,7 +27,6 @@ pacstrap /mnt \
     arc-gtk-theme \
     base \
     bash-completion \
-    dunst \
     fakeroot \
     firefox \
     fzf \
