@@ -133,6 +133,7 @@ systemctl enable \
 
 # MKINITCPIO
 nvim /etc/mkinitcpio.conf
+# MODULES=(i915)
 # HOOKS=(base udev autodetect modconf kms keyboard keymap consolefont block encrypt filesystems fsck)
 # COMPRESSION="cat"
 # MODULES_DECOMPRESS="yes"
