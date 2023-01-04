@@ -90,7 +90,7 @@ git clone https://aur.archlinux.org/paru-bin
 
 # REPOS - INSTALL
 su -c "ln -rs scripts/susu.sh /bin/sudo"
-touch /tmp/xorg_started
+touch /tmp/started_tty1
 cd config && . .profile && ./setup.sh
 cd ../scripts && ./setup.sh
 cd ../st && make install
