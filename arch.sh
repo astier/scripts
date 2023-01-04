@@ -32,23 +32,23 @@ pacstrap /mnt \
     fzf \
     gcc \
     gd \
-    gdm \
     git \
-    gnome-control-center \
-    gnome-tweaks \
     grub \
     intel-ucode \
+    iwd \
     linux \
     linux-firmware \
     make \
     man-db \
     neovim \
-    networkmanager \
     noto-fonts-cjk \
     noto-fonts-emoji \
     openssh \
     pkgconf \
+    pulsemixer \
     rclone \
+    sx \
+    sxhkd \
     terminus-font \
     tmux \
     ttf-dejavu \
@@ -63,6 +63,10 @@ sed -i s/relatime/noatime/ /mnt/etc/fstab
 arch-chroot /mnt
 echo <hostname> > /etc/hostname
 
+# TIME
+ln -s /usr/share/zoneinfo/Europe/Berlin /etc/localtime
+hwclock -w
+
 # LOCALE
 nvim /etc/locale.gen # uncomment de_DE.UTF-8 UTF-8 and en_US.UTF-8 UTF-8
 locale-gen
@@ -72,7 +76,7 @@ chattr +i /var/log/lastlog
 setterm --blength --cursor on > /etc/issue
 
 # USER
-useradd -mG wheel <user>
+useradd -mG video,wheel <user>
 passwd <user>
 passwd
 # FIX: Copy /root/.gnupg?
@@ -84,7 +88,9 @@ cd /home/<user> && su <user>
 # REPOS - DOWNLOAD
 mkdir repos && cd repos
 git clone git@github.com:astier/config.git
+git clone git@github.com:astier/dmenu.git
 git clone git@github.com:astier/scripts.git
+git clone git@github.com:astier/sswm.git
 git clone git@github.com:astier/st.git
 git clone https://aur.archlinux.org/paru-bin
 
@@ -92,23 +98,21 @@ git clone https://aur.archlinux.org/paru-bin
 su -c "ln -rs scripts/susu.sh /bin/sudo"
 touch /tmp/started_tty1
 cd config && . .profile && ./setup.sh
+cd ../dmenu && make install
 cd ../scripts && ./setup.sh
+cd ../sswm && make install
 cd ../st && make install
 
 # AUR
 cd ../paru-bin && makepkg -is
 paru -S \
+    alttab-git \
     dashbinsh \
     flat-remix \
-    gnome-browser-connector \
+    lux \
+    mons \
     ttf-amiri \
     xbanish \
-
-# GNOME - CONFIG
-dconf write /org/gnome/mutter/draggable-border-width 0
-gsettings set org.gnome.desktop.interface overlay-scrolling false
-gsettings set org.gnome.mutter focus-change-on-pointer-rest false
-gsettings set org.gnome.SessionManager logout-prompt false
 
 # CLEAN
 cd .. && rm -r paru-bin
@@ -120,10 +124,10 @@ ln -fs /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
 # TODO: try setting timedatectl-ntp otherwise check if timedatectl-ntp is set after reboot
 systemctl enable \
     fstrim.timer \
-    gdm.service \
     iptables.service \
-    NetworkManager.service \
+    iwd.service \
     systemd-resolved.service \
+    systemd-timesyncd.service \
     tty-conf.service \
 
 # MKINITCPIO
