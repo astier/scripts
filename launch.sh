@@ -11,7 +11,7 @@ case $1 in
         ;;
     tty)
         spawn tmux -L tty popup -E launch fzf
-        sudo chvt 2
+        chvt 2
         ;;
     fzf|*)
         spawn "$(printf "%s" "$PATH" | xargs -d: -I{} find -L {} -maxdepth 1 \
