@@ -10,8 +10,8 @@ case $1 in
         spawn "$TERMINAL" -n launcher -g 32x8 -e launch fzf
         ;;
     tty)
-        sudo chvt 2
         spawn tmux -L tty popup -E launch fzf
+        sudo chvt 2
         ;;
     fzf|*)
         spawn "$(printf "%s" "$PATH" | xargs -d: -I{} find -L {} -maxdepth 1 \
