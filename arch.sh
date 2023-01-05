@@ -24,6 +24,7 @@ mount -L BOOT /mnt/boot
 
 # PROGRAMS
 pacstrap /mnt \
+    alsa-utils \
     arc-gtk-theme \
     base \
     bash-completion \
