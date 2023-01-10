@@ -9,10 +9,10 @@ loop() {
         echo An instance is already running. && exit 1
     fi
     while sleep 2m; do
-        status=$(cat $BATTERY/status)
-        if [ "$status" = "Discharging" ]; then
-            capacity=$(cat $BATTERY/capacity)
-            [ "$capacity" -le 5 ] && systemctl suspend
+        if [ "$(cat $BATTERY/status)" = "Discharging" ]; then
+            if [ "$(cat $BATTERY/capacity)" -le 5 ]; then
+                systemctl suspend
+            fi
         fi
     done
 }
