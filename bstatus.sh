@@ -4,21 +4,25 @@ BATTERY=/sys/class/power_supply/BAT0
 
 [ ! -d "$BATTERY" ] && echo NO BATTERY FOUND && exit 1
 
+capacity() { cat $BATTERY/capacity; }
+
+status() { cat $BATTERY/status; }
+
 loop() {
-    if [ "$(pgrep -f "bstatus -l" | wc -l)" -gt 2 ]; then
+    if [ "$(pgrep -f "bstatus" | wc -l)" -gt 2 ]; then
         echo An instance is already running. && exit 1
     fi
     while sleep 2m; do
-        if [ "$(cat $BATTERY/status)" = "Discharging" ]; then
-            if [ "$(cat $BATTERY/capacity)" -le 5 ]; then
-                systemctl suspend
-            fi
+        if [ "$(capacity)" -le 5 ] \
+        && [ "$(status)" = "Discharging" ]; then
+            systemctl suspend
         fi
     done
 }
 
 case $1 in
-    "") echo "$(cat $BATTERY/capacity)%" ;;
-    -l) loop ;;
-    -*) echo INVALID ARGUMENTS ;;
+    -c) capacity ;;
+    -s) status ;;
+    "") loop ;;
+     *) echo INVALID ARGUMENTS ;;
 esac
