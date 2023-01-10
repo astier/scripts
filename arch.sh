@@ -35,6 +35,7 @@ pacstrap /mnt \
     gd \
     git \
     grub \
+    intel-media-driver \
     intel-ucode \
     iwd \
     linux \
