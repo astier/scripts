@@ -2,7 +2,7 @@
 
 BATTERY=/sys/class/power_supply/BAT0
 
-[ ! -d "$BATTERY" ] && echo NO BATTERY FOUND && exit 1
+[ ! -d "$BATTERY" ] && echo No battery found. && exit 1
 
 capacity() { cat $BATTERY/capacity; }
 
@@ -24,5 +24,5 @@ case $1 in
     -c) capacity ;;
     -s) status ;;
     "") loop ;;
-     *) echo INVALID ARGUMENTS ;;
+     *) echo Invalid arguments. ;;
 esac
