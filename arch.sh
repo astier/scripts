@@ -25,7 +25,7 @@ mount -L BOOT /mnt/boot
 # PROGRAMS
 pacstrap /mnt \
     alsa-utils \
-    arc-gtk-theme \
+    arc-solid-gtk-theme \
     base \
     bash-completion \
     fakeroot \
