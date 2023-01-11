@@ -46,8 +46,8 @@ pacstrap /mnt \
     noto-fonts-cjk \
     noto-fonts-emoji \
     openssh \
+    pipewire-alsa \
     pkgconf \
-    pulseaudio-dummy \
     rclone \
     sx \
     sxhkd \
