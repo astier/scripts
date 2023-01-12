@@ -7,4 +7,3 @@ case $1 in
     ?) amixer get Master | tail -n1 | awk -F'[][]' '{ print $2 }' | sed s/%// ;;
     *) alsamixer
 esac
-
