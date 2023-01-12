@@ -24,7 +24,6 @@ mount -L BOOT /mnt/boot
 
 # PROGRAMS
 pacstrap /mnt \
-    alsa-utils \
     arc-solid-gtk-theme \
     base \
     bash-completion \
@@ -46,8 +45,9 @@ pacstrap /mnt \
     noto-fonts-cjk \
     noto-fonts-emoji \
     openssh \
-    pipewire-alsa \
+    pipewire-pulse \
     pkgconf \
+    pulsemixer \
     rclone \
     sx \
     sxhkd \

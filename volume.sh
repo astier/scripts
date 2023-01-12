@@ -1,9 +1,9 @@
 #!/usr/bin/env sh
 
 case $1 in
-    -) amixer set Master 1%- > /dev/null ;;
-    +) amixer set Master 1%+ > /dev/null ;;
-    =) amixer set Master toggle > /dev/null ;;
-    ?) amixer get Master | tail -n1 | awk -F'[][]' '{ print $2 }' | sed s/%// ;;
-    *) alsamixer
+    -) pulsemixer --change-volume -2 ;;
+    +) pulsemixer --change-volume +2 ;;
+    =) pulsemixer --toggle-mute ;;
+    ?) pulsemixer --get-volume | cut -d' ' -f1 ;;
+    *) pulsemixer
 esac
