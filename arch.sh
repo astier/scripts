@@ -49,6 +49,7 @@ pacstrap /mnt \
     pkgconf \
     pulsemixer \
     rclone \
+    reflector \
     sx \
     sxhkd \
     terminus-font \
