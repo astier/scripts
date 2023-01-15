@@ -23,8 +23,14 @@ open() {
                 CMD=$BROWSER
             fi
             ;;
-        *.ods | *.docx | *.csv | *.xlsx) CMD=libreoffice ;;
-        *.pdf | *.webm) CMD=$BROWSER ;;
+        *.ods | *.docx | *.csv | *.xlsx)
+            CMD=libreoffice ;;
+        *.pdf)
+            CMD=$BROWSER ;;
+        *.webm | *.mp4)
+            if path=$(command -v mpv); then
+                 CMD=$path
+            else CMD=$BROWSER; fi ;;
     esac
     if [ "$CMD" = edit ]; then
         [ "$TEST" = -n ] && exit 1
