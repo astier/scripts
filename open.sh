@@ -17,12 +17,9 @@ open() {
     EXTENSION=$(echo "$1" | tr "[:upper:]" "[:lower:]")
     case $EXTENSION in
         *.jpg | *.jpeg | *.png)
-            if [ -x /usr/bin/gthumb ]; then
-                CMD=gthumb
-            else
-                CMD=$BROWSER
-            fi
-            ;;
+            if path=$(command -v gthumb); then
+                 CMD=$path
+            else CMD=$BROWSER; fi ;;
         *.ods | *.docx | *.csv | *.xlsx)
             CMD=libreoffice ;;
         *.pdf)
