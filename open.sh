@@ -34,7 +34,7 @@ open() {
         "$CMD" "$@"
     else
         [ "$TEST" = -n ] && exit 0
-        nohup setsid -f "$CMD" "$@" > /dev/null 2>&1
+        spawn "$CMD" "$@"
     fi
 }
 

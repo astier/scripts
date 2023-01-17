@@ -1,7 +1,5 @@
 #!/usr/bin/env sh
 
-spawn() { nohup setsid -f "$@" > /dev/null 2>&1 ; }
-
 case $1 in
     -h)
         echo "launch [term|tty|fzf]"
