@@ -24,7 +24,7 @@ open() {
             CMD=libreoffice ;;
         *.pdf)
             CMD=$BROWSER ;;
-        *.webm | *.mp4)
+        *.webm | *.mp4 | *.mkv)
             if path=$(command -v mpv); then
                  CMD=$path
             else CMD=$BROWSER; fi ;;
