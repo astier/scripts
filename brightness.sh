@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-STEP_SIZE=10%
+STEP_SIZE=5%
 
 case $1 in
     -) lux -s "$STEP_SIZE" > /dev/null ;;
