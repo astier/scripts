@@ -9,6 +9,7 @@ for pattern in "$@"; do
     patterns="$patterns\|$pattern"
     matches=$(echo "$matches" | grep -i "$pattern")
 done
+[ -z "$matches" ] && exit
 
 # Get shortest match
 # echo "$matches" | awk 'NR==1 || length<rank {rank=length; line=$0} END {print line}'
