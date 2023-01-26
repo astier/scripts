@@ -20,7 +20,7 @@ open() {
             if path=$(command -v gthumb); then
                  CMD=$path
             else CMD=$BROWSER; fi ;;
-        *.ods | *.docx | *.csv | *.xlsx)
+        *.odt | *.docx | *.csv | *.xlsx)
             CMD=libreoffice ;;
         *.pdf)
             CMD=$BROWSER ;;
