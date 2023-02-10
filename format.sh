@@ -16,6 +16,6 @@ case $1 in
         isort "$1"
         black "$1"
         ;;
-    *.sh) shfmt -w -ci -sr -p -s -i 4 "$1" ;;
+    *.sh) shfmt -w -s -i 4 -bn -ci -sr "$1" ;;
     *) echo Extension not recognized. ;;
 esac
