@@ -18,7 +18,7 @@ open() {
     case $EXTENSION in
         *.jpg | *.jpeg | *.png)
             if path=$(command -v gthumb); then
-                 CMD=$path
+                CMD=$path
             else CMD=$BROWSER; fi ;;
         *.odt | *.docx | *.csv | *.xlsx)
             CMD=libreoffice ;;
@@ -26,7 +26,7 @@ open() {
             CMD=$BROWSER ;;
         *.webm | *.mp4 | *.mkv)
             if path=$(command -v mpv); then
-                 CMD=$path
+                CMD=$path
             else CMD=$BROWSER; fi ;;
     esac
     if [ "$CMD" = edit ]; then

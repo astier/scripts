@@ -18,8 +18,7 @@ copy() {
 paste() {
     while read -r LINE; do
         if [ -f "$LINE" ] || [ -d "$LINE" ]; then
-            cp -fr "$LINE" . &&
-                echo Pasted: "$LINE"
+            cp -fr "$LINE" . && echo Pasted: "$LINE"
         else
             echo Doesn\'t exist: "$LINE"
         fi
@@ -29,8 +28,7 @@ paste() {
 move() {
     while read -r LINE; do
         if [ -f "$LINE" ] || [ -d "$LINE" ]; then
-            mv -f "$LINE" . &&
-                echo Moved: "$LINE"
+            mv -f "$LINE" . && echo Moved: "$LINE"
         else
             echo Doesn\'t exist: "$LINE"
         fi

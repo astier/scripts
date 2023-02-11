@@ -15,7 +15,7 @@ send() {
     if ! tmux has-session -t "$pane_id" > /dev/null 2>&1; then
         pane_id="$(tmux new-window -ac "#{pane_current_path}" -PF "#{pane_id}")"
         echo "$pane_id" > "$FILE"
-         # Give shell time to load so send-keys doesnt print keys twice
+        # Give shell time to load so send-keys doesnt print keys twice
         sleep 0.1
     fi
     tmux send-keys -t "$pane_id" "$*" ENTER
