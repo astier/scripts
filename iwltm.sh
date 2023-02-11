@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-# iwltm - I would like t-o/alk/o/he/mux-manager.
+# iwltm - I Would Like T-o/alk/o/he/mux-Manager.
 
 DIR=/tmp/iwltm
 [ ! -d "$DIR" ] && mkdir -p "$DIR"
