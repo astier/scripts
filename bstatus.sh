@@ -13,7 +13,7 @@ loop() {
         echo An instance is already running. && exit 1
     fi
     while sleep 2m; do
-        if [ "$(capacity)" -le 5 ] \
+        if [ "$(capacity)" -le 10 ] \
         && [ "$(status)" = "Discharging" ]; then
             systemctl suspend
         fi
