@@ -26,11 +26,10 @@ mount -L BOOT /mnt/boot
 pacstrap /mnt \
     arc-solid-gtk-theme \
     base \
+    base-devel \
     bash-completion \
-    fakeroot \
     firefox \
     fzf \
-    gcc \
     gd \
     git \
     grub \
@@ -39,14 +38,12 @@ pacstrap /mnt \
     iwd \
     linux \
     linux-firmware \
-    make \
     man-db \
     neovim \
     noto-fonts-cjk \
     noto-fonts-emoji \
     openssh \
     pipewire-pulse \
-    pkgconf \
     pulsemixer \
     rclone \
     reflector \
@@ -84,30 +81,12 @@ passwd <user>
 passwd
 # FIX: Copy /root/.gnupg?
 nvim /etc/passwd # change root-home-dir from /root to /home/<user>
-nvim /etc/pam.d/su   # trust wheel-group and require user to be in wheel-group
-nvim /etc/pam.d/su-l # trust wheel-group and require user to be in wheel-group
+EDITOR=nvim visudo # %wheel ALL=(ALL:ALL) NOPASSWD: ALL
 cd /home/<user> && su <user>
 
-# REPOS - DOWNLOAD
-mkdir repos && cd repos
-git clone git@github.com:astier/config.git
-git clone git@github.com:astier/dmenu.git
-git clone git@github.com:astier/scripts.git
-git clone git@github.com:astier/sswm.git
-git clone git@github.com:astier/st.git
-git clone https://aur.archlinux.org/paru-bin
-
-# REPOS - INSTALL
-su -c "ln -rs scripts/susu.sh /bin/sudo"
-touch /tmp/started_tty1
-cd config && . .profile && ./setup.sh
-cd ../dmenu && make install
-cd ../scripts && ./setup.sh
-cd ../sswm && make install
-cd ../st && make install
-
 # AUR
-cd ../paru-bin && makepkg -is
+git clone https://aur.archlinux.org/paru-bin
+cd paru-bin && makepkg -is
 paru -S \
     alttab-git \
     dashbinsh \
@@ -117,10 +96,24 @@ paru -S \
     ttf-amiri \
     xbanish \
 
+# REPOS
+mkdir repos && cd repos
+git clone git@github.com:astier/config.git
+git clone git@github.com:astier/dmenu.git
+git clone git@github.com:astier/scripts.git
+git clone git@github.com:astier/sswm.git
+git clone git@github.com:astier/st.git
+cd config && . shell/exports && ./setup.sh
+cd ../dmenu && make install
+cd ../scripts && ./setup.sh
+cd ../sswm && make install
+cd ../st && make install
+
 # CLEAN
-cd .. && rm -r paru-bin
-. ~/.profile && clean
-exit && rm .bash_*
+cd
+rm -r paru-bin .bash_*
+clean
+exit
 
 # AUTOSTART
 ln -fs /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
