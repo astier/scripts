@@ -21,6 +21,7 @@ link_home efistub.sh
 link_home execute.sh
 link_home ffind.sh
 link_home format.sh
+link_home ggrep.sh
 link_home iwltm.sh
 link_home launch.sh
 link_home lint.sh
