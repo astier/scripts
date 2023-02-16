@@ -82,7 +82,7 @@ passwd
 # FIX: Copy /root/.gnupg?
 nvim /etc/passwd # change root-home-dir from /root to /home/<user>
 EDITOR=nvim visudo # %wheel ALL=(ALL:ALL) NOPASSWD: ALL
-cd /home/"<user>" && su "<user>"
+cd /home/"<user>" && su - "<user>"
 
 # AUR
 git clone https://aur.archlinux.org/paru-bin
