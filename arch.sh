@@ -61,7 +61,7 @@ sed -i s/relatime/noatime/ /mnt/etc/fstab
 
 # MISC
 arch-chroot /mnt
-echo <hostname> > /etc/hostname
+echo "<hostname>" > /etc/hostname
 
 # TIME
 ln -s /usr/share/zoneinfo/Europe/Berlin /etc/localtime
@@ -76,13 +76,13 @@ chattr +i /var/log/lastlog
 setterm --blength --cursor on > /etc/issue
 
 # USER
-useradd -mG video,wheel <user>
-passwd <user>
+useradd -mG video,wheel "<user>"
+passwd "<user>"
 passwd
 # FIX: Copy /root/.gnupg?
 nvim /etc/passwd # change root-home-dir from /root to /home/<user>
 EDITOR=nvim visudo # %wheel ALL=(ALL:ALL) NOPASSWD: ALL
-cd /home/<user> && su <user>
+cd /home/"<user>" && su "<user>"
 
 # AUR
 git clone https://aur.archlinux.org/paru-bin
@@ -136,7 +136,7 @@ mkinitcpio -P
 
 # BOOT
 grub-install /dev/nvme0n1
-cp /home/<user>/repos/config/grub /etc/default/
+cp /home/"<user>"/repos/config/grub /etc/default/
 nvim /etc/default/grub # adjust cryptdevice
 grub-mkconfig -o /boot/grub/grub.cfg
 
