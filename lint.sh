@@ -10,9 +10,9 @@ fi
 case $target in
     *.md) markdownlint "$target" ;;
     *.py) pylint "$target" ;;
-    *.sh) shellcheck "$target" ;;
+    *.sh) shellcheck -f gcc "$target" ;;
     *.tex) chktex -q "$target" ;;
-    *.vim) vint -c --enable-neovim "$target" ;;
+    *.vim) vint "$target" ;;
     *) echo Extension not recognized. ;;
 esac
 
