@@ -17,7 +17,7 @@ cryptsetup open /dev/nvme0n1p2 root
 
 # FILESYSTEMS
 mkfs.ext4 -L ROOT /dev/mapper/root
-mkfs.fat  -n BOOT /dev/nvme0n1p1
+mkfs.fat -n BOOT /dev/nvme0n1p1
 
 # MOUNT
 mount -L ROOT /mnt
@@ -55,7 +55,7 @@ pacstrap /mnt \
     tmux \
     ttf-dejavu \
     ttf-hack-nerd \
-    xsel \
+    xsel
 
 # FSTAB
 genfstab -L /mnt >> /mnt/etc/fstab
@@ -82,7 +82,7 @@ useradd -mG video,wheel "<user>"
 passwd "<user>"
 passwd
 # FIX: Copy /root/.gnupg?
-nvim /etc/passwd # change root-home-dir from /root to /home/<user>
+nvim /etc/passwd   # change root-home-dir from /root to /home/<user>
 EDITOR=nvim visudo # %wheel ALL=(ALL:ALL) NOPASSWD: ALL
 cd /home/"<user>" && su - "<user>"
 
@@ -96,7 +96,7 @@ paru -S \
     lux \
     mons \
     ttf-amiri \
-    xbanish \
+    xbanish
 
 # REPOS
 mkdir repos && cd repos
@@ -126,7 +126,7 @@ systemctl enable \
     iwd.service \
     systemd-resolved.service \
     systemd-timesyncd.service \
-    tty-conf.service \
+    tty-conf.service
 
 # MKINITCPIO
 nvim /etc/mkinitcpio.conf
