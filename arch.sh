@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+# shellcheck disable=SC2164,SC2317
+
 iwctl # Connect to internet
 timedatectl set-ntp 1
 
