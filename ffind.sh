@@ -2,7 +2,7 @@
 
 export LC_ALL="C"
 
-find -L . \
+exec find -L . \
     ! -name . \
     ! -name .ccls-cache \
     ! -name .git \
