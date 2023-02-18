@@ -1,6 +1,8 @@
 #!/usr/bin/env sh
 
-export LC_ALL="C"
+# Sort dotfiles first
+# https://wiki.archlinux.org/title/locale#LC_COLLATE:_collation
+export LC_COLLATE=C
 
 exec find -L . \
     ! -name . \
