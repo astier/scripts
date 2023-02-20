@@ -1,14 +1,10 @@
 #!/usr/bin/env sh
 
 exec find -L . \
-    ! -name . \
-    ! -name .ccls-cache \
-    ! -name .git \
-    ! -name .idea \
-    ! -name __pycache__ \
-    ! -path "*/.ccls-cache/*" \
-    ! -path "*/.git/*" \
-    ! -path "*/.idea/*" \
-    ! -path "*/__pycache__/*" \
-    "$@" \
+    -name . -o \
+    -name .ccls-cache -prune -o \
+    -name .git -prune -o \
+    -name .idea -prune -o \
+    -name __pycache__ -prune -o \
+    -print "$@" \
 | cut -c3- | sort
