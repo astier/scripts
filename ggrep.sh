@@ -1,8 +1,7 @@
 #!/usr/bin/env sh
 
-exec grep -IRn --color=auto \
-    --exclude-dir=.ccls-cache \
-    --exclude-dir=.git \
-    --exclude-dir=.idea \
-    --exclude-dir=__pycache__ \
-"$@"
+if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    exec git grep -In --break --heading "$@"
+else
+    exec git grep -In --break --heading --no-index --exclude-standard "$@"
+fi
