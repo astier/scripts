@@ -25,6 +25,7 @@ link_home ggrep.sh
 link_home iwltm.sh
 link_home launch.sh
 link_home lint.sh
+link_home ls-dirs.sh
 link_home ls-files.sh
 link_home memlog.sh
 link_home mmrdf.sh
