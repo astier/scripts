@@ -16,7 +16,7 @@ if [ $# = 0 ]; then
     elif [ -f main.tex ]; then
         exec tex
     elif [ -f Makefile ]; then
-        exec sudo make install
+        exec make install
     else
         echo No appropriate action can be applied.
     fi
