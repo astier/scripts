@@ -15,7 +15,7 @@ loop() {
     while sleep 2m; do
         if [ "$(capacity)" -le 10 ] \
         && [ "$(status)" = "Discharging" ]; then
-            systemctl suspend
+            sudo systemctl suspend
         fi
     done
 }
