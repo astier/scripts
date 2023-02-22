@@ -48,7 +48,6 @@ pacstrap /mnt \
     pipewire-pulse \
     pulsemixer \
     rclone \
-    reflector \
     sx \
     sxhkd \
     terminus-font \
