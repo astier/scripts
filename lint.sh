@@ -8,6 +8,8 @@ elif [ ! -f "$1" ]; then
 fi
 
 case $target in
+    *.c) clang --analyze -fno-caret-diagnostics -o /dev/null "$target" ;;
+    *.cpp) clang++ --analyze -fno-caret-diagnostics -o /dev/null "$target" ;;
     *.md) markdownlint "$target" ;;
     *.py) pylint "$target" ;;
     *.sh) shellcheck -f gcc "$target" ;;
