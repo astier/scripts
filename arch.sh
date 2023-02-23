@@ -48,6 +48,7 @@ pacstrap /mnt \
     pipewire-pulse \
     pulsemixer \
     rclone \
+    ripgrep \
     sx \
     sxhkd \
     terminus-font \
