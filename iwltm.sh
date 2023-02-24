@@ -13,7 +13,7 @@ pane_id=$(cat $FILE)
 send() {
     # Check if pane exists. If not create new pane.
     if ! tmux has-session -t "$pane_id" > /dev/null 2>&1; then
-        pane_id=$(tmux new-window -ac "#{pane_current_path}" -PF "#{pane_id}")
+        pane_id=$(tmux splitw -vc "#{pane_current_path}" -PF "#{pane_id}" -l30% \; last-pane)
         echo "$pane_id" > $FILE
         # Give shell time to load so send-keys doesnt print keys twice
         sleep 0.1
