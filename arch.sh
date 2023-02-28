@@ -30,6 +30,7 @@ pacstrap /mnt \
     base \
     base-devel \
     bash-completion \
+    fd \
     firefox \
     fzf \
     gd \
