@@ -6,5 +6,4 @@ exec find -L . \
     -name .git -prune -o \
     -name .idea -prune -o \
     -name __pycache__ -prune -o \
-    "$@" -print \
-| cut -c3- | sort
+    "$@" -printf "%P\n"
