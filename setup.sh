@@ -33,6 +33,7 @@ link_home mmrdf.sh
 link_home open.sh
 link_home pkg.sh
 link_home preview.sh
+link_home root.sh
 link_home sfzf.sh
 link_home spawn.sh
 link_home susu.sh
