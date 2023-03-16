@@ -2,9 +2,9 @@
 
 edit() {
     if [ -e "$1" ] && [ ! -w "$1" ]; then
-        exec sudo "$EDITOR" "$@"
+        exec sudo -E "$EDITOR" "$@"
     elif [ ! -e "$1" ] && [ -z "$(find . -maxdepth 0 -user "$USER")" ]; then
-        exec sudo "$EDITOR" "$@"
+        exec sudo -E "$EDITOR" "$@"
     else
         exec "$EDITOR" "$@"
     fi
