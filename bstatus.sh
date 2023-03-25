@@ -13,8 +13,11 @@ loop() {
         echo An instance is already running. && exit 1
     fi
     while sleep 2m; do
-        if [ "$(capacity)" -le 10 ] \
-        && [ "$(status)" = "Discharging" ]; then
+        [ "$(status)" != "Discharging" ] && continue
+        CAPACITY=$(capacity)
+        if [ "$CAPACITY" -le 20 ] && pidof -q dunst; then
+            dunstify -h string:x-dunst-stack-tag:battery -u critical "Battery: $CAPACITY"
+        elif [ "$CAPACITY" -le 10 ]; then
             sudo systemctl suspend
         fi
     done
