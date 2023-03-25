@@ -21,14 +21,14 @@ loop() {
     while sleep 2m; do
         [ "$(status)" != "Discharging" ] && continue
         CAPACITY=$(capacity)
-        if [ "$CAPACITY" -le 20 ]; then
+        if [ "$CAPACITY" -le 10 ]; then
+            sudo systemctl suspend
+        elif [ "$CAPACITY" -le 20 ]; then
             if pidof -q dunst; then
                 dunstify -h string:x-dunst-stack-tag:battery -u critical "Battery: $CAPACITY"
-            elif
+            else
                 blink && blink
             fi
-        elif [ "$CAPACITY" -le 10 ]; then
-            sudo systemctl suspend
         fi
     done
 }
