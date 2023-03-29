@@ -71,7 +71,7 @@ ln -s /usr/share/zoneinfo/Europe/Berlin /etc/localtime
 hwclock -w
 
 # LOCALE
-nvim /etc/locale.gen # uncomment de_DE.UTF-8 UTF-8 and en_US.UTF-8 UTF-8
+nvim /etc/locale.gen # uncomment en_US.UTF-8 UTF-8
 locale-gen
 
 # SILENT BOOT
