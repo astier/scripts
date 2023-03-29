@@ -49,6 +49,7 @@ pacstrap /mnt \
     pipewire-pulse \
     pulsemixer \
     rclone \
+    reflector \
     ripgrep \
     sx \
     sxhkd \
