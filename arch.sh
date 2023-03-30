@@ -23,6 +23,7 @@ mkfs.fat -n BOOT /dev/nvme0n1p1
 mount -L ROOT /mnt
 mkdir /mnt/boot
 mount -L BOOT /mnt/boot
+genfstab -L /mnt >> /mnt/etc/fstab
 
 # PROGRAMS
 pacstrap /mnt \
@@ -58,10 +59,6 @@ pacstrap /mnt \
     ttf-dejavu \
     ttf-hack-nerd \
     xsel
-
-# FSTAB
-genfstab -L /mnt >> /mnt/etc/fstab
-sed -i s/relatime/noatime/ /mnt/etc/fstab
 
 # MISC
 arch-chroot /mnt
