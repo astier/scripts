@@ -8,12 +8,6 @@ capacity() { cat $BATTERY/capacity; }
 
 status() { cat $BATTERY/status; }
 
-blink() {
-    old_brightness=$(brightness \?)
-    brightness 1% && sleep 1
-    brightness "$old_brightness" && sleep 1
-}
-
 loop() {
     if [ "$(pgrep -f "bstatus" | wc -l)" -gt 2 ]; then
         echo An instance is already running. && exit 1
@@ -23,12 +17,8 @@ loop() {
         CAPACITY=$(capacity)
         if [ "$CAPACITY" -le 10 ]; then
             sudo systemctl suspend
-        elif [ "$CAPACITY" -le 20 ]; then
-            if pidof -q dunst; then
-                dunstify -h string:x-dunst-stack-tag:battery -u critical "Battery: $CAPACITY"
-            else
-                blink && blink
-            fi
+        elif [ "$CAPACITY" -le 20 ] && pidof -q dunst; then
+            dunstify -h string:x-dunst-stack-tag:battery -u critical "Battery: $CAPACITY"
         fi
     done
 }
