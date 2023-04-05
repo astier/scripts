@@ -80,8 +80,6 @@ setterm --blength --cursor on > /etc/issue
 useradd -mG video,wheel "<user>"
 passwd "<user>"
 passwd
-# FIX: Copy /root/.gnupg?
-nvim /etc/passwd   # change root-home-dir from /root to /home/<user>
 EDITOR=nvim visudo # %wheel ALL=(ALL:ALL) NOPASSWD: ALL
 cd /home/"<user>" && su - "<user>"
 
