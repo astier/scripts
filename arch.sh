@@ -21,8 +21,7 @@ mkfs.fat -n BOOT /dev/nvme0n1p1
 
 # MOUNT
 mount -L ROOT /mnt
-mkdir /mnt/boot
-mount -L BOOT /mnt/boot
+mount -L BOOT --mkdir /mnt/boot
 genfstab -L /mnt >> /mnt/etc/fstab
 
 # PROGRAMS
