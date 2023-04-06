@@ -25,7 +25,7 @@ mount -L BOOT --mkdir /mnt/boot
 genfstab -L /mnt >> /mnt/etc/fstab
 
 # PROGRAMS
-pacstrap /mnt \
+pacstrap -K /mnt \
     arc-solid-gtk-theme \
     base \
     base-devel \
