@@ -7,9 +7,7 @@ timedatectl set-ntp 1
 
 # PARTITIONS
 gdisk /dev/nvme0n1
-# p1 +2G
-# p2 rest of drive
-# p3 34-2047, partition-type: BIOS boot partition (ef02)
+# p1 +2G, p2 rest
 
 # ENCRYPTION
 cryptsetup luksFormat /dev/nvme0n1p2
@@ -30,12 +28,12 @@ pacstrap -K /mnt \
     base \
     base-devel \
     bash-completion \
+    efibootmgr \
     fd \
     firefox \
     fzf \
     gd \
     git \
-    grub \
     intel-media-driver \
     intel-ucode \
     iwd \
@@ -129,10 +127,7 @@ nvim /etc/mkinitcpio.conf
 mkinitcpio -P
 
 # BOOT
-grub-install /dev/nvme0n1
-cp /home/"<user>"/repos/config/grub /etc/default/
-nvim /etc/default/grub # adjust cryptdevice
-grub-mkconfig -o /boot/grub/grub.cfg
+sh /mnt/home/"<user>"/repos/scripts/efistub.sh
 
 # REBOOT
 exit
