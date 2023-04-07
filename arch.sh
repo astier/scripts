@@ -83,6 +83,7 @@ cd /home/"<user>" && su - "<user>"
 # AUR
 git clone https://aur.archlinux.org/paru-bin
 cd paru-bin && makepkg -is
+cd .. && rm -r paru-bin .bash_*
 paru -S \
     alttab-git \
     dashbinsh \
@@ -103,11 +104,6 @@ cd ../scripts && ./setup.sh
 cd ../sswm && make install
 cd ../st && make install
 curl -fLo "XDG_DATA_HOME/nvim/site/autoload/plug.vim" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-# CLEAN
-cd
-rm -r paru-bin .bash_*
-clean
 exit
 
 # AUTOSTART
