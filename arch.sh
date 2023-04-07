@@ -7,7 +7,7 @@ timedatectl set-ntp 1
 
 # PARTITIONS
 gdisk /dev/nvme0n1
-# p1 +1G
+# p1 +2G
 # p2 rest of drive
 # p3 34-2047, partition-type: BIOS boot partition (ef02)
 
