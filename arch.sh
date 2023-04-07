@@ -20,7 +20,6 @@ mkfs.fat -n BOOT /dev/nvme0n1p1
 # MOUNT
 mount -L ROOT /mnt
 mount -L BOOT --mkdir /mnt/boot
-genfstab -L /mnt >> /mnt/etc/fstab
 
 # PROGRAMS
 pacstrap -K /mnt \
@@ -58,6 +57,7 @@ pacstrap -K /mnt \
     xsel
 
 # MISC
+genfstab -L /mnt >> /mnt/etc/fstab
 arch-chroot /mnt
 echo "<hostname>" > /etc/hostname
 
