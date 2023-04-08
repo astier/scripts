@@ -27,7 +27,6 @@ pacstrap -K /mnt \
     base \
     base-devel \
     bash-completion \
-    cinnamon \
     efibootmgr \
     fd \
     firefox \
@@ -36,6 +35,7 @@ pacstrap -K /mnt \
     git \
     intel-media-driver \
     intel-ucode \
+    iwd \
     linux \
     linux-firmware \
     man-db \
@@ -43,10 +43,14 @@ pacstrap -K /mnt \
     noto-fonts-cjk \
     noto-fonts-emoji \
     openssh \
+    pipewire-pulse \
+    pulsemixer \
     rclone \
     reflector \
     ripgrep \
+    rtkit \
     sx \
+    sxhkd \
     terminus-font \
     tmux \
     ttf-dejavu \
@@ -71,7 +75,7 @@ chattr +i /var/log/lastlog
 setterm --blength --cursor on > /etc/issue
 
 # USER
-useradd -mG wheel "<user>"
+useradd -mG video,wheel "<user>"
 passwd "<user>"
 passwd
 EDITOR=nvim visudo # %wheel ALL=(ALL:ALL) NOPASSWD: ALL
@@ -82,8 +86,11 @@ git clone https://aur.archlinux.org/paru-bin
 cd paru-bin && makepkg -is
 cd .. && rm -r paru-bin .bash_*
 paru -S \
+    alttab-git \
     dashbinsh \
     flat-remix \
+    lux \
+    mons \
     ttf-amiri \
     xbanish
 
@@ -91,9 +98,11 @@ paru -S \
 mkdir repos && cd repos
 git clone git@github.com:astier/config.git
 git clone git@github.com:astier/scripts.git
+git clone git@github.com:astier/sswm.git
 git clone git@github.com:astier/st.git
 cd config && . shell/exports && ./setup.sh
 cd ../scripts && ./setup.sh
+cd ../sswm && make install
 cd ../st && make install
 curl -fLo "XDG_DATA_HOME/nvim/site/autoload/plug.vim" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 exit
@@ -104,7 +113,7 @@ ln -fs /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
 systemctl enable \
     fstrim.timer \
     iptables.service \
-    NetworkManager.service \
+    iwd.service \
     systemd-resolved.service \
     systemd-timesyncd.service \
     tty-conf.service
