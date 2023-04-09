@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+[ ! -x "$(command -v rsync)" ] && echo rsync not on the PATH && exit
+
 . "$XDG_CONFIG_HOME/bakrc"
 
 backup() { sudo rsync -ahiuc --delete --info=name --inplace --exclude .~* "$1" "$2" ; }
