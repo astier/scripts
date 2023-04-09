@@ -57,8 +57,11 @@ pacstrap -K /mnt \
     ttf-hack-nerd \
     xsel
 
-# MISC
+# FSTAB
 genfstab -L /mnt >> /mnt/etc/fstab
+sed -i s/relatime/noatime/ /mnt/etc/fstab
+
+# MISC
 arch-chroot /mnt
 echo "<hostname>" > /etc/hostname
 
