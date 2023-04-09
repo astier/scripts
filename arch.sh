@@ -45,9 +45,9 @@ pacstrap -K /mnt \
     openssh \
     pipewire-pulse \
     pulsemixer \
-    rclone \
     reflector \
     ripgrep \
+    rsync \
     rtkit \
     sx \
     sxhkd \
