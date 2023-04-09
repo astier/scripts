@@ -2,19 +2,37 @@
 
 [ ! -x "$(command -v rsync)" ] && echo rsync not on the PATH && exit
 
-. "$XDG_CONFIG_HOME/bakrc"
+TARGET=Documents
 
-backup() { sudo rsync -ahiuc --delete --info=name --inplace --exclude .~* "$1" "$2" ; }
+SRC=$HOME/$TARGET/
+DEST=/mnt/$TARGET
 
-sudo mkdir -p "$DEST"
-sudo cryptsetup open "$DEVICE" "$DEVICE_NAME" -d "$KEY"
-sudo mount "$PARTITION" "$DEST" || exit
+DEVICE=/dev/disk/by-label/$TARGET
+MAPPER=/dev/mapper/$TARGET
 
-case $1 in
-    -r) backup "$DEST" "$SRC" ;;
-    *)  backup "$SRC" "$DEST" ;;
-esac
+clean_up() {
+  sleep 1 # give rsync some time to terminate
+  is_mounted "$DEST" && sudo umount -v "$DEST"
+  if is_open "$TARGET"; then
+    echo "close: $TARGET"
+    sudo cryptsetup close "$TARGET"
+  fi
+  exit
+}
+trap clean_up INT HUP TERM EXIT
 
-sudo umount "$DEST"
-sudo cryptsetup close "$DEVICE_NAME"
-sudo rmdir "$DEST"
+is_open() { sudo dmsetup ls | grep -q "$1" ; }
+is_mounted() { grep -q "$1" /proc/mounts ; }
+
+# DECRYPT
+if ! is_open "$TARGET"; then
+  echo "open: $DEVICE as $TARGET"
+  sudo cryptsetup open "$DEVICE" "$TARGET" -d /root/key
+fi
+
+# MOUNT
+if ! is_mounted "$DEST"; then
+  sudo mount -v "$MAPPER" --mkdir "$DEST" || exit
+fi
+
+sudo rsync -ahiv --delete --exclude '.~*' --exclude 'lost+found/' --exclude '.Trash-1000/' "$SRC" "$DEST"
