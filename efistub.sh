@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 sudo efibootmgr -Bqb0
-sudo efibootmgr -cqd /dev/nvme0n1 -p1 -L "Arch Linux" -l /vmlinuz-linux -u "\
+sudo efibootmgr -cd /dev/nvme0n1 -p1 -L "Arch Linux" -l /vmlinuz-linux -u "\
     initrd=\\intel-ucode.img \
     initrd=\\initramfs-linux.img \
     cryptdevice=/dev/nvme0n1p2:root:allow-discards \
@@ -13,4 +13,3 @@ sudo efibootmgr -cqd /dev/nvme0n1 -p1 -L "Arch Linux" -l /vmlinuz-linux -u "\
     vt.global_cursor_default=0 \
     vt.cur_default=6 \
 "
-efibootmgr
