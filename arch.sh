@@ -14,12 +14,12 @@ cryptsetup luksFormat /dev/nvme0n1p2
 cryptsetup open /dev/nvme0n1p2 root
 
 # FILESYSTEMS
-mkfs.ext4 -L ROOT /dev/mapper/root
-mkfs.fat -n BOOT /dev/nvme0n1p1
+mkfs.ext4 -L root /dev/mapper/root
+mkfs.fat -n boot /dev/nvme0n1p1
 
 # MOUNT
-mount -L ROOT /mnt
-mount -L BOOT --mkdir /mnt/boot
+mount -L root /mnt
+mount -L boot --mkdir /mnt/boot
 
 # PROGRAMS
 pacstrap -K /mnt \
