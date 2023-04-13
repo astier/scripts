@@ -7,10 +7,9 @@
 DOAS=/etc/doas.conf
 DOAS_LOCKED="permit nopass keepenv :wheel as root cmd /usr/bin/lock"
 DOAS_UNLOCKED="permit nopass keepenv :wheel"
-RC=$XDG_CONFIG_HOME/lockrc
 
+RC=/root/lockrc
 [ ! -f "$RC" ] && date "+%Y-%m-%d %H:%M:00" > "$RC"
-
 date "+%Y-%m-%d %H:%M:%S"
 cat "$RC"
 
