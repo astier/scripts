@@ -4,9 +4,9 @@
 
 [ "$(id -u)" != 0 ] && echo Needs to be run as root. && exit
 
-PERM_FILE=/etc/doas.conf
-LOCKED="permit nopass keepenv :wheel as root cmd /usr/bin/lock"
-UNLOCKED="permit nopass keepenv :wheel"
+PERM_FILE=/etc/sudoers
+LOCKED="%wheel ALL=NOPASSWD:SETENV: /usr/local/bin/lock"
+UNLOCKED="%wheel ALL=(ALL:ALL) NOPASSWD: ALL"
 
 RC=/root/lockrc
 [ ! -f "$RC" ] && date "+%Y-%m-%d %H:%M:00" > "$RC"
