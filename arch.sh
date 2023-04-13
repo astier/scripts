@@ -81,7 +81,9 @@ setterm --blength --cursor on > /etc/issue
 useradd -mG video,wheel "<user>"
 passwd "<user>"
 passwd
-EDITOR=nvim visudo # %wheel ALL=(ALL:ALL) NOPASSWD: ALL
+EDITOR=nvim visudo
+# %wheel ALL=(ALL:ALL) NOPASSWD: ALL
+# Defaults editor=/usr/bin/nvim
 cd /home/"<user>" && su - "<user>"
 
 # AUR
