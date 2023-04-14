@@ -109,7 +109,6 @@ cd config && . shell/exports && ./setup.sh
 cd ../scripts && ./setup.sh
 cd ../sswm && make install
 cd ../st && make install
-curl -fLo "XDG_DATA_HOME/nvim/site/autoload/plug.vim" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 exit
 
 # AUTOSTART
