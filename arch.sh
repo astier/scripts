@@ -128,6 +128,7 @@ nvim /etc/mkinitcpio.conf
 mkinitcpio -P
 
 # BOOT
+# TODO: secure-boot (+ systemd-boot)
 sh /mnt/home/"<user>"/repos/scripts/efistub.sh
 
 # REBOOT
