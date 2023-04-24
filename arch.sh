@@ -3,7 +3,6 @@
 # shellcheck disable=SC2164,SC2317
 
 iwctl # Connect to internet
-timedatectl set-ntp 1
 
 # PARTITIONS
 gdisk /dev/nvme0n1
