@@ -85,10 +85,16 @@ EDITOR=nvim visudo
 # Defaults editor=/usr/bin/nvim
 cd /home/"<user>" && su - "<user>"
 
-# AUR
+# REPOS - DOWNLOAD
+mkdir repos && cd repos
+git clone git@github.com:astier/config.git
+git clone git@github.com:astier/scripts.git
+git clone git@github.com:astier/sswm.git
+git clone git@github.com:astier/st.git
 git clone https://aur.archlinux.org/paru-bin
+
+# REPOS - AUR
 cd paru-bin && makepkg -is
-cd .. && rm -r paru-bin .bash_*
 paru -S \
     alttab-git \
     dashbinsh \
@@ -98,13 +104,8 @@ paru -S \
     ttf-amiri \
     xbanish
 
-# REPOS
-mkdir repos && cd repos
-git clone git@github.com:astier/config.git
-git clone git@github.com:astier/scripts.git
-git clone git@github.com:astier/sswm.git
-git clone git@github.com:astier/st.git
-cd config && . shell/exports && ./setup.sh
+# REPOS - CUSTOM
+cd ../config && . shell/exports && ./setup.sh
 cd ../scripts && ./setup.sh
 cd ../sswm && make install
 cd ../st && make install
