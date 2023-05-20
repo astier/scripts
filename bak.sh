@@ -1,5 +1,13 @@
 #!/usr/bin/env sh
 
+# fstab
+# /dev/mapper/Pictures          /home/aleks/Pictures    ext4            noauto,rw,noatime     0 2
+
+# crypttab
+# Backup    /dev/disk/by-label/Backup    /root/key noauto
+# Documents /dev/disk/by-label/Documents /root/key noauto
+# Pictures  /dev/disk/by-label/Pictures  /root/key noauto
+
 [ ! -x "$(command -v rsync)" ] && echo rsync not on the PATH && exit
 
 TARGET=Documents
