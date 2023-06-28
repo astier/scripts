@@ -26,7 +26,6 @@ pacstrap -K /mnt \
     base \
     base-devel \
     bash-completion \
-    cinnamon \
     efibootmgr \
     fd \
     firefox \
@@ -35,6 +34,7 @@ pacstrap -K /mnt \
     git \
     intel-media-driver \
     intel-ucode \
+    iwd \
     linux \
     linux-firmware \
     man-db \
@@ -42,10 +42,13 @@ pacstrap -K /mnt \
     noto-fonts-cjk \
     noto-fonts-emoji \
     openssh \
+    pipewire-pulse \
+    pulsemixer \
     reflector \
     ripgrep \
     rsync \
     sx \
+    sxhkd \
     terminus-font \
     tmux \
     ttf-dejavu \
@@ -73,7 +76,7 @@ chattr +i /var/log/lastlog
 setterm --blength --cursor on > /etc/issue
 
 # USER
-useradd -mG wheel "<user>"
+useradd -mG video,wheel "<user>"
 passwd "<user>"
 passwd
 EDITOR=nvim visudo
@@ -84,21 +87,28 @@ cd /home/"<user>" && su - "<user>"
 # REPOS - DOWNLOAD
 mkdir repos && cd repos
 git clone git@github.com:astier/config.git
+git clone git@github.com:astier/dmenu.git
 git clone git@github.com:astier/scripts.git
+git clone git@github.com:astier/sswm.git
 git clone git@github.com:astier/st.git
 git clone https://aur.archlinux.org/paru-bin
 
 # REPOS - AUR
 cd paru-bin && makepkg -is
 paru -S \
+    alttab-git \
     dashbinsh \
     flat-remix \
+    lux \
+    mons \
     ttf-amiri \
     xbanish
 
 # REPOS - CUSTOM
 cd ../config && . shell/exports && ./setup.sh
+cd ../dmenu && make install
 cd ../scripts && ./setup.sh
+cd ../sswm && make install
 cd ../st && make install
 exit
 
@@ -108,7 +118,7 @@ ln -fs /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
 systemctl enable \
     fstrim.timer \
     iptables.service \
-    NetworkManager.service \
+    iwd.service \
     systemd-resolved.service \
     systemd-timesyncd.service \
     tty-conf.service
