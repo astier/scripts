@@ -22,6 +22,7 @@ mount -L boot --mkdir /mnt/boot
 
 # PROGRAMS
 pacstrap -K /mnt \
+    alsa-utils \
     arc-solid-gtk-theme \
     base \
     base-devel \
@@ -42,8 +43,6 @@ pacstrap -K /mnt \
     noto-fonts-cjk \
     noto-fonts-emoji \
     openssh \
-    pipewire-pulse \
-    pulsemixer \
     reflector \
     ripgrep \
     rsync \
