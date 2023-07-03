@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-exec find -L . -mindepth 1 \
+exec find . -mindepth 1 \
     -name .ccls-cache -prune -o \
     -name .git -prune -o \
     -name .idea -prune -o \
