@@ -31,7 +31,6 @@ pacstrap -K /mnt \
     fd \
     firefox \
     fzf \
-    gd \
     git \
     intel-media-driver \
     intel-ucode \
