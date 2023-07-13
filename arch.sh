@@ -77,9 +77,7 @@ setterm --blength --cursor on > /etc/issue
 useradd -mG video,wheel "<user>"
 passwd "<user>"
 passwd
-EDITOR=nvim visudo
-# %wheel ALL=(ALL:ALL) NOPASSWD: ALL
-# Defaults editor=/usr/bin/nvim
+nvim /etc/pam.d/su # trust and require wheel-group
 cd /home/"<user>" && su - "<user>"
 
 # REPOS - DOWNLOAD
@@ -108,6 +106,9 @@ cd ../dmenu && make install
 cd ../scripts && ./setup.sh
 cd ../sswm && make install
 cd ../st && make install
+
+# REPOS - PKGBUILDS
+cd ../config/pkgbuilds/susu && makepkg -i
 exit
 
 # AUTOSTART
