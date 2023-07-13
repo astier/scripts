@@ -80,16 +80,8 @@ passwd
 nvim /etc/pam.d/su # trust and require wheel-group
 cd /home/"<user>" && su - "<user>"
 
-# REPOS - DOWNLOAD
-mkdir repos && cd repos
-git clone git@github.com:astier/config.git
-git clone git@github.com:astier/dmenu.git
-git clone git@github.com:astier/scripts.git
-git clone git@github.com:astier/sswm.git
-git clone git@github.com:astier/st.git
+# AUR
 git clone https://aur.archlinux.org/paru-bin
-
-# REPOS - AUR
 cd paru-bin && makepkg -is
 paru -S \
     alttab-git \
@@ -99,15 +91,24 @@ paru -S \
     mons \
     ttf-amiri \
     xbanish
+cd .. && rmdir paru-bin
 
-# REPOS - CUSTOM
+# REPOS - DOWNLOAD
+mkdir repos && cd repos
+git clone git@github.com:astier/config.git
+git clone git@github.com:astier/dmenu.git
+git clone git@github.com:astier/scripts.git
+git clone git@github.com:astier/sswm.git
+git clone git@github.com:astier/st.git
+
+# REPOS - INSTALL
 cd ../config && . shell/exports && ./setup.sh
 cd ../dmenu && make install
 cd ../scripts && ./setup.sh
 cd ../sswm && make install
 cd ../st && make install
 
-# REPOS - PKGBUILDS
+# PKGBUILDS
 cd ../config/pkgbuilds/susu && makepkg -i
 exit
 
