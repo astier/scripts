@@ -35,6 +35,7 @@ pacstrap -K /mnt \
     intel-media-driver \
     intel-ucode \
     iwd \
+    light \
     linux \
     linux-firmware \
     man-db \
@@ -87,7 +88,6 @@ paru -S \
     alttab-git \
     dashbinsh \
     flat-remix \
-    lux \
     mons \
     ttf-amiri \
     xbanish

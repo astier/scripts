@@ -3,9 +3,9 @@
 STEP_SIZE=5%
 
 case $1 in
-    -) lux -s "$STEP_SIZE" > /dev/null ;;
-    +) lux -a "$STEP_SIZE" > /dev/null ;;
-    "?") lux -G ;;
-    *) lux -S "$1" > /dev/null ;;
+    -) light -U "$STEP_SIZE" ;;
+    +) light -A "$STEP_SIZE" ;;
+    "?") light -G | cut -d. -f1 ;;
+    *) light -S "$1" ;;
 esac
 
