@@ -27,6 +27,7 @@ pacstrap -K /mnt \
     base \
     base-devel \
     bash-completion \
+    brightnessctl \
     efibootmgr \
     fd \
     firefox \
@@ -35,7 +36,6 @@ pacstrap -K /mnt \
     intel-media-driver \
     intel-ucode \
     iwd \
-    light \
     linux \
     linux-firmware \
     man-db \

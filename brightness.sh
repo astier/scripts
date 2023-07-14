@@ -3,9 +3,8 @@
 STEP_SIZE=5%
 
 case $1 in
-    -) light -U "$STEP_SIZE" ;;
-    +) light -A "$STEP_SIZE" ;;
-    "?") light -G | cut -d. -f1 ;;
-    *) light -S "$1" ;;
+    -) brightnessctl set "$STEP_SIZE-" ;;
+    +) brightnessctl set "$STEP_SIZE+" ;;
+    *) brightnessctl set "$1" ;;
 esac
 
