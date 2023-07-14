@@ -51,7 +51,7 @@ pacstrap -K /mnt \
     terminus-font \
     tmux \
     ttf-dejavu \
-    ttf-hack-nerd \
+    ttf-nerd-fonts-symbols \
     xsel
 
 # FSTAB
