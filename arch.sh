@@ -89,7 +89,6 @@ paru -S \
     dashbinsh \
     flat-remix \
     mons \
-    ttf-amiri \
     xbanish
 cd .. && rmdir paru-bin
 
