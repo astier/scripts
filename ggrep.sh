@@ -1,7 +1,17 @@
 #!/usr/bin/env sh
 
 if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-    exec git grep -In --break --heading "$@"
+    if [ "$1" = "--vimgrep" ]; then
+        shift
+        exec git grep -In --column "$@"
+    else
+        exec git grep -In --break --heading "$@"
+    fi
 else
-    exec git grep -In --break --heading --no-index --exclude-standard "$@"
+    if [ "$1" = "--vimgrep" ]; then
+        shift
+        exec git grep -In --column --no-index --exclude-standard "$@"
+    else
+        exec git grep -In --break --heading --no-index --exclude-standard "$@"
+    fi
 fi
