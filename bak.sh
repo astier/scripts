@@ -1,9 +1,9 @@
 #!/usr/bin/env sh
 
-# fstab
+# /etc/fstab
 # /dev/mapper/Pictures          /home/aleks/Pictures    ext4            noauto,rw,noatime     0 2
 
-# crypttab
+# /etc/crypttab
 # Backup    /dev/disk/by-label/Backup    /root/key noauto
 # Documents /dev/disk/by-label/Documents /root/key noauto
 # Pictures  /dev/disk/by-label/Pictures  /root/key noauto
