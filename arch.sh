@@ -118,6 +118,7 @@ systemctl enable \
     fstrim.timer \
     iptables.service \
     iwd.service \
+    reflector.timer \
     systemd-resolved.service \
     systemd-timesyncd.service \
     tty-conf.service
