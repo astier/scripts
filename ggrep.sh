@@ -1,6 +1,8 @@
 #!/usr/bin/env sh
 
-if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+if [ -x "$(command -v rg)" ]; then
+    exec rg "$@"
+elif git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
     if [ "$1" = "--vimgrep" ]; then
         shift
         exec git grep -In --column "$@"
