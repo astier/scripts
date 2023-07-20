@@ -38,6 +38,7 @@ link_home rrclone.sh
 link_home sfzf.sh
 link_home spawn.sh
 link_home susu.sh
+link_home update.sh
 link_home volume.sh
 link_home wal.sh
 link_home xclientlist.sh
