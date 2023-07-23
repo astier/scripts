@@ -3,8 +3,8 @@
 STEP_SIZE=5%
 
 case $1 in
-    -) brightnessctl set "$STEP_SIZE-" ;;
-    +) brightnessctl set "$STEP_SIZE+" ;;
-    *) brightnessctl set "$1" ;;
+    -) brightnessctl -q set "$STEP_SIZE-" ;;
+    +) brightnessctl -q set "$STEP_SIZE+" ;;
+    *) brightnessctl -q set "$1" ;;
 esac
 
