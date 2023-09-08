@@ -23,7 +23,9 @@ open() {
         *.odt | *.ods | *.docx | *.csv | *.xlsx)
             CMD=libreoffice ;;
         *.pdf)
-            CMD=$BROWSER ;;
+            if path=$(command -v evince); then
+                CMD=$path
+            else CMD=$BROWSER; fi ;;
         *.webm | *.mp4 | *.mkv)
             if path=$(command -v mpv); then
                 CMD=$path
