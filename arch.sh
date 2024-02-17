@@ -6,7 +6,7 @@ iwctl # Connect to internet
 
 # PARTITIONS
 gdisk /dev/nvme0n1
-# p1 +2G, p2 rest
+# p1 (size +2G, type ef00), p2
 
 # ENCRYPTION
 cryptsetup luksFormat /dev/nvme0n1p2
