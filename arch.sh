@@ -75,11 +75,11 @@ chattr +i /var/log/lastlog
 setterm --blength --cursor on > /etc/issue
 
 # USER
-useradd -mG video,wheel "<user>"
-passwd "<user>"
+useradd -mG video,wheel user
+passwd user
 passwd
 nvim /etc/pam.d/su # trust and require wheel-group
-cd /home/"<user>" && su - "<user>"
+cd /home/user && su - user
 
 # AUR
 git clone https://aur.archlinux.org/paru-bin
@@ -127,7 +127,7 @@ systemctl enable \
 nvim /etc/mkinitcpio.conf
 # HOOKS=(... block encrypt filesystems ...)
 mkinitcpio -P
-sh /mnt/home/"<user>"/repos/scripts/efistub.sh
+sh /mnt/home/user/repos/scripts/efistub.sh
 
 # REBOOT
 exit
