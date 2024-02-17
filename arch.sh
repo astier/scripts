@@ -126,13 +126,10 @@ systemctl enable \
     systemd-timesyncd.service \
     tty-conf.service
 
-# MKINITCPIO
+# BOOT
 nvim /etc/mkinitcpio.conf
 # HOOKS=(... block encrypt filesystems ...)
 mkinitcpio -P
-
-# BOOT
-# TODO: secure-boot (+ systemd-boot)
 sh /mnt/home/"<user>"/repos/scripts/efistub.sh
 
 # REBOOT
