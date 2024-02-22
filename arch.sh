@@ -99,15 +99,15 @@ mkdir repos && cd repos
 git clone git@github.com:astier/config.git
 git clone git@github.com:astier/dmenu.git
 git clone git@github.com:astier/scripts.git
-git clone git@github.com:astier/sswm.git
 git clone git@github.com:astier/st.git
+git clone git@github.com:astier/xswm.git
 
 # REPOS - INSTALL
 cd ../config && . shell/exports && ./setup.sh
 cd ../dmenu && make install
 cd ../scripts && ./setup.sh
-cd ../sswm && make install
 cd ../st && make install
+cd ../xswm && make install
 
 # PKGBUILDS
 cd ../config/pkgbuilds/susu && makepkg -i
