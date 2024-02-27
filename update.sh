@@ -1,6 +1,8 @@
 #!/usr/bin/env sh
 
-if [ -x "$(command -v reflector)" ]; then
+if [ "$(uname -m)" = "aarch64" ]; then
+  paru
+elif [ -x "$(command -v reflector)" ]; then
   case $1 in
       "") paru ;;
       -m) sudo systemctl start reflector.service ;;
