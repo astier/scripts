@@ -13,12 +13,12 @@ cryptsetup luksFormat /dev/nvme0n1p2
 cryptsetup open /dev/nvme0n1p2 root
 
 # FILESYSTEMS
-mkfs.ext4 -L root /dev/mapper/root
-mkfs.fat -n boot /dev/nvme0n1p1
+mkfs.ext4 -L ROOT /dev/mapper/root
+mkfs.fat -n BOOT /dev/nvme0n1p1
 
 # MOUNT
-mount -L root /mnt
-mount -L boot --mkdir /mnt/boot
+mount -L ROOT /mnt
+mount -L BOOT --mkdir /mnt/boot
 
 # PROGRAMS
 pacstrap -K /mnt \
@@ -52,6 +52,8 @@ pacstrap -K /mnt \
     sx \
     sxhkd \
     terminus-font \
+    thermald \
+    tlp \
     tmux \
     ttf-dejavu \
     ttf-nerd-fonts-symbols \
@@ -83,18 +85,19 @@ useradd -mG video,wheel user
 passwd user
 passwd
 nvim /etc/pam.d/su # trust and require wheel-group
+EDITOR=nvim visudo # give wheel-users permissions
 cd /home/user && su - user
 
 # AUR
 git clone https://aur.archlinux.org/paru-bin
-cd paru-bin && makepkg -is
+cd paru-bin && makepkg -i
 paru -S \
     alttab-git \
     dashbinsh \
     flat-remix \
     mons \
     xbanish
-cd .. && rmdir paru-bin
+cd .. && rm -rf paru-bin
 
 # REPOS - DOWNLOAD
 mkdir repos && cd repos
@@ -105,7 +108,7 @@ git clone git@github.com:astier/st.git
 git clone git@github.com:astier/xswm.git
 
 # REPOS - INSTALL
-cd ../config && . shell/exports && ./setup.sh
+cd config && . shell/exports && ./setup.sh
 cd ../dmenu && make install
 cd ../scripts && ./setup.sh
 cd ../st && make install
@@ -116,8 +119,6 @@ cd ../config/pkgbuilds/susu && makepkg -i
 exit
 
 # AUTOSTART
-ln -fs /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
-# TODO: try setting timedatectl-ntp otherwise check if timedatectl-ntp is set after reboot
 systemctl enable \
     fstrim.timer \
     intel-undervolt.service \
@@ -126,15 +127,18 @@ systemctl enable \
     reflector.timer \
     systemd-resolved.service \
     systemd-timesyncd.service \
+    thermald.service \
+    tlp.service \
     tty-conf.service
+ln -fs /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
 
 # BOOT
 nvim /etc/mkinitcpio.conf
 # HOOKS=(... block encrypt filesystems ...)
 mkinitcpio -P
-sh /mnt/home/user/repos/scripts/efistub.sh
+sh repos/scripts/efistub.sh
 
 # REBOOT
 exit
 umount -R /mnt
-reboot
+poweroff
