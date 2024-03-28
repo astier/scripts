@@ -17,6 +17,7 @@ vi /etc/pacman.conf # uncomment lines
 
 # INSTALL
 pacman -Syu
+  arc-solid-gtk-theme \
   base-devel \
   bash-completion \
   fd \
@@ -24,6 +25,7 @@ pacman -Syu
   git \
   neovim \
   openssh \
+  reflector \
   ripgrep \
   tmux \
   wl-clipboard
@@ -64,7 +66,8 @@ git clone git@github.com:astier/config.git
 git clone git@github.com:astier/scripts.git
 cd config && . shell/exports && ./setup.sh
 cd ../scripts && ./setup.sh
-systemctl enable iptables.service
+systemctl enable iptables.service reflector.timer
+systemctl start reflector.service
 
 # CLEAN
 cd && rm -rf .bash_logout .bash_profile paru-bin/
