@@ -93,7 +93,6 @@ paru -S \
     alttab-git \
     dashbinsh \
     flat-remix \
-    mons \
     xbanish
 cd .. && rm -rf paru-bin
 
