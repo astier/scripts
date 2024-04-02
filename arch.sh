@@ -92,8 +92,7 @@ cd paru-bin && makepkg -i
 paru -S \
     alttab-git \
     dashbinsh \
-    flat-remix \
-    xbanish
+    flat-remix
 cd .. && rm -rf paru-bin
 
 # REPOS - DOWNLOAD
@@ -102,6 +101,7 @@ git clone git@github.com:astier/config.git
 git clone git@github.com:astier/dmenu.git
 git clone git@github.com:astier/scripts.git
 git clone git@github.com:astier/st.git
+git clone git@github.com:astier/xhidecursor.git
 git clone git@github.com:astier/xswm.git
 
 # REPOS - INSTALL
@@ -109,6 +109,7 @@ cd config && . shell/exports && ./setup.sh
 cd ../dmenu && make install
 cd ../scripts && ./setup.sh
 cd ../st && make install
+cd ../xhidecursor && make install
 cd ../xswm && make install
 
 # PKGBUILDS
