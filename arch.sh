@@ -84,8 +84,7 @@ setterm --blength --cursor on > /etc/issue
 useradd -mG video,wheel user
 passwd user
 passwd
-nvim /etc/pam.d/su # trust and require wheel-group
-EDITOR=nvim visudo # give wheel-users permissions
+EDITOR=nvim visudo # Give wheel-group permissions
 cd /home/user && su - user
 
 # AUR
@@ -113,9 +112,6 @@ cd ../scripts && ./setup.sh
 cd ../st && make install
 cd ../xhidecursor && make install
 cd ../xswm && make install
-
-# PKGBUILDS
-cd ../config/pkgbuilds/susu && makepkg -i
 exit
 
 # AUTOSTART
