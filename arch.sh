@@ -51,8 +51,6 @@ pacstrap -K /mnt \
     sx \
     sxhkd \
     terminus-font \
-    thermald \
-    tlp \
     tmux \
     ttf-dejavu \
     ttf-nerd-fonts-symbols \
@@ -120,8 +118,6 @@ systemctl enable \
     reflector.timer \
     systemd-resolved.service \
     systemd-timesyncd.service \
-    thermald.service \
-    tlp.service \
     tty-conf.service
 ln -fs /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
 
