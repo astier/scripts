@@ -119,7 +119,6 @@ systemctl enable \
     systemd-resolved.service \
     systemd-timesyncd.service \
     tty-conf.service
-ln -fs /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
 
 # BOOT
 nvim /etc/mkinitcpio.conf
@@ -130,4 +129,5 @@ sh repos/scripts/efistub.sh
 # REBOOT
 exit
 umount -R /mnt
-poweroff
+reboot
+sudo ln -fs /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
