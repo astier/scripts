@@ -94,12 +94,12 @@ cd .. && rm -rf paru-bin
 
 # REPOS - DOWNLOAD
 mkdir repos && cd repos
-git clone git@github.com:astier/config.git
-git clone git@github.com:astier/dmenu.git
-git clone git@github.com:astier/scripts.git
-git clone git@github.com:astier/st.git
-git clone git@github.com:astier/xhidecursor.git
-git clone git@github.com:astier/xswm.git
+git clone git@github.com:astier/config
+git clone git@github.com:astier/dmenu
+git clone git@github.com:astier/scripts
+git clone git@github.com:astier/st
+git clone git@github.com:astier/xhidecursor
+git clone git@github.com:astier/xswm
 
 # REPOS - INSTALL
 cd config && . shell/exports && ./setup.sh
