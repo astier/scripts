@@ -105,8 +105,8 @@ cd config && . shell/exports && ./setup.sh
 cd ../dmenu && make install
 cd ../scripts && ./setup.sh
 cd ../st && make install
-cd ../xhidecursor && make install
-cd ../xswm && make install
+cd ../xhidecursor && sudo make install
+cd ../xswm && sudo make install
 exit
 
 # AUTOSTART
