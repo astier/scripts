@@ -90,9 +90,10 @@ paru -S \
     alttab-git \
     dashbinsh \
     flat-remix
+cd && rm -rf paru-bin
 
 # REPOS - DOWNLOAD
-cd && mkdir repos && cd repos
+mkdir repos && cd repos
 git clone git@github.com:astier/config
 git clone git@github.com:astier/dmenu
 git clone git@github.com:astier/scripts
@@ -130,4 +131,4 @@ exit
 umount -R /mnt
 reboot
 sudo ln -fs /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
-rm -rf .bash_* .lesshst paru-bin
+rm -rf .bash_* .lesshst
