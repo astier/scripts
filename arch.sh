@@ -43,7 +43,6 @@ pacstrap -K /mnt \
     noto-fonts-cjk \
     noto-fonts-emoji \
     openssh \
-    rclone \
     reflector \
     ripgrep \
     sx \
