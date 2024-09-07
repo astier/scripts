@@ -127,5 +127,8 @@ sh repos/scripts/efistub.sh
 exit
 umount -R /mnt
 reboot
+
+# FINISH
 sudo ln -fs /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
+sudo pacman -Rns efibootmgr paru-bin-debug
 rm -rf .bash_* .lesshst
