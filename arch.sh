@@ -43,8 +43,6 @@ pacstrap -K /mnt \
     noto-fonts-cjk \
     noto-fonts-emoji \
     openssh \
-    pipewire-pulse \
-    pulsemixer \
     rclone \
     reflector \
     ripgrep \
