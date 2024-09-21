@@ -60,6 +60,7 @@ sed -i s/relatime/noatime/ /mnt/etc/fstab
 # MISC
 arch-chroot /mnt
 echo "<hostname>" > /etc/hostname
+nvim /etc/pacman.conf # Color, VerbosePkgLists, ParallelDownloads
 
 # TIME
 ln -s /usr/share/zoneinfo/Europe/Berlin /etc/localtime
