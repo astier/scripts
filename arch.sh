@@ -62,6 +62,7 @@ sed -i s/relatime/noatime/ /mnt/etc/fstab
 arch-chroot /mnt
 echo "<hostname>" > /etc/hostname
 nvim /etc/intel-undervolt.conf # CPU (CACHE), GPU: -100
+nvim /etc/pacman.conf # Color, VerbosePkgLists, ParallelDownloads
 
 # TIME
 ln -s /usr/share/zoneinfo/Europe/Berlin /etc/localtime
