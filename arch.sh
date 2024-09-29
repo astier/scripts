@@ -93,6 +93,7 @@ paru -S \
     alttab-git \
     dashbinsh \
     flat-remix
+sudo find /usr/share/themes -type f -exec sed -i 's/#2f343f/#2e3440/g' {} +
 cd && rm -rf paru-bin
 
 # REPOS - DOWNLOAD
