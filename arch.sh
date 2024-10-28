@@ -49,6 +49,7 @@ pacstrap -K /mnt \
     sx \
     sxhkd \
     terminus-font \
+    thermald \
     tmux \
     ttf-dejavu \
     ttf-dejavu-nerd \
@@ -93,6 +94,7 @@ git clone https://aur.archlinux.org/paru-bin
 cd paru-bin && makepkg -i
 paru -S \
     alttab-git \
+    auto-cpufreq \
     dashbinsh \
     flat-remix
 sudo find /usr/share/themes -type f -exec sed -i 's/#2f343f/#2e3440/g' {} +
@@ -118,6 +120,7 @@ exit
 
 # AUTOSTART
 systemctl enable \
+    auto-cpufreq.service \
     fstrim.timer \
     intel-undervolt.service \
     iptables.service \
@@ -125,6 +128,7 @@ systemctl enable \
     reflector.timer \
     systemd-resolved.service \
     systemd-timesyncd.service \
+    thermald.service \
     tty-conf.service
 
 # BOOT
