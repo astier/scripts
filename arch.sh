@@ -22,12 +22,11 @@ mount -L boot --mkdir /mnt/boot
 
 # PROGRAMS
 pacstrap -K /mnt \
-    alsa-utils \
     arc-solid-gtk-theme \
     base \
     base-devel \
     bash-completion \
-    brightnessctl \
+    cinnamon \
     efibootmgr \
     fd \
     firefox \
@@ -36,7 +35,7 @@ pacstrap -K /mnt \
     intel-media-driver \
     intel-ucode \
     intel-undervolt \
-    iwd \
+    libqalculate \
     linux \
     linux-firmware \
     man-db \
@@ -47,7 +46,6 @@ pacstrap -K /mnt \
     reflector \
     ripgrep \
     sx \
-    sxhkd \
     terminus-font \
     tmux \
     ttf-dejavu \
@@ -77,7 +75,7 @@ chattr +i /var/log/lastlog
 setterm --blength --cursor on > /etc/issue
 
 # USER
-useradd -mG video,wheel user
+useradd -mG wheel user
 passwd user
 passwd
 EDITOR=nvim visudo # Give wheel-group permissions
@@ -92,7 +90,7 @@ gpg --homedir .locale/share/gnupg --list-keys
 git clone https://aur.archlinux.org/paru-bin
 cd paru-bin && makepkg -i
 paru -S \
-    alttab-git \
+    albert \
     dashbinsh \
     flat-remix
 sudo find /usr/share/themes -type f -exec sed -i 's/#2f343f/#2e3440/g' {} +
@@ -101,19 +99,15 @@ cd && rm -rf paru-bin
 # REPOS - DOWNLOAD
 mkdir repos && cd repos
 git clone git@github.com:astier/config
-git clone git@github.com:astier/dmenu
 git clone git@github.com:astier/scripts
 git clone git@github.com:astier/st
 git clone git@github.com:astier/xhidecursor
-git clone git@github.com:astier/xswm
 
 # REPOS - INSTALL
 cd config && . shell/exports && ./setup.sh
-cd ../dmenu && make install
 cd ../scripts && ./setup.sh
 cd ../st && make install
 cd ../xhidecursor && sudo make install
-cd ../xswm && sudo make install
 exit
 
 # AUTOSTART
@@ -121,7 +115,7 @@ systemctl enable \
     fstrim.timer \
     intel-undervolt.service \
     iptables.service \
-    iwd.service \
+    NetworkManager.service \
     reflector.timer \
     systemd-resolved.service \
     systemd-timesyncd.service \
@@ -140,6 +134,5 @@ reboot
 
 # FINISH
 sudo ln -fs /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
-iwctl # Connect to internet
 sudo pacman -Rns efibootmgr paru-bin-debug
 rm -rf .bash_* .lesshst
