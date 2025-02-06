@@ -82,9 +82,9 @@ EDITOR=nvim visudo # Give wheel-group permissions
 cd /home/user && su - user
 
 # GNUPG
-mkdir -p .locale/share/gnupg
-chmod 700 .locale/share/gnupg
-gpg --homedir .locale/share/gnupg --list-keys
+mkdir -p .local/share/gnupg
+chmod 700 .local/share/gnupg
+gpg --homedir .local/share/gnupg --list-keys
 
 # AUR
 git clone https://aur.archlinux.org/paru-bin
