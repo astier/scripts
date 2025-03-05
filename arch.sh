@@ -90,7 +90,7 @@ gpg --homedir .local/share/gnupg --list-keys
 git clone https://aur.archlinux.org/paru-bin
 cd paru-bin && makepkg -i
 paru -S \
-    alttab-git \
+    alttab \
     dashbinsh \
     flat-remix
 sudo find /usr/share/themes -type f -exec sed -i 's/#2f343f/#2e3440/g' {} +
