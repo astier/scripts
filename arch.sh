@@ -63,7 +63,7 @@ sed -i s/relatime/noatime/ /mnt/etc/fstab
 arch-chroot /mnt
 echo "<hostname>" > /etc/hostname
 nvim /etc/intel-undervolt.conf # CPU (CACHE), GPU: -100
-nvim /etc/pacman.conf # Color, VerbosePkgLists, ParallelDownloads
+nvim /etc/pacman.conf # Color, VerbosePkgLists
 
 # TIME
 ln -s /usr/share/zoneinfo/Europe/Berlin /etc/localtime
@@ -93,7 +93,7 @@ gpg --homedir .local/share/gnupg --list-keys
 git clone https://aur.archlinux.org/paru-bin
 cd paru-bin && makepkg -i
 paru -S \
-    alttab-git \
+    alttab \
     auto-cpufreq \
     dashbinsh \
     flat-remix
