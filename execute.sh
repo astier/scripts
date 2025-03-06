@@ -1,20 +1,12 @@
 #!/usr/bin/env sh
 
-tex() {
-    if pidof -q zathura ; then
-        exec latexmk -pdf
-    else
-        exec latexmk -pdf -pv
-    fi
-}
-
 if [ $# = 0 ]; then
     if [ -f main.py ]; then
         exec python main.py
     elif [ -f setup.sh ]; then
         exec sh setup.sh
     elif [ -f main.tex ]; then
-        exec tex
+        latexmk && pidof -q evince || spawn latexmk -pv
     elif [ -f Makefile ]; then
         exec sudo make install
     else
