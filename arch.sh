@@ -129,7 +129,7 @@ systemctl enable \
     systemd-resolved.service \
     systemd-timesyncd.service \
     thermald.service \
-    tty-conf.service
+    ttyrc.service
 
 # BOOT
 nvim /etc/mkinitcpio.conf
