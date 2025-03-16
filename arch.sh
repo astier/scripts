@@ -122,7 +122,7 @@ systemctl enable \
     reflector.timer \
     systemd-resolved.service \
     systemd-timesyncd.service \
-    tty-conf.service
+    ttyrc.service
 
 # BOOT
 nvim /etc/mkinitcpio.conf
