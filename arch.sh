@@ -91,8 +91,7 @@ git clone https://aur.archlinux.org/paru-bin
 cd paru-bin && makepkg -i
 paru -S \
     alttab \
-    dashbinsh \
-    flat-remix
+    dashbinsh
 sudo find /usr/share/themes -type f -exec sed -i 's/#2f343f/#2e3440/g' {} +
 cd && rm -rf paru-bin
 
@@ -140,3 +139,4 @@ sudo ln -fs /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
 iwctl # Connect to internet
 sudo pacman -Rns efibootmgr paru-bin-debug
 rm -rf .bash_* .lesshst
+paru -S flat-remix # Takes a long time
