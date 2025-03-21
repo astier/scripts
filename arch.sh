@@ -35,7 +35,6 @@ pacstrap -K /mnt \
     git \
     intel-media-driver \
     intel-ucode \
-    intel-undervolt \
     iwd \
     linux \
     linux-firmware \
@@ -62,7 +61,6 @@ sed -i s/relatime/noatime/ /mnt/etc/fstab
 # MISC
 arch-chroot /mnt
 echo "<hostname>" > /etc/hostname
-nvim /etc/intel-undervolt.conf # CPU (CACHE), GPU: -100
 nvim /etc/pacman.conf # Color, VerbosePkgLists
 
 # TIME
@@ -121,7 +119,6 @@ exit
 systemctl enable \
     auto-cpufreq.service \
     fstrim.timer \
-    intel-undervolt.service \
     iptables.service \
     iwd.service \
     reflector.timer \
@@ -147,3 +144,4 @@ iwctl # Connect to internet
 sudo pacman -Rns efibootmgr paru-bin-debug
 rm -rf .bash_* .lesshst
 paru -S flat-remix # Takes a long time
+# Try intel-undervolt
