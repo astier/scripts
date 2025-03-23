@@ -106,8 +106,8 @@ git clone git@github.com:astier/xswm
 
 # REPOS - INSTALL
 cd config && . shell/exports && ./setup.sh
-cd ../dmenu && make install
 cd ../scripts && ./setup.sh
+cd ../dmenu && make install
 cd ../st && make install
 cd ../xhidecursor && sudo make install
 cd ../xswm && sudo make install
