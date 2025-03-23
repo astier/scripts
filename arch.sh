@@ -138,5 +138,5 @@ reboot
 sudo ln -fs /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
 iwctl # Connect to internet
 sudo pacman -Rns efibootmgr paru-bin-debug
-rm -rf .bash_* .lesshst
+rm .bash_* .lesshst
 paru -S flat-remix # Takes a long time
