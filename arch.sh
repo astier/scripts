@@ -91,9 +91,7 @@ gpg --homedir .local/share/gnupg --list-keys
 # AUR
 git clone https://aur.archlinux.org/paru-bin
 cd paru-bin && makepkg -i
-paru -S \
-    alttab \
-    dashbinsh
+paru -S alttab dashbinsh
 sudo find /usr/share/themes -type f -exec sed -i 's/#2f343f/#2e3440/g' {} +
 cd && rm -rf paru-bin
 
