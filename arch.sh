@@ -140,3 +140,4 @@ iwctl # Connect to internet
 sudo pacman -Rns efibootmgr paru-bin-debug
 rm .bash_* .lesshst
 paru -S flat-remix # Takes a long time
+# Try intel-undervolt, thermald
