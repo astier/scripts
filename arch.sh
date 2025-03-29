@@ -23,6 +23,7 @@ mount -L boot --mkdir /mnt/boot
 # PROGRAMS
 pacstrap -K /mnt \
     alsa-utils \
+    amd-ucode \
     arc-solid-gtk-theme \
     base \
     base-devel \
@@ -33,8 +34,6 @@ pacstrap -K /mnt \
     firefox \
     fzf \
     git \
-    intel-media-driver \
-    intel-ucode \
     iwd \
     linux \
     linux-firmware \
@@ -140,4 +139,4 @@ iwctl # Connect to internet
 sudo pacman -Rns efibootmgr paru-bin-debug
 rm .bash_* .lesshst
 paru -S flat-remix # Takes a long time
-# Try intel-undervolt, thermald
+# Try auto-cpufreq, thermald, undervolting

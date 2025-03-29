@@ -2,7 +2,7 @@
 
 sudo efibootmgr -Bqb0
 sudo efibootmgr -cd /dev/nvme0n1 -p1 -L "Arch Linux" -l /vmlinuz-linux -u "\
-    initrd=\\intel-ucode.img \
+    initrd=\\amd-ucode.img \
     initrd=\\initramfs-linux.img \
     cryptdevice=/dev/nvme0n1p2:root:allow-discards \
     root=LABEL=root rw \
