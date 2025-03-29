@@ -52,6 +52,7 @@ pacstrap -K /mnt \
     tmux \
     ttf-dejavu \
     ttf-dejavu-nerd \
+    xorg-xrdb \
     xsel
 
 # FSTAB
